@@ -1,0 +1,141 @@
+.cabezera{
+
+    position:fixed;
+    background: #22242A;
+    padding-left: 20px;
+   z-index: 2;
+    width: 100%;
+    height: 70px;  
+ 
+  }
+  .Izquierda_area h3{
+  color:#fff;
+  margin: 0;
+  text-transform: uppercase;
+  font-size: 22px ;
+  font-weight: 900;
+  }
+  .Izquierda_area span{
+  color:#1DC4E7;
+  }
+   .cerrarSesion_btn{
+     padding: 5px;
+     background: #1983D3;
+     text-decoration: none;
+     float:right;
+     margin-top:-30px;
+     margin-right: 40px;
+     border-radius: 2px;
+     font-size: 15px;
+     font-weight: 600;
+     color:#fff;
+     transition: 0.5s;
+    transition-property: background;
+   }
+  .cerrarSesion_btn:hover{
+    background: #8d9d8b;
+  }
+  /* Barra esta cerrada */
+  #checkk:checked ~ .barraMenu{
+    left:-190px;
+  }
+  
+  #checkk:checked ~ .barraMenu a span{
+   display: none;
+  }
+  
+  #checkk:checked ~ .barraMenu a {
+    font-size: 20px;
+    margin-left: 170px;
+    width: 80px;
+    line-height: 60px;
+   }
+   #checkk:checked ~ .contenedor {
+    margin-left:60px;
+   }
+   
+   .contenedor{
+     margin-left: 250px;
+     height: 100vh;
+     background-position: center;
+     background-size: cover;
+     transition: 0.5s;
+   }
+   #checkk{
+     display: none;
+   }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  /* Barra esta abierta*/
+  .barraMenu{
+    background: #2f323A;
+    margin-top:70px;
+    padding-top: 30px;
+    position: fixed;
+    left:0;
+    width: 250px;
+    height: 100%;
+    transition: 0.5s;
+    transition-property: left;
+  }
+  .barraMenu #profile_image{
+    width: 100px;
+    height: 100px;
+    border-radius: 100px;
+    margin-bottom: 10px;
+    color:floralwhite;
+    background-color: #fff;
+  
+  }
+  .barraMenu h4{
+    color:#ccc;
+    margin-top:0;
+    margin-bottom:20px;
+  
+  }
+  .barraMenu a{
+    color:#fff;
+    display: block;
+    width: 100%;
+    line-height: 60px;
+    text-decoration: none;
+    padding-left: 40px;
+    box-sizing: border-box;
+  transition: 0.5s;
+  transition-property:background ;
+  }
+  .barraMenu a:hover{
+  background: #19B3d3 ;
+  }
+  .barraMenu i{
+  padding-right: 10px;
+  }
+  
+  label #barraMenu_btn{
+    z-index: 1;
+    color:#fff;
+    position:fixed;
+    cursor: pointer;
+    left:300px;
+    font-size:20px;
+    margin: 5px 0;
+    transition: 0.5s;
+  transition-property:color ;
+  }
+  
+  label #barraMenu_btn:hover{
+  color:#1983D3;
+  }
