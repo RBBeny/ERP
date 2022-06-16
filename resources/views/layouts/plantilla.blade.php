@@ -12,6 +12,7 @@
     @yield('css')
     @yield('script')
     </head>
+    <body>
     @yield('content')
 
 
