@@ -278,7 +278,8 @@
 $(document).ready(function () {
     $('#pagos').DataTable({
     pageLength : 5,
-    lengthMenu: [[5, 10, 20], [5, 10, 20]]
+    lengthMenu: [[5, 10, 20], [5, 10, 20]],
+    language: {"url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"}
     });
 });
 </script>

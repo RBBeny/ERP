@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 use App\Estado;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+
+
 class VentasController extends Controller
 {
     //
@@ -23,9 +25,11 @@ class VentasController extends Controller
     }
 
     public function insertarEstado(Request $request){
+        error_log('LLego a la función');
         $Estado = new Estado();
         $Estado->nomEstado=$request->input('nomEstado');
         $Estado->save();
+      
 
     // $cEstado = DB::insert('insert ');
 

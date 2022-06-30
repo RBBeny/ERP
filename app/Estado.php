@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Estado extends Model
 {
     //
-    protected $table = "cEstado";
+    protected $table = "cestado";
     protected $primaryKey="cveEstado";
     protected $fillable = ['nomEstado'];
 

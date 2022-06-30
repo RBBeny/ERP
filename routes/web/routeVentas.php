@@ -8,4 +8,4 @@ Route:: get('/ClientesVentas', [VentasController::class, 'clientes']);
 Route:: get('/AgregarClientesVentas', [VentasController::class, 'agregarClientes']);
 Route:: get('/VerClienteVentas', [VentasController::class, 'verCliente']);
 Route::post('insertarEstado',[VentasController::class,'insertarEstado'])->name('insertarEstado.insertarEstado');
-Route::post('mostrarEstadosAjax',[VentasController::class,'mostrarEstadosAjax'])->name('mostrarEstadosAjax.mostrarEstadosAjax');
+Route::get('mostrarEstadosAjax',[VentasController::class,'mostrarEstadosAjax'])->name('mostrarEstadosAjax.mostrarEstadosAjax');

@@ -11,7 +11,10 @@
 @section('content')
 @include('includes.navbar')
 <div class="contenedor">
+   <div id="alerts">
+   </div>
     <div class="contenedorN2">
+
         <div class="contenedorStep">
             <h1>Agregar Cliente</h1>
             <div class="step-row">
@@ -30,42 +33,42 @@
                         </center>
                         <div class="form-row">
                             <div class="form-group col-md-5">
-                                <input type="text" class="form-control" id="inputNoSolicitud" placeholder="*N° solicitud" required>
+                                <input type="text" class="form-control" id="inputNoSolicitud" value="noSolicitud" name="noSolicitud" placeholder="*N° solicitud" required>
                             </div>
                             <div class="form-group col-md-5">
-                                <input type="text" class="form-control" id="inputNoContrato" placeholder="*N° contrato" required>
+                                <input type="text" class="form-control" id="inputNoContrato" value="noContrato" name="noContrato" placeholder="*N° contrato" required>
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="form-group col-md-7">
-                                <input type="text" class="form-control" id="inputNombre" placeholder="*Nombre" required>
+                                <input type="text" class="form-control" id="inputNombre" value="nombreCliente" name="nombreCliente" placeholder="*Nombre" required>
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="form-group col-md-6">
-                                <input type="text" class="form-control" id="inputApellidoPaterno" placeholder="*Apellido Paterno" required>
+                                <input type="text" class="form-control" id="inputApellidoPaterno" value="apellidoPaternoCliente" name="apellidoPaternoCliente" placeholder="*Apellido Paterno" required>
                             </div>
                             <div class="form-group col-md-6">
-                                <input type="text" class="form-control" id="inputApellidoMaterno" placeholder="*Apellido Materno" required>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-6">
-                                <input type="text" class="form-control" id="inputNumeroTelefono" placeholder="*N° telefono" required>
-                            </div>
-                            <div class="form-group col-md-6">
-                                <input type="text" class="form-control" id="inputNumeroTelefono2" placeholder="*N° telefono 2">
+                                <input type="text" class="form-control" id="inputApellidoMaterno" value="apellidoMaternoCliente" name="apellidoMaternoCliente" placeholder="*Apellido Materno" required>
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="form-group col-md-6">
-                                <input type="text" class="form-control" id="inputNumeroTelefono3" placeholder="*N° telefono 3">
+                                <input type="text" class="form-control" id="inputNumeroTelefono" value="numeroTelefonoCliente" name="numeroTelefonoCliente" placeholder="*N° telefono" required>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <input type="text" class="form-control" id="inputNumeroTelefono2" value="numeroTelefono2Cliente" name="numeroTelefono2Cliente" placeholder="*N° telefono 2">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <input type="text" class="form-control" id="inputNumeroTelefono3" value="numeroTelefono3Cliente" name="numeroTelefono3Cliente" placeholder="*N° telefono 3">
                             </div>
                         </div>
                         <div class="form-row ">
                             <div class="form-group col-md-5">
 
-                                <select id="inputState" class="form-control" id="estadoCivil" name="estadoCivil">
+                                <select id="inputState" class="form-control" id="estadoCivil" value="estadoCivilCliente" name="estadoCivilCliente">
                                     <option selected>Estado civil...</option>
                                     <option>...</option>
                                 </select>
@@ -74,7 +77,7 @@
                         <div class="form-row form-inline">
                             <div class="col-md-6 mb-3">
                                 <label for="fechaNacimiento">Fecha de nacimiento</label>
-                                <input type="date" class="form-control" id="fechaNacimiento">
+                                <input type="date" class="form-control" id="fechaNacimiento" value="fechaNacimientoCliente" name="fechaNacimientoCliente">
                             </div>
                         </div>
                         <div class="form-group">
@@ -90,7 +93,7 @@
 
                         <div class="form-row form-inline">
                             <div class="col-md-5 mb-3">
-                                <select id="estado" class="form-control" name="estado" required>
+                                <select id="estado" class="form-control" name="estadoCliente" value="estadoCliente" required>
                                     <option selected>*Estado...</option>
                                   
                                 </select>
@@ -98,7 +101,7 @@
                             </div>
 
                             <div class="col-md-6 mb-2">
-                                <select id="municipio" class="form-control" name="municipio" required>
+                                <select id="municipio" class="form-control" name="municipioCliente" value="municipioCliente" required>
                                     <option selected>*Municipio...</option>
                                     <option>...</option>
                                 </select>
@@ -107,7 +110,7 @@
                         </div>
                         <div class="form-row form-inline">
                             <div class="col-md-7 mb-3">
-                                <select id="colonia" name="colonia" class="form-control" required>
+                                <select id="colonia" name="coloniaCliente"  value="coloniaCliente" class="form-control" required>
                                     <option selected>*Colonia...</option>
                                     <option>...</option>
                                 </select>
@@ -117,20 +120,20 @@
                         </div>
                         <div class="form-row">
                             <div class="col-md-5 mb-3">
-                                <input type="text" name="calle" class="form-control" id="calle" placeholder="*Calle" required>
+                                <input type="text" class="form-control" id="calle" name="calleCliente" value="calleCliente" placeholder="*Calle" required>
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="form-group col-md-4">
-                                <input type="text" class="form-control" name="nExt" id="nExt" placeholder="*N° ext" required>
+                                <input type="text" class="form-control" name="numeroExteriorCasaCliente" value="numeroExteriorCasaCliente" id="nExt" placeholder="*N° ext" required>
                             </div>
                             <div class="form-group col-md-4">
-                                <input type="text" class="form-control" name="nInt" id="nInt" placeholder="*N° int">
+                                <input type="text" class="form-control" name="numeroInteriorCasaCliente" value="numeroInteriorCasaCliente" id="nInt" placeholder="*N° int">
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="form-group col-md-7">
-                                <input type="text" class="form-control" id="inputEntreCalles" placeholder="Entre calles">
+                                <input type="text" class="form-control"  name="entreCalles" value="entreCalles" id="inputEntreCalles" placeholder="Entre calles">
                             </div>
                         </div>
                         <div class="form-row">
@@ -247,7 +250,6 @@
                         <center>
                             <h2>Datos del pago</h1>
                         </center>
-                        <h4>Datos de pago</h4>
                         <div class="form-row">
                             <div class="form-group col-md-4">
                                 <select id="formaPago" class="form-control" required>
@@ -365,16 +367,15 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js" integrity="sha384-W8fXfP3gkOKtndU4JGtKDvXbO53Wy8SZCQHczT5FMiiqmQfUpWbYdTil/SxwZgAN" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.min.js" integrity="sha384-skAcpIdS7UcVUC05LJ9Dxay8AXcDYfBJqt1CJ85S/CFujBsIzCIv+l9liuYLaMQ/" crossorigin="anonymous"></script>
-<script src="{{ asset('js/Ventas/AgregarClientes.js') }}" charset="utf8" type="text/javascript"></script>
 <script src="https://code.jquery.com/jquery-3.5.1.js" type="text/javascript"></script>
+<script src="{{ asset('js/Ventas/AgregarClientes.js') }}" charset="utf8" type="text/javascript"></script>
+<script src="{{ asset('js/components/alerts.js') }}" charset="utf8" type="text/javascript"></script>
 <script type="text/javascript">
 $(document).ready(function(){
-   
-    $('#btnGuardarEstado').click(function(){
-       
+    $('#btnGuardarEstado').click(function(){     
     var nomEstado = $('#nomEstado').val();
     var _token = $("input[name=_token]").val();
-  
+    console.log(nomEstado);
     $.ajax({
         type:"POST",
         url:"{{ route('insertarEstado.insertarEstado') }}",
@@ -383,18 +384,19 @@ $(document).ready(function(){
             _token:_token
         },
         success:function(res){
-            if(res){
-               
-                alert("agregado con exito");
-            }else{
-                alert("Se ha hecho el registro con exito");
-            }            
-        }
+               console.log('Se ha creado un registro correctamente');
+               alertSucces("Se agrego el estado");
+               document.getElementById('#nomEstado').reset();
+            },
+        error:function(res){
+            alertDanger("No se agrego el estatado")
+            console.log("No se ha hecho el registro");
+        }            
+        
     });
     return false;
 });
-
-
+   
 });
 </script>
 

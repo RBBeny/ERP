@@ -15,7 +15,12 @@
 @include('includes.navbar')
 
 <div class="contenedor">
-    <h1>Clientes</h1>
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item "><a id="url" href="/HomeVentas">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Clientes ventas</li>
+        </ol>
+    </nav>
     <div class="tablaclientes">
 
         <table id="clienteVentas" class="table display table-striped table-bordered nowrap" style="width:100%">
@@ -52,7 +57,9 @@
 <script src="https://cdn.datatables.net/1.11.4/js/dataTables.bootstrap5.min.js" type="text/javascript"></script>
 <script>
     $(document).ready(function() {
-        $('#clienteVentas').DataTable();
+        $('#clienteVentas').DataTable({
+            language: {"url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"}
+        });
     });
 </script>
 @endsection
