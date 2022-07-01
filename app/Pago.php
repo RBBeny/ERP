@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Pago extends Model
 {
     //
-    protected $table = "tPago";
+    protected $table = "tpago";
 
     protected $primaryKey="cvePago";
     protected $fillable = ['fechaPago','cantidadPago','cveContrato','cveCobrador'];

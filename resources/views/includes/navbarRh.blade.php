@@ -17,11 +17,11 @@
         <div class="barraMenu">
             <center>
             <i class="fas fa-user fa-5x" ></i>
-            <h4>Usuario</h4>
+            <h4>RH</h4>
             </center>
-            <a href="/homeCobranza"> <i class="fas fa-home fa-lg"></i></i><span>Home</span></a>
-            <a href="/PagosCobranza"> <i class="fa-solid fa-money-bill"></i></i><span>Ver Pagos</span></a>
-            <a href="/TablaClientesC"> <i class="fas fa-users fa-lg"></i></i><span>Ver Clientes</span></a>
+            <a href="/HomeVentas"> <i class="fas fa-home fa-lg"></i></i><span>Home</span></a>
+            <a href="/UsuariosRH"> <i class="fa-solid fa-user-plus fa-lg"></i></i><span>Usuarios</span></a>
+            <a href="/ConsultarVentasRH"> <i class="fa-solid fa-magnifying-glass fa-lg"></i></i><span>Consultar Ventas</span></a>
 
         </div>
 
