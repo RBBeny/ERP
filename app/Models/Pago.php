@@ -20,3 +20,5 @@ class Pago extends Model
     public function Cobrador(){
         return $this->belongsTo('App\Cobrador','cveCobrador');
     }
+
+}
