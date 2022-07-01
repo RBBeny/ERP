@@ -1,6 +1,6 @@
 @extends('layouts.plantilla')
 
-@section('titulo','Home Cobranza')
+@section('titulo','Home Gerente Cobranza')
 
 
 @section('content')

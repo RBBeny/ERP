@@ -1,6 +1,6 @@
 @extends('layouts.plantilla')
 
-@section('titulo','Clientes Ventas')
+@section('titulo','Usuarios Cobranza')
 @section('css')
 {{-- <script src="{{ asset('js/Ventas/clientesVentas.js') }}" type="text/javascript" ></script> --}}
 <link href="https://cdn.datatables.net/1.11.4/css/dataTables.bootstrap5.min.css" type="text/css" rel="stylesheet">
@@ -24,7 +24,7 @@
 <!-- Button trigger modal -->
 <div align="right" style="padding-right: 40px;">
 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-  agregar usuario
+  Agregar usuario
 </button>
 </div>
 <!-- Modal ag_regar usuario -->
@@ -32,7 +32,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="staticBackdropLabel">agregar usuario</h5>
+        <h5 class="modal-title" id="staticBackdropLabel">Agregar usuario</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
@@ -55,15 +55,8 @@
         </div>
         <div class="mb-3">
           <label  class="form-label">Rol</label>
-                <select id="ag_5" class="form-select" aria-label=" select example">
-                      <option selected value="">Selecciona opcion</option>
-                                <option value="1">Administrador</option>
-                                <option value="2">Gerente de ventas</option>
-                                <option value="3">Gerente de cobranza</option>
-                                <option value="4">Ventas</option>
-                                <option value="5">Cobranza</option>
-                                <option value="6">RH</option>
-                                <option value="7">Finanzas</option>
+                <select id="ag_5" class="form-select" aria-label=" select example" disabled>
+                      <option selected value="">Cobrador</option>
                     </select>
         </div>
         <div class="mb-3">
@@ -95,7 +88,7 @@
             <tbody>
                 <tr>
                     <td>Adrian Eduardo Villanueva</td>
-                    <td>Administrador</td>
+                    <td>Cobrador</td>
                     <td>adrian.villanueva</td>
                     <td><a data-bs-toggle="modal" onclick="eliminar()"><i style="font-size:25px; color:red;" class="bi bi-trash"></i></a>
                     <a data-bs-toggle="modal" data-bs-target="#EditarUsuario"><i style="font-size:25px; color:blue;" class="bi bi-pencil-square"></i></a></td>
@@ -135,16 +128,9 @@
           <input  placeholder="Kevyn69" value="adrian.villanueva" type="text" class="form-control">
         </div>
         <div class="mb-3">
-          <label  class="form-label">Rol</label>
-                <select class="form-select" aria-label=" select example">
-                      <option selected value="Administrador"></option>
-                                <option value="1">Administrador</option>
-                                <option value="2">Gerente de ventas</option>
-                                <option value="3">Gerente de cobranza</option>
-                                <option value="4">Ventas</option>
-                                <option value="5">Cobranza</option>
-                                <option value="6">RH</option>
-                                <option value="7">Finanzas</option>
+        <label  class="form-label"  >Rol</label>
+        <select id="ag_5" class="form-select" aria-label=" select example" disabled>
+                      <option selected value="">Cobrador</option>
                     </select>
         </div>
         <button type="submit" class="btn btn-primary btn-block">Submit</button>

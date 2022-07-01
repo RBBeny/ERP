@@ -1,12 +1,19 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
 class Cliente extends Model
 {
-    protected $table = "tCliente";
+    protected $table = "tcliente";
+    protected $primaryKey="cveCliente";
+    protected $fillable = ['nomCliente','apellidoPaternoCliente','apellidoMaternoCliente',
+    'cveEstadoCliente','cveMunicipioCliente','cveColoniaCliente','numeroExteriorCasaCliente','entreCallesCliente','referenciasCasaCliente',
+    'cveMunicipioClienteCobro','cveColoniaClienteCobro','numeroExteriorCasaClienteCobro',
+    'referenciasCasaClienteCobro','telefonoCliente',
+    'telefonoDosCliente','estadoCivilCliente','fechaNacimientoCliente',
+    'cveSolicitud','cveContrato'];
     //Relacion M:1
     public function estadoCliente(){
      return $this->belongsTo('App\Models\Estado','cveEstado');

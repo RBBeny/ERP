@@ -1,16 +1,17 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
 class Pago extends Model
 {
     //
-    protected $table = "tPago";
-
+    protected $table = "tpago";
     protected $primaryKey="cvePago";
     protected $fillable = ['fechaPago','cantidadPago','cveContrato','cveCobrador'];
+
+    public $timestamps=false;
 
     public function Contrato(){
         return $this->belongsTo('App\Contrato','cveContrato');
@@ -20,5 +21,4 @@ class Pago extends Model
         return $this->belongsTo('App\Cobrador','cveCobrador');
     }
 
-    public $timestamps=false;
 }
