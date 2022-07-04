@@ -23,6 +23,7 @@
             <a href="/homeGCobranza"> <i class="fas fa-home fa-lg"></i></i><span>Home</span></a>
             <a href="/TablaUsuariosGC"> <i class="fas fa-users fa-lg"></i></i><span>Ver Usuarios</span></a>
             <a href="/TablaClientesGC"> <i class="fas fa-users fa-lg"></i></i><span>Ver Clientes</span></a>
+            <a href="/GenerarReporte"> <i class="bi bi-card-text"></i><span>Generar Reporte</span></a>
 
         </div>
 

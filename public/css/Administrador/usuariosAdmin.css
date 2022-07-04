@@ -1,0 +1,19 @@
+.contenedor{
+    padding-top: 100px;
+    padding-left: 50px;
+}
+
+.tablausuarios td i{
+    color: #212529;
+    padding-left: 100px;
+}
+.f-right{
+    float: right;
+}
+
+.m-10{
+    margin: 10px;
+}
+.row{
+    width: 100%;
+}
