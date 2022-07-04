@@ -4,26 +4,14 @@
 <input type="checkbox" id="checkk">
         <div class="cabezera">
             <div class="contentenidoCabezera">
-            <label for="checkk">
-                <i class="fas fa-bars" id="barraMenu_btn"></i>
-            </label>
+           <br>
+           
            <div class="Izquierda_area">
                <h3>ERP <span>Jarcie</span></h3>
            </div>
            <div class="Derecha_area">
-                <a href="/logout" class="cerrarSesion_btn">logout</a>
+               <a href="/logout" class="cerrarSesion_btn">logout</a>
             </div>
             </div>
         </div>
-        <div class="barraMenu">
-            <center>
-            <i class="fas fa-user fa-5x" ></i>
-            <h4>Usuario</h4>
-            </center>
-            <a href="/homeGCobranza"> <i class="fas fa-home fa-lg"></i></i><span>Home</span></a>
-            <a href="/TablaUsuariosGC"> <i class="fas fa-users fa-lg"></i></i><span>Ver Usuarios</span></a>
-            <a href="/TablaClientesGC"> <i class="fas fa-users fa-lg"></i></i><span>Ver Clientes</span></a>
-
-        </div>
-
-   
+     
