@@ -13,7 +13,7 @@ use App\http\Controllers\LoginController;
 |
 */
 
-Route::get('/', [LoginController::class, 'home']);
+//Route::get('/', [LoginController::class, 'home']);
 
 // Route::get('/', function () {
 //     return view('welcome');
