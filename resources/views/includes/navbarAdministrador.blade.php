@@ -10,7 +10,7 @@
                <h3>ERP <span>Jarcie</span></h3>
            </div>
            <div class="Derecha_area">
-                <a href="/logout" class="cerrarSesion_btn">logout</a>
+               <a href="#" class="cerrarSesion_btn">logout</a>
             </div>
             </div>
         </div>
@@ -19,9 +19,9 @@
             <i class="fas fa-user fa-5x" ></i>
             <h4>Usuario</h4>
             </center>
-            <a href="/homeCobranza"> <i class="fas fa-home fa-lg"></i></i><span>Home</span></a>
-            <a href="/PagosCobranza"> <i class="fa-solid fa-money-bill"></i></i><span>Ver Pagos</span></a>
-            <a href="/TablaClientesC"> <i class="fas fa-users fa-lg"></i></i><span>Ver Clientes</span></a>
+            <a href="/HomeAdmin"> <i class="fas fa-home fa-lg"></i></i><span>Home</span></a>
+            <a href="/verUsuarios"> <i class="fas fa-user-plus fa-lg"></i></i><span>Usuarios</span></a>
+
 
         </div>
 

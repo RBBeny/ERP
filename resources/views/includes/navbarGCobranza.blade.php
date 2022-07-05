@@ -11,7 +11,7 @@
                <h3>ERP <span>Jarcie</span></h3>
            </div>
            <div class="Derecha_area">
-               <a href="#" class="cerrarSesion_btn">logout</a>
+                <a href="/logout" class="cerrarSesion_btn">logout</a>
             </div>
             </div>
         </div>

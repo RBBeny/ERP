@@ -143,6 +143,4 @@ class VentasController extends Controller
        return response(json_encode($Estado),200)->header('Content-type','text-plain');
 
     }
-
-
 }
