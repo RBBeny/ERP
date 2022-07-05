@@ -9,9 +9,7 @@
            <div class="Izquierda_area">
                <h3>ERP <span>Jarcie</span></h3>
            </div>
-           <div class="Derecha_area">
-               <a href="/logout" class="cerrarSesion_btn">logout</a>
-            </div>
+    
             </div>
         </div>
      
