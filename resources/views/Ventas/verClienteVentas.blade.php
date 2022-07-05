@@ -28,44 +28,46 @@
                 <div class="DatosCliente">
                     <div class="row">
                         <div class="form-field col-lg-4">
-                            <label for="NoContrato" class="label">N° Contrato</label>
-                            <input type="text" class="input-text" id="NoContrato">
+                            @foreach($clientes as $cliente)
+                                <label for="NoContrato" class="label">N° Contrato</label>
+                                <input type="text" class="input-text" value="{{$cliente->cveContrato}}" id="NoContrato" >
+                            @endforeach
                         </div>
                         <div class="form-field col-lg-4">
                             <label for="NoSolicitud" class="label">N° Solicitud</label>
-                            <input type="text" class="input-text" id="NoSolicitud">
+                            <input type="text" class="input-text" values="{{$cliente->cveSolicitud}}" id="NoSolicitud">
                         </div>
                         <div class="form-field col-lg-4 ">
                             <label for="Estatus" class="label">Estatus</label>
-                            <input type="text" class="input-text" id="Estatus">
+                            <input type="text" class="input-text" value="{{$cliente->nomEstatusContrato}}" id="Estatus">
                         </div>
                     </div>
                     <div>
                         <div class="form-field col-lg-7">
                             <label for="Nombre" class="label">Nombre</label>
-                            <input type="text" class="input-text-Nombre" id="Nombre">
+                            <input type="text" class="input-text-Nombre" id="Nombre" value="{{$cliente->nomCliente}} {{$cliente->apellidoPaternoCliente}} {{$cliente->apellidoMaternoCliente}}" >
                         </div>
                     </div>
                     <div class="row">
                         <div class="form-field-celular col-lg-5">
                             <label for="NoCelular" class="label">N° Celular</label>
-                            <input type="text" class="input-text-celular" id="NoCelular">
+                            <input type="text" class="input-text-celular" id="NoCelular"  value="{{$cliente->telefonoCliente}}">
                         </div>
                         <div class="form-field-celular col-lg-3">
-                            <input type="text" class="input-text-celular" id="NoCelular2">
+                            <input type="text" class="input-text-celular" id="NoCelular2" value="{{$cliente->telefonoDosCliente}}">
                         </div>
                         <div class="form-field-celular col-lg-3 ">
-                            <input type="text" class="input-text-celular" id="NoCelular3">
+                            <input type="text" class="input-text-celular" id="NoCelular3" value="{{$cliente->telefonoTresCliente}}">
                         </div>
                     </div>
                     <div class="row">
                         <div class="form-field-DosColumnas col-lg-5">
                             <label for="EstadoCivil" class="label">Estado civil</label>
-                            <input type="text" class="input-text-DosColumnas" id="EstadoCivil">
+                            <input type="text" class="input-text-DosColumnas" value="{{$cliente->estadoCivilCliente}}" id="EstadoCivil">
                         </div>
                         <div class="form-field-DosColumnas col-lg-6">
                             <label for="FechaNacimiento" class="label">Fecha nacimiento</label>
-                            <input type="text" class="input-text-DosColumnas" id="FechaNacimiento">
+                            <input type="text" class="input-text-DosColumnas" value="{{$cliente->fechaNacimientoCliente}}" id="FechaNacimiento">
                         </div>
                     </div>
                 </div>
@@ -78,31 +80,31 @@
                     <div class="row">
                         <div class="form-field-DosColumnas col-lg-5">
                             <label for="Estado" class="label">Estado</label>
-                            <input type="text" class="input-text-DosColumnas" id="Estado">
+                            <input type="text" class="input-text-DosColumnas" value="{{$cliente->nomEstado}}" id="Estado">
                         </div>
                         <div class="form-field-DosColumnas col-lg-6">
                             <label for="Municipio" class="label">Municipio</label>
-                            <input type="text" class="input-text-DosColumnas" id="Municipio">
+                            <input type="text" class="input-text-DosColumnas" value="{{$cliente->nomMunicipio}}" id="Municipio">
                         </div>
                     </div>
                     <div class="row">
                         <div class="form-field-DosColumnas col-lg-6">
                             <label for="Colonia" class="label">Colonia</label>
-                            <input type="text" class="input-text-DosColumnas" id="Colonia">
+                            <input type="text" class="input-text-DosColumnas" value="{{$cliente->nomColonia}}" id="Colonia">
                         </div>
                         <div class="form-field-DosColumnas col-lg-6">
                             <label for="Calle" class="label">Calle</label>
-                            <input type="text" class="input-text-DosColumnas" id="Calle">
+                            <input type="text" class="input-text-DosColumnas" value="{{$cliente->calleCliente}}" id="Calle">
                         </div>
                     </div>
                     <div class="row">
                         <div class="form-field col-lg-4">
                             <label for="NoExt" class="label">N° Ext</label>
-                            <input type="text" class="input-text" id="NoExt">
+                            <input type="text" class="input-text" value="{{$cliente->numeroExteriorCasaCliente}}" id="NoExt" >
                         </div>
                         <div class="form-field col-lg-4">
                             <label for="NoInt" class="label">N° Int</label>
-                            <input type="text" class="input-text" id="NoInt">
+                            <input type="text" class="input-text" value="{{$cliente->numeroInteriorCasaCliente}}" id="NoInt">
                         </div>
                         <div class="form-field col-lg-4 ">
                             <label for="cp" class="label">C.P.</label>
@@ -112,13 +114,13 @@
                     <div>
                         <div class="form-field col-lg-9">
                             <label for="EntreCalles" class="label">Entre calles</label>
-                            <input type="text" class="input-text-columna" id="EntreCalles">
+                            <input type="text" class="input-text-columna" value="{{$cliente->entreCallesCliente}}" id="EntreCalles">
                         </div>
                     </div>
                     <div>
                         <div class="form-field col-lg-9">
                             <label for="referencias" class="label">Referencias</label>
-                            <input type="text" class="input-text-columna" id="referencias">
+                            <input type="text" class="input-text-columna" value="{{$cliente->referenciasCasaCliente}}" id="referencias">
                         </div>
                     </div>
                 </div>
@@ -128,29 +130,31 @@
                     </center>
                     <div class="row">
                         <div class="form-field-DosColumnas col-lg-6">
+                        @foreach($cobros as $cob)
                             <label for="Municipio" class="label">Municipio</label>
-                            <input type="text" class="input-text-DosColumnas" id="Municipio">
+                            <input type="text" class="input-text-DosColumnas" value="{{ $cob-> nomMunicipio}}" id="Municipio">
+                            @endforeach
                         </div>
                     </div>
 
                     <div class="row">
                         <div class="form-field-DosColumnas col-lg-6">
                             <label for="Colonia" class="label">Colonia</label>
-                            <input type="text" class="input-text-DosColumnas" id="Colonia">
+                            <input type="text" class="input-text-DosColumnas" value="{{ $cob-> nomColonia}}" id="Colonia">
                         </div>
                         <div class="form-field-DosColumnas col-lg-6">
                             <label for="Calle" class="label">Calle</label>
-                            <input type="text" class="input-text-DosColumnas" id="Calle">
+                            <input type="text" class="input-text-DosColumnas" value="{{$cliente->calleClienteCobro}}" id="Calle">
                         </div>
                     </div>
                     <div class="row">
                         <div class="form-field col-lg-4">
                             <label for="NoExt" class="label">N° Ext</label>
-                            <input type="text" class="input-text" id="NoExt">
+                            <input type="text" class="input-text" value="{{$cliente->numeroExteriorCasaClienteCobro}}" id="NoExt">
                         </div>
                         <div class="form-field col-lg-4">
                             <label for="NoInt" class="label">N° Int</label>
-                            <input type="text" class="input-text" id="NoInt">
+                            <input type="text" class="input-text" value="{{$cliente->numeroInteriorCasaClienteCobro}}" id="NoInt">
                         </div>
                         <div class="form-field col-lg-4 ">
                             <label for="cp" class="label">C.P.</label>
@@ -160,13 +164,13 @@
                     <div>
                         <div class="form-field col-lg-9">
                             <label for="EntreCalles" class="label">Entre calles</label>
-                            <input type="text" class="input-text-columna" id="EntreCalles">
+                            <input type="text" class="input-text-columna" value="{{$cliente->entreCallesClienteCobro}}" id="EntreCalles">
                         </div>
                     </div>
                     <div>
                         <div class="form-field col-lg-9">
                             <label for="referencias" class="label">Referencias</label>
-                            <input type="text" class="input-text-columna" id="referencias">
+                            <input type="text" class="input-text-columna" value="{{$cliente->referenciasCasaClienteCobro}}" id="referencias">
                         </div>
                     </div>
                 </div>
@@ -179,45 +183,45 @@
                     <div class="row">
                         <div class="form-field col-lg-4">
                             <label for="NoContrato" class="label">N° Contrato</label>
-                            <input type="text" class="input-text" id="NoContrato">
+                            <input type="text" class="input-text" value="{{$cliente->cveContrato}}"  id="NoContrato">
                         </div>
                         <div class="form-field col-lg-4">
                             <label for="NoSolicitud" class="label">N° Solicitud</label>
-                            <input type="text" class="input-text" id="NoSolicitud">
+                            <input type="text" class="input-text" value="{{$cliente->cveSolicitud}}" id="NoSolicitud">
                         </div>
                         <div class="form-field col-lg-4 ">
                             <label for="Costo" class="label">Costo</label>
-                            <input type="text" class="input-text" id="Costo">
+                            <input type="text" class="input-text" value="{{$cliente->costoPaquete}}" id="Costo">
                         </div>
                     </div>
                     <div class="row">
                         <div class="form-field col-lg-4">
                             <label for="Adeudo" class="label">Adeudo</label>
-                            <input type="text" class="input-text" id="Adeudo">
+                            <input type="text" class="input-text" value="{{$cliente->restantePaquete}}" id="Adeudo">
                         </div>
                         <div class="form-field-D col-lg-5">
                             <label for="liquidado" class="label">Deuda saldada</label>
-                            <input type="text" class="input-text" id="liquidado">
+                            <input type="text" class="input-text" value="{{$cliente->totalPagado}}" id="liquidado">
                         </div>
                         <div class="form-field-f col-lg-4 ">
                             <label for="formaPago" class="label">Forma pago</label>
-                            <input type="text" class="input-text" id="formaPago">
+                            <input type="text" class="input-text" value="{{$cliente->nomFormaPago}}" id="formaPago">
                         </div>
                     </div>
                     <div class="row">
                         <div class="form-field-DosColumnas col-lg-6">
                             <label for="fechaAfilación" class="label">Fecha de afilación</label>
-                            <input type="text" class="input-text-DosColumnas" id="fechaAfilación">
+                            <input type="text" class="input-text-DosColumnas" value="{{$cliente->fechaEmision}}" id="fechaAfilación">
                         </div>
                         <div class="form-field-DosColumnas col-lg-6">
                             <label for="Vendedor" class="label">Vendedor</label>
-                            <input type="text" class="input-text-DosColumnas" id="Vendedor">
+                            <input type="text" class="input-text-DosColumnas" value="{{$cliente->nombreVendedor}} {{$cliente->apellidoPaternoVendedor}} {{$cliente->apellidoMaternoVendedor}}" id="Vendedor">
                         </div>
                     </div>
                     <div>
                         <div class="form-field col-lg-6">
                             <label for="Cobrador" class="label">Cobrador</label>
-                            <input type="text" class="input-text-columna" id="Cobrador">
+                            <input type="text" class="input-text-columna" value="{{$cliente->nombreCobrador}} {{$cliente->apellidoPaternoCobrador}} {{$cliente->apellidoMaternoCobrador}}" id="Cobrador">
                         </div>
                     </div>
                 </div>
@@ -227,15 +231,15 @@
                     <div class="row">
                         <div class="form-field col-lg-4">
                             <label for="NoContrato" class="label">Estatus</label>
-                            <input type="text" class="input-text" id="Estatus">
+                            <input type="text" class="input-text" value="{{$cliente->nomEstatusContrato}}" id="Estatus">
                         </div>
                         <div class="form-field col-lg-4">
                             <label for="NoSolicitud" class="label">Total pagado</label>
-                            <input type="text" class="input-text" id="TotalPagado">
+                            <input type="text" class="input-text" value="{{$cliente->totalPagado}}" id="TotalPagado">
                         </div>
                         <div class="form-field col-lg-4 ">
                             <label for="Estatus" class="label">Adeudo</label>
-                            <input type="text" class="input-text" id="Adeudo">
+                            <input type="text" class="input-text" value="{{$cliente->restantePaquete}}" id="Adeudo">
                         </div>
                     </div>
 
@@ -248,18 +252,18 @@
                                 <th>Fecha</th>
                                 <th>Monto</th>
                                 <th>cobrador</th>
-                                <th>Comentarios</th>
                                 
                             </tr>
                         </thead>
                         <tbody>
+                        @foreach($pagos as $pago)
                             <tr>
-                                <td>1300</td>
-                                <td>2011-04-25</td>
-                                <td>$300</td>
-                                <td>Jose</td>
-                                <td>sin comentarios</td>
+                                <td>{{ $pago-> cvePago}}</td>
+                                <td>{{ $pago-> fechaPago}}</td>
+                                <td>{{ $pago-> cantidadPago}}</td>
+                                <td>{{ $pago->nombreCobrador}} {{ $pago-> apellidoPaternoCobrador}} {{ $pago-> apellidoMaternoCobrador}}</td>
                             </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
@@ -278,7 +282,7 @@
 $(document).ready(function () {
     $('#pagos').DataTable({
     pageLength : 5,
-    lengthMenu: [[5, 10, 20], [5, 10, 20]],
+    lengthMenu: [[5, 10], [5, 10]],
     language: {"url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"}
     });
 });

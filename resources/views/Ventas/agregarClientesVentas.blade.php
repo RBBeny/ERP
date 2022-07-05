@@ -33,42 +33,42 @@
                         </center>
                         <div class="form-row">
                             <div class="form-group col-md-5">
-                                <input type="text" class="form-control" id="inputNoSolicitud" value="noSolicitud" name="noSolicitud" placeholder="*N° solicitud" required>
+                                <input type="text" class="form-control" id="inputNoSolicitud" name="noSolicitud" placeholder="*N° solicitud" required>
                             </div>
                             <div class="form-group col-md-5">
-                                <input type="text" class="form-control" id="inputNoContrato" value="noContrato" name="noContrato" placeholder="*N° contrato" required>
+                                <input type="text" class="form-control" id="inputNoContrato"  name="noContrato" placeholder="*N° contrato" required>
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="form-group col-md-7">
-                                <input type="text" class="form-control" id="inputNombre" value="nombreCliente" name="nombreCliente" placeholder="*Nombre" required>
+                                <input type="text" class="form-control" id="inputNombre"  name="nombreCliente" placeholder="*Nombre" required>
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="form-group col-md-6">
-                                <input type="text" class="form-control" id="inputApellidoPaterno" value="apellidoPaternoCliente" name="apellidoPaternoCliente" placeholder="*Apellido Paterno" required>
+                                <input type="text" class="form-control" id="inputApellidoPaterno"  name="apellidoPaternoCliente" placeholder="*Apellido Paterno" required>
                             </div>
                             <div class="form-group col-md-6">
-                                <input type="text" class="form-control" id="inputApellidoMaterno" value="apellidoMaternoCliente" name="apellidoMaternoCliente" placeholder="*Apellido Materno" required>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-6">
-                                <input type="text" class="form-control" id="inputNumeroTelefono" value="numeroTelefonoCliente" name="numeroTelefonoCliente" placeholder="*N° telefono" required>
-                            </div>
-                            <div class="form-group col-md-6">
-                                <input type="text" class="form-control" id="inputNumeroTelefono2" value="numeroTelefono2Cliente" name="numeroTelefono2Cliente" placeholder="*N° telefono 2">
+                                <input type="text" class="form-control" id="inputApellidoMaterno"  name="apellidoMaternoCliente" placeholder="*Apellido Materno" required>
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="form-group col-md-6">
-                                <input type="text" class="form-control" id="inputNumeroTelefono3" value="numeroTelefono3Cliente" name="numeroTelefono3Cliente" placeholder="*N° telefono 3">
+                                <input type="text" class="form-control" id="inputNumeroTelefono"  name="numeroTelefonoCliente" placeholder="*N° telefono" required>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <input type="text" class="form-control" id="inputNumeroTelefono2"  name="numeroTelefonoDosCliente" placeholder="*N° telefono 2">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <input type="text" class="form-control" id="inputNumeroTelefono3"  name="numeroTelefonoTresCliente" placeholder="*N° telefono 3">
                             </div>
                         </div>
                         <div class="form-row ">
                             <div class="form-group col-md-5">
 
-                                <select id="inputState" class="form-control" id="estadoCivil" value="estadoCivilCliente" name="estadoCivilCliente">
+                                <select id="inputState" class="form-control" id="estadoCivil" name="estadoCivilCliente">
                                     <option selected>Estado civil...</option>
                                     <option>...</option>
                                 </select>
@@ -77,7 +77,7 @@
                         <div class="form-row form-inline">
                             <div class="col-md-6 mb-3">
                                 <label for="fechaNacimiento">Fecha de nacimiento</label>
-                                <input type="date" class="form-control" id="fechaNacimiento" value="fechaNacimientoCliente" name="fechaNacimientoCliente">
+                                <input type="date" class="form-control" id="fechaNacimiento"  name="fechaNacimientoCliente">
                             </div>
                         </div>
                         <div class="form-group">
@@ -93,26 +93,32 @@
 
                         <div class="form-row form-inline">
                             <div class="col-md-5 mb-3">
-                                <select id="estado" class="form-control" name="estadoCliente" value="estadoCliente" required>
-                                    <option selected>*Estado...</option>
-                                  
+                                <select id="estado" class="form-control" name="estadoCliente"  required>                                    
+                                <option selected>*Estado...</option>
+                                @foreach($estados as $estado)
+                                <option>{{$estado->nomEstado}}</option> 
+                                @endforeach
                                 </select>
                                 <button id="abrir-popupEstado" type="button" class="agregarElemento"> <i class="fa-solid fa-circle-plus fa-lg"></i></button>
                             </div>
 
                             <div class="col-md-6 mb-2">
-                                <select id="municipio" class="form-control" name="municipioCliente" value="municipioCliente" required>
+                                <select id="municipio" class="form-control" name="municipioCliente"  required>
                                     <option selected>*Municipio...</option>
-                                    <option>...</option>
+                                    @foreach($municipios as $municipio)
+                                <option>{{$municipio->nomMunicipio}}</option> 
+                                @endforeach
                                 </select>
                                 <button id="abrir-popupMunicipio" type="button" class="agregarElemento"> <i class="fa-solid fa-circle-plus fa-lg"></i></button>
                             </div>
                         </div>
                         <div class="form-row form-inline">
                             <div class="col-md-7 mb-3">
-                                <select id="colonia" name="coloniaCliente"  value="coloniaCliente" class="form-control" required>
+                                <select id="colonia" name="coloniaCliente"   class="form-control" required>
                                     <option selected>*Colonia...</option>
-                                    <option>...</option>
+                                    @foreach($colonias as $colonia)
+                                <option>{{$colonia->nomColonia}}</option> 
+                                @endforeach
                                 </select>
                                 <button id="abrir-popupColonia" type="button" class="agregarElemento"> <i class="fa-solid fa-circle-plus fa-lg"></i></button>
                             </div>
@@ -120,25 +126,25 @@
                         </div>
                         <div class="form-row">
                             <div class="col-md-5 mb-3">
-                                <input type="text" class="form-control" id="calle" name="calleCliente" value="calleCliente" placeholder="*Calle" required>
+                                <input type="text" class="form-control" id="calle" name="calleCliente"  placeholder="*Calle" required>
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="form-group col-md-4">
-                                <input type="text" class="form-control" name="numeroExteriorCasaCliente" value="numeroExteriorCasaCliente" id="nExt" placeholder="*N° ext" required>
+                                <input type="text" class="form-control" name="numeroExteriorCasaCliente"  id="nExt" placeholder="*N° ext" required>
                             </div>
                             <div class="form-group col-md-4">
-                                <input type="text" class="form-control" name="numeroInteriorCasaCliente" value="numeroInteriorCasaCliente" id="nInt" placeholder="*N° int">
+                                <input type="text" class="form-control" name="numeroInteriorCasaCliente"  id="nInt" placeholder="*N° int">
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="form-group col-md-7">
-                                <input type="text" class="form-control"  name="entreCalles" value="entreCalles" id="inputEntreCalles" placeholder="Entre calles">
+                                <input type="text" class="form-control"  name="entreCallesCliente"  id="inputEntreCalles" placeholder="Entre calles">
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="form-group col-md-8">
-                                <input type="text" class="form-control" id="referenciasDomicilio" placeholder="Referencias del domicilio">
+                                <input type="text" class="form-control" name="referenciasCasaCliente" id="referenciasDomicilio" placeholder="Referencias del domicilio">
                             </div>
                         </div>
 
@@ -150,44 +156,48 @@
                             <div class="form-row form-inline">
 
                                 <div class="col-md-6 mb-3">
-                                    <select id="MunicipioCobro" name="MunicipioCobro" class="form-control" >
+                                    <select id="MunicipioCobro" name="municipioClienteCobro"  class="form-control" >
                                         <option selected>Municipio...</option>
-                                        <option>...</option>
+                                        @foreach($municipios as $municipio)
+                                <option>{{$municipio->nomMunicipio}}</option> 
+                                @endforeach
                                     </select>
-                                    <button id="abrir-popupMunicipioCobro" type="button" class="agregarElemento"> <i class="fa-solid fa-circle-plus fa-lg"></i></button>
+                                    
                                 </div>
                             </div>
                             <div class="form-row form-inline">
                                 <div class="col-md-5 mb-3">
-                                    <select id="ColoniaCobro" class="form-control">
+                                    <select id="ColoniaCobro" name="coloniaClienteCobro"   class="form-control">
                                         <option selected>Colonia...</option>
-                                        <option>...</option>
+                                        @foreach($colonias as $colonia)
+                                <option>{{$colonia->nomColonia}}</option> 
+                                @endforeach
                                     </select>
-                                    <button id="abrir-popupColoniaCobro" type="button" class="agregarElemento"> <i class="fa-solid fa-circle-plus fa-lg"></i></button>
+                                   
                                 </div>
 
                             </div>
                             <div class="form-row">
                                 <div class="form-group col-md-7">
-                                    <input type="text" class="form-control" name="calleCobro" id="calleCobro" placeholder="*Calle">
+                                    <input type="text" class="form-control" name="calleClienteCobro"  id="calleCobro" placeholder="*Calle">
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="form-group col-md-4">
-                                    <input type="text" class="form-control" id="nExtCobro" name="nExtCobro" placeholder="*N° ext">
+                                    <input type="text" class="form-control" id="numeroExteriorCasaClienteCobro" name="numeroExteriorCasaClienteCobro" placeholder="*N° ext">
                                 </div>
                                 <div class="form-group col-md-4">
-                                    <input type="text" class="form-control" id="nIntCobro" name="nIntCobro" placeholder="*N° int">
+                                    <input type="text" class="form-control" id="numeroInteriorCasaClienteCobro" name="numeroInteriorCasaClienteCobro" placeholder="*N° int">
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="form-group col-md-7">
-                                    <input type="text" class="form-control" id="entreCallesCobro" placeholder="Entre calles">
+                                    <input type="text" class="form-control" id="entreCallesClienteCobro" name="entreCallesClienteCobro" placeholder="Entre calles">
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="form-group col-md-8">
-                                    <input type="text" class="form-control" id="referenciasDomicilioCobro" placeholder="Referencias del domicilio">
+                                    <input type="text" class="form-control" id="referenciasCasaClienteCobro" name="referenciasCasaClienteCobro" placeholder="Referencias del domicilio">
                                 </div>
                             </div>
                         </div>
@@ -210,26 +220,31 @@
                                 <input type="text" class="form-control " id="nContratoRe" placeholder="N° contrato" readonly>
                             </div>
                         </div>
-                        <div class="form-row form-inline">
-                            <div class="col-md-8 mb-3">
-                                <select  class="form-control" id="paquete" name="paquete" required>
+                        <div class="form-row">
+                            <div class="col-md-5 mb-3">
+                                <select  class="form-control" id="paquete" name="nomPaquete" required>
                                     <option selected>Paquete...</option>
-                                    <option>...</option>
+                                    @foreach($paquetes as $paquete)
+                                <option>{{$paquete->nombrePaquete}}</option> 
+                                @endforeach
                                 </select>
-
                             </div>
-
+                            <div class="col-md-3 mb-3 ">
+                                <input type="text" class="form-control " id="precio" name="precio" placeholder="*Precio" readonly>
+                            </div>
                         </div>
                         <div class="form-row">
-                            <div class="form-group col-md-5 ">
-                                <input type="text" class="form-control " id="precio" name="precio" placeholder="*Precio" required>
+                            <div class="form-group col-md-3 ">
+                                <input type="text" class="form-control " id="costoAdicional" name="extraPaquete" placeholder="$$ adicional" >
                             </div>
                         </div>
                         <div class="form-row form-inline">
                             <div class="col-md-8 mb-3">
-                                <select id="vendedor" name="vendedor" class="form-control" required>
+                                <select id="vendedor" name="nombreVendedor" class="form-control" required>
                                     <option selected>*Vendedor...</option>
-                                    <option>...</option>
+                                    @foreach($vendedores as $vendedor)
+                                <option>{{ $vendedor->nombreVendedor}} {{ $vendedor-> apellidoPaternoVendedor}} {{ $vendedor-> apellidoMaternoVendedor}}</option> 
+                                @endforeach
                                 </select>
                                 
                             </div>
@@ -237,7 +252,7 @@
                         <div class="form-row form-inline">
                             <div class="col-md-6 mb-3">
                                 <label for="fechaAfilacion">Fecha de afiliación</label>
-                                <input type="date" class="form-control" id="fechaAfilacion">
+                                <input type="date" class="form-control" name="fechaSolicitud" id="fechaSolicitud">
                             </div>
                         </div>
                         <div class="form-group">
@@ -252,24 +267,31 @@
                         </center>
                         <div class="form-row">
                             <div class="form-group col-md-4">
-                                <select id="formaPago" class="form-control" required>
+                                <select id="formaPago" name="formaPago" class="form-control" required>
                                     <option selected>*Forma pago...</option>
-                                    <option>...</option>
+                                    @foreach($formaPagos as $formaPago)
+                                <option>{{ $formaPago->nomFormaPago}} </option> 
+                                @endforeach
                                 </select>
                             </div>
                         </div>
                         <div class="form-row form-inline">
-                            <div class="col-md-8 mb-3">
-                                <select id="inputState" class="form-control" id="nombreCobrador" required>
+                            <div class="col-md-8 mb-5">
+                                <select class="form-control" name="nombreCobrador" id="nombreCobrador" required>
                                     <option selected>*Cobrador...</option>
-                                    <option>...</option>
+                                    @foreach($cobradores as $cobrador)
+                                <option>{{ $cobrador->nombreCobrador}} {{ $cobrador-> apellidoPaternoCobrador}} {{ $cobrador-> apellidoMaternoCobrador}} </option> 
+                                @endforeach
                                 </select>
                                
                             </div>
                         </div>
                         <div class="form-row">
-                            <div class="form-group col-md-4">
-                                <input type="text" class="form-control" id="inversionInicial" placeholder="Inversion incial">
+                        <div class="col-md-4 mb-3">
+                                <input type="text" class="form-control" name="bonificación" id="bonificación" placeholder="Bonificación">
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <input type="text" class="form-control" name="inversionInicial" id="inversionInicial" placeholder="Inversion incial">
                             </div>
                         </div>
                         <div class="form-row">
@@ -309,24 +331,27 @@
             <div class="overlay" id="overlayMunicipio">
                 <div class="popup" id="popupMunicipio">
                     <h2>Agregar Municipio</h2>
-                    <form action="">
+                    <form action="" method="post">
+                    @csrf
                         <div class="form-row ">
                             <div class="form-group col-md-5">
 
-                                <select id="nombreEstado" class="form-control" required>
+                                <select id="nombreEstadoNew" class="form-control" required>
                                     <option selected>Estado</option>
-                                    <option>...</option>
+                                    @foreach($estados as $estado)
+                                <option>{{$estado->nomEstado}}</option> 
+                                @endforeach
                                 </select>
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="form-group col-md-5">
-                                <input type="text" class="form-control" id="nombreMunicipioNew" placeholder="Nombre" required>
+                                <input type="text" class="form-control" name="nombreMunicipioNew" id="nombreMunicipioNew" placeholder="Nombre" required>
                             </div>
                         </div>
                         <div class="form-group">
                             <button type="button" id="btn-cerrar-popupMunicipio" class="btn btn-danger">Cancelar</button>
-                            <button type="button" class="btn btn-success">Guardar</button>
+                            <button type="button" id="guardarMunicipio" class="btn btn-success">Guardar</button>
                         </div>
                     </form>
                 </div>
@@ -336,23 +361,26 @@
                 <div class="popup" id="popupColonia">
                     <h2>Agregar Colonia</h2>
                     <form action="" method="POST">
+                    @csrf
                         <div class="form-row ">
                             <div class="form-group col-md-5">
 
-                                <select id="coloniaNew" class="form-control">
-                                    <option selected>Colonia</option>
-                                    <option>...</option>
+                                <select id="municipioColoniaNew" class="form-control">
+                                    <option selected>Municipio</option>
+                                    @foreach($municipios as $municipio)
+                                <option>{{$municipio->nomMunicipio}}</option> 
+                                @endforeach
                                 </select>
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="form-group col-md-5">
-                                <input type="text" class="form-control" id="inputNoSolicitud" placeholder="Nombre">
+                                <input type="text" class="form-control" name="nomColoniaNew" id="nomColoniaNew" placeholder="Nombre">
                             </div>
                         </div>
                         <div class="form-group">
                             <button type="button" id="btn-cerrar-popupColonia" class="btn btn-danger">Cancelar</button>
-                            <button type="button" class="btn btn-success">Guardar</button>
+                            <button type="button" id="guardarColonia" class="btn btn-success">Guardar</button>
                         </div>
                     </form>
                 </div>
@@ -372,7 +400,8 @@
 <script src="{{ asset('js/components/alerts.js') }}" charset="utf8" type="text/javascript"></script>
 <script type="text/javascript">
 $(document).ready(function(){
-    $('#btnGuardarEstado').click(function(){     
+    $('#btnGuardarEstado').click(function(e){    
+    e.preventDefault();
     var nomEstado = $('#nomEstado').val();
     var _token = $("input[name=_token]").val();
     console.log(nomEstado);
@@ -386,17 +415,87 @@ $(document).ready(function(){
         success:function(res){
                console.log('Se ha creado un registro correctamente');
                alertSucces("Se agrego el estado");
-               document.getElementById('#nomEstado').reset();
+               $('#nomEstado')[0].reset();
+              /* var html = '';
+               $(res.estados).each(function(key,value){
+                html =+ '<option>'+value.nomEstado+'<option>';
+
+               });*/
             },
         error:function(res){
-            alertDanger("No se agrego el estatado")
+            alertDanger("No se agrego el estado")
             console.log("No se ha hecho el registro");
         }            
         
     });
     return false;
 });
-   
+$('#guardarMunicipio').click(function(e){    
+    e.preventDefault();
+    var nomEstado = $('#nombreEstadoNew').val();
+    var nomMunicipio = $('#nombreMunicipioNew').val();
+    var _token = $("input[name=_token]").val();
+    console.log(nomMunicipio);
+    $.ajax({
+        type:"POST",
+        url:"{{ route('insertarMunicipio.insertarMunicipio') }}",
+        data:{
+            nomEstado:nomEstado,
+            nomMunicipio:nomMunicipio,
+            _token:_token
+        },
+        success:function(res){
+               console.log('Se ha creado un registro correctamente');
+               alertSucces("Se agrego el Municipio");
+               $('#nombreEstadoNew')[0].reset();
+               $('#nombreMunicipioNew')[0].reset();
+              /* var html = '';
+               $(res.estados).each(function(key,value){
+                html =+ '<option>'+value.nomEstado+'<option>';
+
+               });*/
+            },
+        error:function(res){
+            alertDanger("No se agrego el Municipio")
+            console.log("No se ha hecho el registro");
+        }            
+        
+    });
+    return false;
+});  
+$('#guardarColonia').click(function(e){    
+    e.preventDefault();
+    var nomMunicipio = $('#municipioColoniaNew').val();
+    var nomColonia = $('#nomColoniaNew').val();
+    var _token = $("input[name=_token]").val();
+    console.log(nomColonia);
+    $.ajax({
+        type:"POST",
+        url:"{{ route('insertarColonia.insertarColonia') }}",
+        data:{
+            nomMunicipio:nomMunicipio,
+            nomColonia:nomColonia,
+            _token:_token
+        },
+        success:function(res){
+               console.log('Se ha creado un registro correctamente');
+               alertSucces("Se agrego la colonia");
+               $('#municipioColoniaNew')[0].reset();
+               $('#nomColoniaNew')[0].reset();
+              /* var html = '';
+               $(res.estados).each(function(key,value){
+                html =+ '<option>'+value.nomEstado+'<option>';
+
+               });*/
+            },
+        error:function(res){
+            alertDanger("No se agrego la colonia")
+            console.log("No se ha hecho el registro");
+        }            
+        
+    });
+    return false;
+});  
 });
 </script>
 

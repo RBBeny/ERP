@@ -36,15 +36,17 @@
                 </tr>
             </thead>
             <tbody>
+            @foreach($clientes as $cliente)
                 <tr>
-                    <td>02</td>
-                    <td>90</td>
-                    <td>yo</td>
-                    <td>Lindavus</td>
-                    <td>9898989</td>
-                    <td>Activo</td>
-                    <td><a href="/VerClienteVentas"> <i class="far fa-eye fa-lg"></i></a></td>
+                    <td>{{ $cliente-> cveSolicitud}}</td>
+                    <td>{{ $cliente-> cveContrato}}</td>
+                    <td>{{ $cliente->nomCliente}} {{ $cliente-> apellidoPaternoCliente}} {{ $cliente-> apellidoMaternoCliente}}</td>
+                    <td>{{ $cliente-> nomEstado}} {{ $cliente-> nomMunicipio}} {{ $cliente-> nomColonia}} {{ $cliente-> numeroExteriorCasaClienteCobro}} {{ $cliente-> numeroInteriorCasaClienteCobro}}</td>
+                    <td>{{ $cliente-> telefonoCliente}}</td>
+                    <td>{{ $cliente-> nomEstatusContrato}}</td>
+                    <td ><a href="/VerClienteVentas/{{$cliente-> cveCliente}}"> <i class="far fa-eye fa-lg"></i></a></td>
                 </tr>
+                @endforeach
             </tbody>
         </table>
 

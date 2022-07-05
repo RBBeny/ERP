@@ -58,8 +58,7 @@ var popupColonia = document.getElementById('popupColonia');
 var btnCerrarPopupColonia = document.getElementById('btn-cerrar-popupColonia');
 var overlayColonia = document.getElementById('overlayColonia');
 
-var abrirpopupMunicipioCobro = document.getElementById('abrir-popupMunicipioCobro');
-var abrirpopupColoniaCobro = document.getElementById('abrir-popupColoniaCobro');
+
 
 
 
@@ -135,14 +134,6 @@ btnCerrarPopupColonia.addEventListener('click', function() {
     overlayColonia.classList.remove('active');
 });
 
-abrirpopupMunicipioCobro.addEventListener('click', function() {
-    popupMunicipio.classList.add('active');
-    overlayMunicipio.classList.add('active'); 
-});
 
-abrirpopupColoniaCobro.addEventListener('click', function() {
-    popupColonia.classList.add('active');
-    overlayColonia.classList.add('active'); 
-});
 
 
