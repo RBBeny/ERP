@@ -199,7 +199,7 @@
                     </center>
                     <div class="row">
                         <div class="form-field col-lg-4">
-                            <label for="NoContrato" class="label" ">N° Contrato</label>
+                            <label for="NoContrato" class="label" >N° Contrato</label>
                             <input type="text" class="input-text" value="{{$cliente->cveContrato}}" id="NoContrato">
                         </div>
                         <div class="form-field col-lg-4">
@@ -248,7 +248,7 @@
                     <div class="row">
                         <div class="form-field col-lg-4">
                             <label for="NoContrato" class="label">Estatus</label>
-                            <input type="text" class="input-text" id="Estatus" value="{{$cliente->nomEstatusContrato}}">
+                            <input type="text" class="input-text" id="Estatus" value="{{$cliente->nomEstatusContrato}}" >
                         </div>
                         <div class="form-field col-lg-4">
                             <label for="NoSolicitud" class="label">Total pagado</label>
@@ -256,7 +256,7 @@
                         </div>
                         <div class="form-field col-lg-4 ">
                             <label for="Estatus" class="label">Adeudo</label>
-                            <input type="text" class="input-text" id="Adeudo" value="{{$cliente->restantePaquete}}">
+                            <input type="text" class="input-text" id="Adeudo" value="{{$cliente->restantePaquete}}" readonly>
                         </div>
                     </div>
 

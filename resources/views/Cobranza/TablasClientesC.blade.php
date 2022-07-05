@@ -1,6 +1,6 @@
 @extends('layouts.plantilla')
 
-@section('titulo','Clientes Ventas')
+@section('titulo','Clientes Cobranza')
 @section('css')
 {{-- <script src="{{ asset('js/Ventas/clientesVentas.js') }}" type="text/javascript" ></script> --}}
 <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.1/css/bootstrap.min.css" type="text/css" rel="stylesheet">
@@ -15,13 +15,8 @@
 @include('includes.navbarCobranza')
 
 <div class="contenedor">
-<nav aria-label="breadcrumb">
-  <ol class="breadcrumb">
-    <li class="breadcrumb-item"><a href="/homeCobranza">Home</a></li>
-    <li class="breadcrumb-item active" aria-current="page">Ver Clientes</li>
-  </ol>
-</nav>
-<div class="tablaclientes">
+    <h1>Clientes</h1>
+    <div class="tablaclientes">
 
         <table id="clienteVentas" class="table display table-striped table-bordered nowrap" style="width:100%">
             <thead>
@@ -36,15 +31,17 @@
                 </tr>
             </thead>
             <tbody>
+            @foreach($clientes as $cliente)
                 <tr>
-                    <td>02</td>
-                    <td>90</td>
-                    <td>yo</td>
-                    <td>Lindavus</td>
-                    <td>9898989</td>
-                    <td>Activo</td>
-                    <td><a href="/VerClienteCobranza"> <i class="far fa-eye fa-lg"></i></a></td>
+                    <td>{{ $cliente-> cveSolicitud}}</td>
+                    <td>{{ $cliente-> cveContrato}}</td>
+                    <td>{{ $cliente->nomCliente}} {{ $cliente-> apellidoPaternoCliente}} {{ $cliente-> apellidoMaternoCliente}}</td>
+                    <td>{{ $cliente-> nomEstado}} {{ $cliente-> nomMunicipio}} {{ $cliente-> nomColonia}} {{ $cliente-> numeroExteriorCasaClienteCobro}} {{ $cliente-> numeroInteriorCasaClienteCobro}}</td>
+                    <td>{{ $cliente-> telefonoCliente}}</td>
+                    <td>{{ $cliente-> nomEstatusContrato}}</td>
+                    <td ><a href="/VerClienteGC/{{$cliente-> cveCliente}}"> <i class="far fa-eye fa-lg"></i></a></td>
                 </tr>
+                @endforeach
             </tbody>
         </table>
 

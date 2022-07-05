@@ -72,32 +72,35 @@ Agregar Pagos
 </div>
 <br>
 <br>
-<div class="tablacobranza">
-
-        <table id="clienteVentas" class="table display table-striped table-bordered nowrap" style="width:100%">
-        <thead>
-                <tr>
-                    <th scope="col">Folio</th>
-                    <th scope="col">No. Contrato</th>
-                    <th scope="col">Fecha</th>
-                    <th scope="col">Monto</th>
-                    <th scope="col">Cobrador</th>
-                    <th scope="col">Opciones</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>02</td>
-                    <td>90</td>
-                    <td>yo</td>
-                    <td>Lindavus</td>
-                    <td>Activo</td>
-                    <td><a href="/VerRecibos"> <i class="far fa-eye fa-lg"></i></a></td>
-                </tr>
-            </tbody>
-        </table>
-
-    </div>
+<div>
+                    <table id="pagos" class="display compact" style="width:100%">
+                        <thead>
+                            <tr>
+                            <th scope="col">Numero de Pago</th>
+                            <th scope="col">Numero del Contrato</th>
+                            <th scope="col">Forma de pago</th>
+                            <th scope="col">Pago</th>
+                            <th scope="col">Restante</th>
+                            <th scope="col">Fecha</th>
+                            <th scope="col">Cobrador</th>
+                                
+                            </tr>
+                        </thead>
+                        <tbody>
+                        @foreach($pagos as $pago)
+                            <tr>
+                                <td>{{ $pago-> cvePago}}</td>
+                                <td>{{ $pago-> cveContrato}}</td>
+                                <td>{{ $pago-> nomFormaPago}}</td>
+                                <td>{{ $pago-> cantidadPago}}</td>
+                                <td>{{ $pago-> restantePaquete}}</td>
+                                <td>{{ $pago-> fechaPago}}</td>
+                                <td>{{ $pago->nombreCobrador}} {{ $pago-> apellidoPaternoCobrador}} {{ $pago-> apellidoMaternoCobrador}}</td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
 </div>
 @section('js')
 <script>
@@ -109,7 +112,19 @@ $('#myModal').on('shown.bs.modal', function () {
 <script src="https://cdn.datatables.net/1.11.4/js/jquery.dataTables.min.js" type="text/javascript"></script>
 <script src="https://cdn.datatables.net/1.11.4/js/dataTables.bootstrap5.min.js" type="text/javascript"></script>
 <script src="{{ asset('js/components/alerts.js') }}" charset="utf8" type="text/javascript"></script>
-
+<script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js" type="text/javascript"></script>
+<script src="{{ asset('js/Ventas/verCliente.js') }}" type="text/javascript"></script>
+<script>
+$(document).ready(function () {
+    $('#pagos').DataTable({
+    pageLength : 5,
+    lengthMenu: [[5, 10, 20], [5, 10, 20]],
+    language: {
+      "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
+    }
+    });
+});
+</script>
 <script>
     $(document).ready(function(){
         $('#clienteVentas').DataTable();
