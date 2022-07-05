@@ -21,6 +21,7 @@
             </center>
             <a href="/HomeAdmin"> <i class="fas fa-home fa-lg"></i></i><span>Home</span></a>
             <a href="/verUsuarios"> <i class="fas fa-user-plus fa-lg"></i></i><span>Usuarios</span></a>
+            <a href="/verUsuarioAdmin"> <i class="fas fa-desktop"></i></i><span>Monitoreo</span></a>
 
 
         </div>

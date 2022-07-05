@@ -19,42 +19,42 @@
 <div class="contenedor">
     <h1>Usuarios</h1> 
     <div class="row">
-        <div class="col-12">
+        <div class="col-12"><!-- Button trigger modal -->
         <button type="button" class="btn btn-primary f-right  m-10" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Agregar Usuario</button> <br>
         </div>
     </div>
         <!-- Button trigger modal -->
-<!-- Modal ag_regar usuario -->
-<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="staticBackdropLabel">agregar usuario</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-      <form action="/register" method="POST">
-      @csrf
-        <div class="mb-3">
-          <label   class="form-label">Nombre</label>
-          <input   type="text" name="nombreUsuario" class="form-control" required>
+  <!-- Modal ag_regar usuario -->
+  <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="staticBackdropLabel">Agregar usuario</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-        <div class="mb-3">
-          <label  class="form-label">Apellido Paterno</label>
-          <input type="text" name="apellidoPaternoUsuario" class="form-control" required>
-        </div>
-        <div class="mb-3">
-          <label  class="form-label">Apellido Materno</label>
-          <input  type="text" name="apellidoMaternoUsuario" class="form-control" required>
-        </div>
-        <div class="mb-3">
-          <label  class="form-label" >Nombre de Usuario</label>
-          <input  type="text" name="nomUsuario" class="form-control" required>
-        </div>
-        <div class="mb-3">
-          <label  class="form-label">Rol</label>
-                <select name="cveTipoUsuario" class="form-select" aria-label=" select example" required>
-                      <option selected value="">Selecciona opcion</option>
+        <div class="modal-body">
+          <form action="/registrarUsuarios" method="POST">
+            @csrf
+            <div class="mb-3">
+              <label class="form-label">Nombre</label>
+              <input type="text" name="nombreUsuario" class="form-control" required>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Apellido Paterno</label>
+              <input type="text" name="apellidoPaternoUsuario" class="form-control" required>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Apellido Materno</label>
+              <input type="text" name="apellidoMaternoUsuario" class="form-control" required>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Nombre de Usuario</label>
+              <input type="text" name="nomUsuario" class="form-control" required>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Rol</label>
+              <select name="cveTipoUsuario" class="form-select" aria-label=" select example" required>
+                <option selected value="">Selecciona opcion</option>
                                 <option value=3>Administrador</option>
                                 <option value=6>Gerente de ventas</option>
                                 <option value=7>Gerente de cobranza</option>
@@ -63,20 +63,21 @@
                                 <option value=8>RH</option>
                                 <option value=9>Finanzas</option>
                     </select>
+              </select>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Password</label>
+              <input type="password" name="password" class="form-control" required>
+            </div>
+            <div class="mb-3">
+              <input type="number" name="cveEstatus" value="1" class="form-control" hidden>
+            </div>
+            <button id="btn" type="submit" class="btn btn-primary btn-block">Submit</button>
+          </form>
         </div>
-        <div class="mb-3">
-          <label class="form-label">Password</label>
-          <input type="password" name="password" class="form-control" required>
-        </div>
-        <div class="mb-3">
-          <input type="number" name="cveEstatus" value="1" class="form-control" hidden>
-        </div>
-        <button id="btn" type="submit" class="btn btn-primary btn-block">Submit</button>
-      </form>
       </div>
     </div>
   </div>
-</div>
 <!-- Modal Editar usuario -->
 <div class="modal fade" id="EditarUsuario" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -135,7 +136,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
+            <tr>
                     <td>Dulce Silva</td>
                     <td>Gerente Ventas</td>
                     <td>DulceSi</td>
@@ -172,10 +173,10 @@
                 </tr>
             </tbody>
         </table>
-  | </div>
+   </div>
 </div>
   <!-- The Modal -->
-<div class="modal fade" id="myModal">
+  <div class="modal fade" id="myModal">
     <div class="modal-dialog modal-sm">
       <div class="modal-content">
       
@@ -192,8 +193,8 @@
         
         <!-- Modal footer -->
         <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Confirmar</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Aceptar</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
         </div>
         
       </div>

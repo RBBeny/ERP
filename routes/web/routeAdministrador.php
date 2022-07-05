@@ -8,7 +8,4 @@ Route:: get('/verUsuarioAdmin', [AdministradorController::class, 'verUsuarioAdmi
 Route:: get('/agregarUsuariosAdmin', [AdministradorController::class, 'agregarUsuarios']);
 Route:: get('/verUsuarios', [AdministradorController::class, 'verUsuarios']);
 
-
-
-Route::post('insertarEstado',[AdministradorController::class,'insertarEstado'])->name('insertarEstado.insertarEstado');
-Route::post('mostrarEstadosAjax',[AdministradorController::class,'mostrarEstadosAjax'])->name('mostrarEstadosAjax.mostrarEstadosAjax');
+Route::post('/registrarUsuarios', [AdministradorController::class, 'register']);

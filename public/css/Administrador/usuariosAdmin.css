@@ -4,8 +4,14 @@
 }
 
 .tablausuarios td i{
-    color: #212529;
+   
     padding-left: 100px;
+}
+.fa-edit{
+    color: rgb(1, 224, 1);
+}
+.fa-trash{
+    color: red;
 }
 .f-right{
     float: right;
