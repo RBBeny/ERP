@@ -1,0 +1,25 @@
+.contenedor{
+    padding-top: 100px;
+    padding-left: 50px;
+}
+
+.tablausuarios td i{
+   
+    padding-left: 100px;
+}
+.fa-edit{
+    color: rgb(1, 224, 1);
+}
+.fa-trash{
+    color: red;
+}
+.f-right{
+    float: right;
+}
+
+.m-10{
+    margin: 10px;
+}
+.row{
+    width: 100%;
+}

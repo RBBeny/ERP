@@ -2,7 +2,14 @@
 
 use Illuminate\Support\Facades\Route;
 use App\http\Controllers\RHController;
+use App\http\Controllers\RegisterController;
 
+
+
+Route::get('/registroUsuario', [RegisterController::class, 'inicio']);
+//Route::get('/register', [RegisterController::class, 'show']);
+
+Route::post('/register', [RegisterController::class, 'register']);
 Route:: get('/homeRh', [RHController::class, 'homeRh']);
 Route :: get('/UsuariosRH',[RHController::class, 'UsuariosRH']);
 Route :: get('/VerPagosCobranza',[CobranzaController::class, 'VerPagosCobranza']);

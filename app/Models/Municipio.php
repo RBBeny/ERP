@@ -1,15 +1,17 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
 class Municipio extends Model
 {
     //
-    protected $table = "cMunicipio";
-    
+    protected $table = "cmunicipio";
+    protected $primaryKey="cveMunicipio";
+    protected $fillable = ['nomMunicipio','cveEstado'];
+    public $timestamps=false;
     public function Estado(){
-        return $this->belongsTo('App\Estado','cveEstado');
+        return $this->belongsTo('App\Models\Estado','cveEstado');
     }
 }
