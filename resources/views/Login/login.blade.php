@@ -49,7 +49,7 @@
     <div class="row text-center login-page">
         <div class="col-md-12 login-form">
             <form action="/login" method="POST">
-            @csrf
+
                 <div class="row">
                     <div class="col-md-12 login-form-header">
                         <p class="login-form-font-header"><span>Iniciar Sesión</span>
@@ -58,6 +58,7 @@
                 </div>
                 <div class="row">
                     <div class="col-md-12 login-from-row">
+                        @csrf
                         <input name="nomUsuario" type="text" placeholder="Usuario" required />
                     </div>
                 </div>

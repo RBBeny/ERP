@@ -15,7 +15,6 @@
 @include('includes.navbarGCobranza')
 
 <div class="contenedor">
-<<<<<<< HEAD
   <nav aria-label="breadcrumb" style="padding: 10px;">
     <ol class="breadcrumb">
       <li class="breadcrumb-item"><a href="/homeCobranza">Home</a></li>
@@ -35,7 +34,6 @@
         <div class="modal-header">
           <h5 class="modal-title" id="staticBackdropLabel">agregar usuario</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-=======
 <nav aria-label="breadcrumb" style="padding: 10px;">
   <ol class="breadcrumb">
     <li class="breadcrumb-item"><a href="/homeCobranza">Home</a></li>
@@ -61,7 +59,6 @@
         <div class="mb-3">
           <label   class="form-label">Nombre</label>
           <input   type="text" id="ag_1" class="form-control" >
->>>>>>> 9c779be167f926508746493e19fbda4bf41ab42f
         </div>
         <div class="modal-body">
           <form action="/register" method="POST">
@@ -99,8 +96,6 @@
             <button id="btn" type="submit" class="btn btn-primary btn-block">Submit</button>
           </form>
         </div>
-<<<<<<< HEAD
-=======
         <div class="mb-3">
           <label  class="form-label">Apellido Materno</label>
           <input  id="ag_3" type="text" class="form-control">
@@ -125,14 +120,12 @@
         </div>
         <button id="btn" type="submit" class="btn btn-primary btn-block" disabled>Submit</button>
       </form>
->>>>>>> 9c779be167f926508746493e19fbda4bf41ab42f
       </div>
     </div>
   </div>
 
   <div class="tablaclientes">
 
-<<<<<<< HEAD
     <table id="clienteVentas" class="table display table-striped table-bordered nowrap" style="width:100%">
       <thead>
         <tr>
@@ -150,7 +143,6 @@
           <td><a data-bs-toggle="modal" onclick="eliminar()"><i style="font-size:25px; color:red;" class="bi bi-trash"></i></a>
             <a data-bs-toggle="modal" data-bs-target="#EditarUsuario"><i style="font-size:25px; color:blue;" class="bi bi-pencil-square"></i></a>
           </td>
-=======
         <table id="clienteVentas" class="table display table-striped table-bordered nowrap" style="width:100%">
             <thead>
                 <tr>
@@ -168,7 +160,6 @@
                     <td><a data-bs-toggle="modal" onclick="eliminar()"><i style="font-size:25px; color:red;" class="bi bi-trash"></i></a>
                     <a data-bs-toggle="modal" data-bs-target="#EditarUsuario"><i style="font-size:25px; color:blue;" class="bi bi-pencil-square"></i></a></td>
                    
->>>>>>> 9c779be167f926508746493e19fbda4bf41ab42f
 
 
         </tr>
@@ -187,7 +178,6 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-<<<<<<< HEAD
         <form>
           <div class="mb-3">
             <label class="form-label">Nombre</label>
@@ -220,7 +210,6 @@
           </div>
           <button type="submit" class="btn btn-primary btn-block">Submit</button>
         </form>
-=======
       <form>
         <div class="mb-3">
           <label  class="form-label" >Nombre</label>
@@ -246,7 +235,6 @@
         </div>
         <button type="submit" class="btn btn-primary btn-block">Submit</button>
       </form>
->>>>>>> 9c779be167f926508746493e19fbda4bf41ab42f
       </div>
     </div>
   </div>
