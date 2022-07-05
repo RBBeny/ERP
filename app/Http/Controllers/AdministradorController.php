@@ -26,16 +26,15 @@ class AdministradorController extends Controller
         return view('Administrador.agregarUsuarioAdmin');
     }
     public function verUsuarios(){
-        return view('Administrador.verUsuariosAdmin');
-    }
-    
-    public function Usuarios(){
-        $usuario ["usuario"]= DB::table('tusuario')
+        //return view('Administrador.verUsuariosAdmin');
+        $usuarios ["usuario"]= DB::table('tusuario')
+        ->select("nombreUsuario", "nomUsuario", "ctipousuario.nomTipoUsuario")
         ->join("ctipousuario", "ctipousuario.cveTipoUsuario", "=", "tusuario.cveTipoUsuario")
-        ->select("nombreUsuari", "nomUsuario", "ctipousuario.nomTipoUsuario")
         ->get();
-        return view('Administrador.verUsuariosAdmin',$usuario);
-   }
+        return view('Administrador.verUsuariosAdmin',$usuarios);
+        //return response(json_encode($usuarios),200)->header('Content-type','text-plain');
+    }
+
 
   public function register(RegisterRequest $request){
     $user = User::create($request->validated());

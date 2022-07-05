@@ -136,41 +136,15 @@
                 </tr>
             </thead>
             <tbody>
-            <tr>
-                    <td>Dulce Silva</td>
-                    <td>Gerente Ventas</td>
-                    <td>DulceSi</td>
-                    <td><a data-bs-toggle="modal" data-bs-target="#EditarUsuario"> <i class="fas fa-edit fa-lg"></i></a></td>
-                    <td><a data-bs-toggle="modal" data-bs-target="#myModal"> <i class="fas fa-trash fa-lg"></i></a></td>
-                </tr>
+           @foreach($usuario as $usuario)
                 <tr>
-                    <td>Kevyn Cortez</td>
-                    <td>Finanzas</td>
-                    <td>KevynCo</td>
+                    <td>{{ $usuario-> nombreUsuario}}</td>
+                    <td>{{ $usuario-> nomUsuario}}</td>
+                    <td>{{ $usuario-> nomTipoUsuario}}</td>
                     <td><a data-bs-toggle="modal" data-bs-target="#EditarUsuario"> <i class="fas fa-edit fa-lg"></i></a></td>
                     <td><a data-bs-toggle="modal" data-bs-target="#myModal"> <i class="fas fa-trash fa-lg"></i></a></td>
                 </tr>
-                <tr>
-                    <td>Benjamín Bolaños</td>
-                    <td>Ventas</td>
-                    <td>BenjamínBO</td>
-                    <td><a data-bs-toggle="modal" data-bs-target="#EditarUsuario"> <i class="fas fa-edit fa-lg"></i></a></td>
-                    <td><a data-bs-toggle="modal" data-bs-target="#myModal"> <i class="fas fa-trash fa-lg"></i></a></td>
-                </tr>
-                <tr>
-                    <td>Diego Salas</td>
-                    <td>Cobranza</td>
-                    <td>DiegoSa</td>
-                    <td><a data-bs-toggle="modal" data-bs-target="#EditarUsuario"> <i class="fas fa-edit fa-lg"></i></a></td>
-                    <td><a data-bs-toggle="modal" data-bs-target="#myModal"> <i class="fas fa-trash fa-lg"></i></a></td>
-                </tr>
-                <tr>
-                    <td>Adrian Villanueva</td>
-                    <td>RH</td>
-                    <td>AdrianVi</td>
-                    <td><a data-bs-toggle="modal" data-bs-target="#EditarUsuario"> <i class="fas fa-edit fa-lg"></i></a></td>
-                    <td><a data-bs-toggle="modal" data-bs-target="#myModal"> <i class="fas fa-trash fa-lg"></i></a></td>
-                </tr>
+                @endforeach
             </tbody>
         </table>
    </div>
