@@ -216,7 +216,7 @@
                     <div class="row">
                     <div class="row">
                         <div class="form-field col-lg-4">
-                            <label for="NoContrato" class="label" ">N° Contrato</label>
+                            <label for="NoContrato" class="label" >N° Contrato</label>
                             <input type="text" class="input-text" value="{{$cliente->cveContrato}}" id="NoContrato"readonly>
                         </div>
                         <div class="form-field col-lg-4">

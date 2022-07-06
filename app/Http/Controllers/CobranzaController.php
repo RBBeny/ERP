@@ -24,7 +24,7 @@ class CobranzaController extends Controller
         ->join('tsolicitud', 'tsolicitud.cveContrato', '=', 'tpago.cveContrato')
         ->join('cformapago', 'cformapago.cveFormaPago', '=', 'tsolicitud.cveFormaPago')
         ->get();
-        return view('Cobranza.PagosCobranza',);
+        return view('Cobranza.PagosCobranza',$Datos);
     }    
     public function insertarPago(Request $request){
         $Pago = new Pago();
@@ -42,7 +42,7 @@ class CobranzaController extends Controller
     public function TablasClientesC(){
       
          $Datos['clientes'] = DB::table('tcliente')
-        ->select('cveCliente','tsolicitud.cveSolicitud','tcontrato.cveContrato','nomCliente',"apellidoPaternoCliente","apellidoMaternoCliente","nomEstado","nomMunicipio","nomColonia","calleCliente","numeroExteriorCasaClienteCobro","numeroInteriorCasaClienteCobro","telefonoCliente","nomEstatusContrato")
+        ->select('cveCliente','tsolicitud.cveSolicitud','tcontrato.cveContrato','nomCliente',"apellidoPaternoCliente","apellidoMaternoCliente","nomEstado","nomMunicipio","nomColonia","calleCliente","numeroExteriorCasaCliente","telefonoCliente","nomEstatusContrato")
         ->join('tcontrato', 'tcontrato.cveContrato', '=', 'tcliente.cveContrato')
         ->join('tsolicitud', 'tsolicitud.cveContrato', '=', 'tcliente.cveContrato')
         ->join('cestado', 'cestado.cveEstado', '=', 'tcliente.cveEstadoCliente')
