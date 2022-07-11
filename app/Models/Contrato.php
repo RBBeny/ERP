@@ -2,15 +2,18 @@
 
 namespace App;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Contrato extends Model
 {
     //
-    protected $table = "tContrato";
-
+    use HasFactory;
+    protected $table = "tcontrato";
+    protected $primaryKey="cveContrato";
+    protected $fillable =['fechaEmision','cvePaquete','ExtraPaquete','totalPagado','restantePaquete','cveEstatusContrato'];
     //
     public function Paquete(){
-        return $this->belongsTo('App\Paquete','cvePaquete');
+        return $this->belongsTo('App\Models\Paquete','cvePaquete');
     }
 }

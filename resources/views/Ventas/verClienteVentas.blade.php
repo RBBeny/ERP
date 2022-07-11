@@ -15,7 +15,7 @@
 @include('includes.navbar')
 
 <div class="contenedor">
-    <h1>Información del cliente </h1>
+<h1>Información del cliente</h1>
     <div class="contenedorInfo">
         <ul class="tabs">
             <li> <a href="#tab1"><span><i class="fas fa-user fa-lg"></i></span></a> </li>
@@ -31,11 +31,11 @@
                             @foreach($clientes as $cliente)
                                 <label for="NoContrato" class="label">N° Contrato</label>
                                 <input type="text" class="input-text" value="{{$cliente->cveContrato}}" id="NoContrato" >
-                            @endforeach
+                           
                         </div>
                         <div class="form-field col-lg-4">
                             <label for="NoSolicitud" class="label">N° Solicitud</label>
-                            <input type="text" class="input-text" values="{{$cliente->cveSolicitud}}" id="NoSolicitud">
+                            <input type="text" class="input-text" value="{{$cliente->cveSolicitud}}" id="NoSolicitud">
                         </div>
                         <div class="form-field col-lg-4 ">
                             <label for="Estatus" class="label">Estatus</label>
@@ -70,13 +70,16 @@
                             <input type="text" class="input-text-DosColumnas" value="{{$cliente->fechaNacimientoCliente}}" id="FechaNacimiento">
                         </div>
                     </div>
+                    @endforeach
                 </div>
+               
             </article>
             <article id="tab2">
                 <div class="domicilioCliente">
                     <center>
                         <h2>Domicilio del cliente</h2>
                     </center>
+                    @foreach($clientes as $cliente)
                     <div class="row">
                         <div class="form-field-DosColumnas col-lg-5">
                             <label for="Estado" class="label">Estado</label>
@@ -123,6 +126,7 @@
                             <input type="text" class="input-text-columna" value="{{$cliente->referenciasCasaCliente}}" id="referencias">
                         </div>
                     </div>
+                    @endforeach
                 </div>
                 <div class="domicilioClienteCobro">
                     <center>
@@ -136,7 +140,7 @@
                             @endforeach
                         </div>
                     </div>
-
+                    @foreach($clientes as $cliente)
                     <div class="row">
                         <div class="form-field-DosColumnas col-lg-6">
                             <label for="Colonia" class="label">Colonia</label>
@@ -173,6 +177,7 @@
                             <input type="text" class="input-text-columna" value="{{$cliente->referenciasCasaClienteCobro}}" id="referencias">
                         </div>
                     </div>
+                    @endforeach
                 </div>
             </article>
             <article id="tab3">
@@ -180,6 +185,7 @@
                     <center>
                         <h2>Datos Cuenta</h2>
                     </center>
+                    @foreach($clientes as $cliente)
                     <div class="row">
                         <div class="form-field col-lg-4">
                             <label for="NoContrato" class="label">N° Contrato</label>
@@ -224,10 +230,12 @@
                             <input type="text" class="input-text-columna" value="{{$cliente->nombreCobrador}} {{$cliente->apellidoPaternoCobrador}} {{$cliente->apellidoMaternoCobrador}}" id="Cobrador">
                         </div>
                     </div>
+                    @endforeach
                 </div>
             </article>
             <article id="tab4">
                 <div class="pagos">
+                @foreach($clientes as $cliente)
                     <div class="row">
                         <div class="form-field col-lg-4">
                             <label for="NoContrato" class="label">Estatus</label>
@@ -242,6 +250,7 @@
                             <input type="text" class="input-text" value="{{$cliente->restantePaquete}}" id="Adeudo">
                         </div>
                     </div>
+                     @endforeach
 
                 </div>
                 <div>

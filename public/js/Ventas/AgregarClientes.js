@@ -1,33 +1,4 @@
-//require("../components/alerts");
 
-/*$(document).ready(function(){
-    $('#btnGuardarEstado').click(function(){     
-    var nomEstado = $('#nomEstado').val();
-    var _token = $("input[name=_token]").val();
-    console.log(nomEstado);
-    $.ajax({
-        type:"POST",
-        url:"{{ route('insertarEstado.insertarEstado') }}",
-        data:{
-            nomEstado:nomEstado,
-            _token:_token
-        },
-        success:function(res){
-               console.log('Se ha creado un registro correctamente');
-               alertSucces("Se agrego el estado");
-               document.getElementById('#nomEstado').reset();
-            },
-        error:function(res){
-            console.log("No se ha hecho el registro");
-        }            
-        
-    });
-    return false;
-});
-   
-});
-
-*/
 
 
 //Variables para el formulario por partes

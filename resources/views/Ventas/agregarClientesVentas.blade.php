@@ -13,10 +13,15 @@
 <div class="contenedor">
    <div id="alerts">
    </div>
+   <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item "><a id="url" href="/HomeVentas">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Agregar cliente</li>
+        </ol>
+    </nav>
     <div class="contenedorN2">
-
         <div class="contenedorStep">
-            <h1>Agregar Cliente</h1>
+       
             <div class="step-row">
                 <div id="progress"></div>
                 <div class="step-col"><small>Parte 1</small></div>
@@ -26,7 +31,8 @@
             </div>
             <div class="contenedorN3">
 
-                <form class="col-12" method="POST" action="/agregarUsuario">
+                <form class="col-12" method="POST" action="{{ route('insertarCliente.insertarCliente') }}">
+                @csrf
                     <div id="cnp1" class="contenedorN3parte1">
                         <center>
                             <h2>Datos del cliente</h1>
@@ -34,6 +40,11 @@
                         <div class="form-row">
                             <div class="form-group col-md-5">
                                 <input type="text" class="form-control" id="inputNoSolicitud" name="noSolicitud" placeholder="*N° solicitud" required>
+                            @error('noSolicitud')
+                            <small>
+                                <strong>{{$message}}</strong>
+                            </small>
+                            @enderror
                             </div>
                             <div class="form-group col-md-5">
                                 <input type="text" class="form-control" id="inputNoContrato"  name="noContrato" placeholder="*N° contrato" required>
@@ -57,21 +68,19 @@
                                 <input type="text" class="form-control" id="inputNumeroTelefono"  name="numeroTelefonoCliente" placeholder="*N° telefono" required>
                             </div>
                             <div class="form-group col-md-6">
-                                <input type="text" class="form-control" id="inputNumeroTelefono2"  name="numeroTelefonoDosCliente" placeholder="*N° telefono 2">
+                                <input type="text" class="form-control" id="inputNumeroTelefono2"  name="numeroTelefonoDosCliente" placeholder="N° telefono 2">
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="form-group col-md-6">
-                                <input type="text" class="form-control" id="inputNumeroTelefono3"  name="numeroTelefonoTresCliente" placeholder="*N° telefono 3">
+                                <input type="text" class="form-control" id="inputNumeroTelefono3"  name="numeroTelefonoTresCliente" placeholder="N° telefono 3">
                             </div>
                         </div>
                         <div class="form-row ">
                             <div class="form-group col-md-5">
 
-                                <select id="inputState" class="form-control" id="estadoCivil" name="estadoCivilCliente">
-                                    <option selected>Estado civil...</option>
-                                    <option>...</option>
-                                </select>
+                                <input id="inputState" class="form-control" id="estadoCivil" name="estadoCivilCliente" placeholder="Estado civil">
+                
                             </div>
                         </div>
                         <div class="form-row form-inline">
@@ -96,7 +105,8 @@
                                 <select id="estado" class="form-control" name="estadoCliente"  required>                                    
                                 <option selected>*Estado...</option>
                                 @foreach($estados as $estado)
-                                <option>{{$estado->nomEstado}}</option> 
+                                
+                                <option value="{{$estado->cveEstado}}">{{$estado->nomEstado}}</option> 
                                 @endforeach
                                 </select>
                                 <button id="abrir-popupEstado" type="button" class="agregarElemento"> <i class="fa-solid fa-circle-plus fa-lg"></i></button>
@@ -104,10 +114,7 @@
 
                             <div class="col-md-6 mb-2">
                                 <select id="municipio" class="form-control" name="municipioCliente"  required>
-                                    <option selected>*Municipio...</option>
-                                    @foreach($municipios as $municipio)
-                                <option>{{$municipio->nomMunicipio}}</option> 
-                                @endforeach
+                                    
                                 </select>
                                 <button id="abrir-popupMunicipio" type="button" class="agregarElemento"> <i class="fa-solid fa-circle-plus fa-lg"></i></button>
                             </div>
@@ -115,10 +122,7 @@
                         <div class="form-row form-inline">
                             <div class="col-md-7 mb-3">
                                 <select id="colonia" name="coloniaCliente"   class="form-control" required>
-                                    <option selected>*Colonia...</option>
-                                    @foreach($colonias as $colonia)
-                                <option>{{$colonia->nomColonia}}</option> 
-                                @endforeach
+                                   
                                 </select>
                                 <button id="abrir-popupColonia" type="button" class="agregarElemento"> <i class="fa-solid fa-circle-plus fa-lg"></i></button>
                             </div>
@@ -134,7 +138,7 @@
                                 <input type="text" class="form-control" name="numeroExteriorCasaCliente"  id="nExt" placeholder="*N° ext" required>
                             </div>
                             <div class="form-group col-md-4">
-                                <input type="text" class="form-control" name="numeroInteriorCasaCliente"  id="nInt" placeholder="*N° int">
+                                <input type="text" class="form-control" name="numeroInteriorCasaCliente"  id="nInt" placeholder="N° int">
                             </div>
                         </div>
                         <div class="form-row">
@@ -156,22 +160,18 @@
                             <div class="form-row form-inline">
 
                                 <div class="col-md-6 mb-3">
-                                    <select id="MunicipioCobro" name="municipioClienteCobro"  class="form-control" >
-                                        <option selected>Municipio...</option>
-                                        @foreach($municipios as $municipio)
-                                <option>{{$municipio->nomMunicipio}}</option> 
-                                @endforeach
+                                    <select id="municipioCobro" name="municipioClienteCobro"  class="form-control" >
+                                        <option selected></option>
+                                        
                                     </select>
                                     
                                 </div>
                             </div>
                             <div class="form-row form-inline">
                                 <div class="col-md-5 mb-3">
-                                    <select id="ColoniaCobro" name="coloniaClienteCobro"   class="form-control">
-                                        <option selected>Colonia...</option>
-                                        @foreach($colonias as $colonia)
-                                <option>{{$colonia->nomColonia}}</option> 
-                                @endforeach
+                                    <select id="coloniaCobro" name="coloniaClienteCobro"   class="form-control">
+                                        <option selected></option>
+                                       
                                     </select>
                                    
                                 </div>
@@ -225,16 +225,16 @@
                                 <select  class="form-control" id="paquete" name="nomPaquete" required>
                                     <option selected>Paquete...</option>
                                     @foreach($paquetes as $paquete)
-                                <option>{{$paquete->nombrePaquete}}</option> 
+                                <option value="{{$paquete->cvePaquete}}">{{$paquete->nombrePaquete}}</option> 
                                 @endforeach
                                 </select>
                             </div>
                             <div class="col-md-3 mb-3 ">
-                                <input type="text" class="form-control " id="precio" name="precio" placeholder="*Precio" readonly>
+                                <input type="text" class="form-control " id="precio"  placeholder="*Precio" readonly>
                             </div>
                         </div>
                         <div class="form-row">
-                            <div class="form-group col-md-3 ">
+                            <div class="form-group col-md-4 ">
                                 <input type="text" class="form-control " id="costoAdicional" name="extraPaquete" placeholder="$$ adicional" >
                             </div>
                         </div>
@@ -297,7 +297,7 @@
                         <div class="form-row">
                             <div class="form-group col-md-4 ">
                                 <label for="staticEmail2">Fecha termino</label>
-                                <input type="text" class="form-control" id="fechaTermino" readonly>
+                                <input type="text" class="form-control"  id="fechaTermino" readonly>
                             </div>
                         </div>
                         <div class="form-group">
@@ -495,7 +495,70 @@ $('#guardarColonia').click(function(e){
         
     });
     return false;
-});  
+}); 
+$("#estado").on('change',function(){
+var cveEstado = $("#estado").val();
+console.log(cveEstado);
+if ($.trim(cveEstado)!=''){
+$.get('consultarMunicipio',{cveEstado : cveEstado},function(municipios){
+       $('#municipio').empty();
+        $('#municipio').append("<option value=''> Municipios..</option>");
+        $.each(municipios,function(cveMunicipio,nomMunicipio){
+            $('#municipio').append("<option value= '" + cveMunicipio + "' >"+nomMunicipio+"</option>");
+            $('#municipioCobro').append("<option value= '" + cveMunicipio + "' >"+nomMunicipio+"</option>");
+        })
+        }           
+);
+}
+});
+
+$("#municipio").on('change',function(){
+var cveMunicipio = $("#municipio").val();
+console.log(cveMunicipio);
+if ($.trim(cveMunicipio)!=''){
+$.get('consultarColonia',{cveMunicipio : cveMunicipio},function(colonias){
+       $('#colonia').empty();
+        $('#colonia').append("<option value=''> Colonias..</option>");
+        $.each(colonias,function(cveColonia,nomColonia){
+            $('#colonia').append("<option value= '" + cveColonia + "' >"+nomColonia+"</option>");
+        })
+        }           
+);
+}
+});
+
+$("#municipioCobro").on('change',function(){
+var cveMunicipio = $("#municipioCobro").val();
+console.log(cveMunicipio);
+if ($.trim(cveMunicipio)!=''){
+$.get('consultarColonia',{cveMunicipio : cveMunicipio},function(colonias){
+       $('#coloniaCobro').empty();
+        $('#coloniaCobro').append("<option value=''> Colonias..</option>");
+        $.each(colonias,function(cveColonia,nomColonia){
+            $('#coloniaCobro').append("<option value= '" + cveColonia + "' >"+nomColonia+"</option>");
+        })
+        }           
+);
+}
+});
+
+$("#paquete").on('change',function(){
+var cvePaquete = $("#paquete").val();
+console.log(cvePaquete);
+if ($.trim(cvePaquete)!=''){
+$.get('consultarPaquete',{cvePaquete : cvePaquete},function(paquetes){
+       $('#precio').empty();
+       paquetes,function(costoPaquete){
+        console.log('paquetes');
+        console.log('costoPaquete');
+        $('#precio').value=costoPaquete;
+       }
+        }           
+);
+}
+});
+
+
 });
 </script>
 

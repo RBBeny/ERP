@@ -9,5 +9,5 @@ class Cobrador extends Model
     //
     protected $table = "tcobrador";
     protected $primaryKey="cveCobrador";
-    protected $fillable = ['nombreCobrador','nombreCobrador','apellidoPaternoCobrador','apellidoMaternoCobrador','comisionCobrador','cveEstatus'];
+    protected $fillable = ['nombreCobrador','apellidoPaternoCobrador','apellidoMaternoCobrador','comisionCobrador','cveEstatus'];
 }

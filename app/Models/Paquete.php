@@ -7,6 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 class Paquete extends Model
 {
     //
-    protected $table = "cPaquete";
+    protected $table = "cpaquete";
+    protected $primaryKey="cvePaquete";
+    protected $fillable = ['nombrePaquete','costoPaquete','comentariosPaquete'];
+    
     
 }

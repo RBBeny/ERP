@@ -28,7 +28,6 @@ ul.tabs{
     background: #2f323A;
     list-style: none;
     display: flex;
-
 }
 ul.tabs li{
     width: 18%;
