@@ -6,5 +6,5 @@ use App\http\Controllers\LoginController;
 
 
 Route::get('/', [LoginController::class, 'home']);
-Route::post('/login', [LoginController::class, 'login']);
+Route::post('/Login', [LoginController::class, 'login']);
 Route::get('/logout', [LoginController::class, 'logout']);

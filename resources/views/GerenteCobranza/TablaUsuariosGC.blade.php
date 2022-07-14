@@ -66,7 +66,7 @@
               <input type="password" name="password" class="form-control" required>
             </div>
             <div class="mb-3">
-              <input type="number" name="cveEstatus" value="1" class="form-control" hidden>
+              <input type="number" name="cveEstatus" value="3" class="form-control" hidden>
             </div>
             <button id="btn" type="submit" class="btn btn-primary btn-block">Submit</button>
           </form>
