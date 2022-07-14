@@ -28,11 +28,12 @@ class AdministradorController extends Controller
     public function verUsuarios(){
         //return view('Administrador.verUsuariosAdmin');
         $usuarios ["usuario"]= DB::table('tusuario')
-        ->select("nombreUsuario", "nomUsuario", "ctipousuario.nomTipoUsuario")
+        ->select("nombreUsuario", "nomUsuario", "ctipousuario.nomTipoUsuario", "cEstatus.nomEstatus")
         ->join("ctipousuario", "ctipousuario.cveTipoUsuario", "=", "tusuario.cveTipoUsuario")
+        ->join("cEstatus", "tusuario.cveEstatus", "=", "cEstatus.cveEstatus")
         ->get();
         return view('Administrador.verUsuariosAdmin',$usuarios);
-        //return response(json_encode($usuarios),200)->header('Content-type','text-plain');
+    
     }
 
 

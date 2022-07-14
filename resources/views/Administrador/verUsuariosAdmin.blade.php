@@ -48,7 +48,7 @@
               <input type="text" name="apellidoMaternoUsuario" class="form-control" required>
             </div>
             <div class="mb-3">
-              <label class="form-label">Nombre de Usuario</label>
+              <label class="form-label">Nickname</label>
               <input type="text" name="nomUsuario" class="form-control" required>
             </div>
             <div class="mb-3">
@@ -70,7 +70,7 @@
               <input type="password" name="password" class="form-control" required>
             </div>
             <div class="mb-3">
-              <input type="number" name="cveEstatus" value="1" class="form-control" hidden>
+              <input type="number" name="cveEstatus" value="3" class="form-control" hidden>
             </div>
             <button id="btn" type="submit" class="btn btn-primary btn-block">Submit</button>
           </form>
@@ -131,6 +131,7 @@
                     <th scope="col">Nombre</th>
                     <th scope="col">Rol</th>
                     <th scope="col">Nickname</th>
+                    <th scope="col">Estatus</th>
                     <th scope="col">Editar</th>
                     <th scope="col">Eliminar</th>
                 </tr>
@@ -141,6 +142,7 @@
                     <td>{{ $usuario-> nombreUsuario}}</td>
                     <td>{{ $usuario-> nomUsuario}}</td>
                     <td>{{ $usuario-> nomTipoUsuario}}</td>
+                    <td>{{ $usuario-> nomEstatus}}</td>
                     <td><a data-bs-toggle="modal" data-bs-target="#EditarUsuario"> <i class="fas fa-edit fa-lg"></i></a></td>
                     <td><a data-bs-toggle="modal" data-bs-target="#myModal"> <i class="fas fa-trash fa-lg"></i></a></td>
                 </tr>
@@ -149,7 +151,7 @@
         </table>
    </div>
 </div>
-  <!-- The Modal -->
+<!-- The Modal -->
   <div class="modal fade" id="myModal">
     <div class="modal-dialog modal-sm">
       <div class="modal-content">
@@ -170,7 +172,6 @@
         <button type="button" class="btn btn-primary" data-dismiss="modal">Aceptar</button>
         <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
         </div>
-        
       </div>
     </div>
   </div>
