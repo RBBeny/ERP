@@ -56,15 +56,29 @@
                         <p>
                     </div>
                 </div>
+                @if(count($errors) > 0)
+                <div class="errors">
+
+                    @foreach($errors->all() as $error)
+
+                    <div class="alert alert-danger" role="alert">
+                        {{ $error }}
+                    </div>
+
+
+                    @endforeach
+
+                </div>
+                @endif
                 <div class="row">
                     <div class="col-md-12 login-from-row">
                         @csrf
-                        <input name="nomUsuario" type="text" placeholder="Usuario" required />
+                        <input name="nomUsuario" type="text" placeholder="Usuario" />
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-12 login-from-row">
-                        <input name="password" type="password" placeholder="Contraseña" required />
+                        <input name="password" type="password" placeholder="Contraseña" />
                     </div>
                 </div>
                 <div class="row">

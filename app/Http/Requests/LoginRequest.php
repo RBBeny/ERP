@@ -25,15 +25,26 @@ class LoginRequest extends FormRequest
     {
         return [
             //
-            'nomUsuario' => 'required',
+            'nomUsuario' => 'required|max:15|min:4',
             'password' => 'required'
         ];
     }
 
-    public function getCredentials(){
+    public function getCredentials()
+    {
         return [
             'nomUsuario' => $this->get('nomUsuario'),
             'password' => $this->get('password')
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'nomUsuario.required' => 'El Usuario es obligatorio.',
+            'password.required' => 'El password es obligatorio',
+            'nomUsuario.min' => 'El minimo en el usuario es 4 caracteres',
+            'nomUsuario.max' => 'El maximo es el usuario es 15 caracteres',
         ];
     }
 }
