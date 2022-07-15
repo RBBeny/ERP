@@ -9,7 +9,9 @@
 
 
 @section('content')
+@inject('estados','App\Services\Estados')
 @include('includes.navbar')
+
 <div class="contenedor">
    <div id="alerts">
    </div>
@@ -20,6 +22,13 @@
         </ol>
     </nav>
     <div class="contenedorN2">
+        <div class="col-lg-6 col-12 mx-auto">
+            @if(Session::has('success'))
+            <div class="alert alert-success text-center">
+                {{Session::get('success')}}
+            </div>
+            @endif
+        </div>
         <div class="contenedorStep">
        
             <div class="step-row">
@@ -39,54 +48,98 @@
                         </center>
                         <div class="form-row">
                             <div class="form-group col-md-5">
-                                <input type="text" class="form-control" id="inputNoSolicitud" name="noSolicitud" placeholder="*N° solicitud" required>
-                            @error('noSolicitud')
-                            <small>
-                                <strong>{{$message}}</strong>
-                            </small>
-                            @enderror
+                                <input type="text" class="form-control  @error('noSolicitud') is invalid @enderror" id="noSolicitud" name="noSolicitud" placeholder="*N° solicitud" value="{{old('noSolicitud')}}" required>
+                                @error('noSolicitud')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{$message}}</strong>
+                                </span>
+                                @enderror 
                             </div>
                             <div class="form-group col-md-5">
-                                <input type="text" class="form-control" id="inputNoContrato"  name="noContrato" placeholder="*N° contrato" required>
+                                <input type="text" class="form-control @error('noContrato') is invalid @enderror" id="noContrato"  name="noContrato" placeholder="*N° contrato" value="{{old('noContrato')}}" required>
+                                @error('noContrato')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{$message}}</strong>
+                                </span>
+                                @enderror 
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="form-group col-md-7">
-                                <input type="text" class="form-control" id="inputNombre"  name="nombreCliente" placeholder="*Nombre" required>
+                                <input type="text" class="form-control @error('nombreCliente') is invalid @enderror" id="nombreCliente"  name="nombreCliente" value="{{old('nombreCliente')}}" placeholder="*Nombre"  required>
+                                @error('nombreCliente')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{$message}}</strong>
+                                </span>
+                                @enderror 
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="form-group col-md-6">
-                                <input type="text" class="form-control" id="inputApellidoPaterno"  name="apellidoPaternoCliente" placeholder="*Apellido Paterno" required>
+                                <input type="text" class="form-control  @error('apellidoPaternoCliente') is invalid @enderror" id="apellidoPaternoCliente"  name="apellidoPaternoCliente" value="{{old('apellidoPaternoCliente')}}" placeholder="*Apellido Paterno" required>
+                                @error('apellidoPaternoCliente')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{$message}}</strong>
+                                </span>
+                                @enderror 
                             </div>
                             <div class="form-group col-md-6">
-                                <input type="text" class="form-control" id="inputApellidoMaterno"  name="apellidoMaternoCliente" placeholder="*Apellido Materno" required>
+                                <input type="text" class="form-control @error('apellidoMaternoCliente') is invalid @enderror" id="apellidoMaternoCliente"  name="apellidoMaternoCliente" value="{{old('apellidoMaternoCliente')}}" placeholder="*Apellido Materno" required>
+                                @error('apellidoMaternoCliente')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{$message}}</strong>
+                                </span>
+                                @enderror 
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="form-group col-md-6">
-                                <input type="text" class="form-control" id="inputNumeroTelefono"  name="numeroTelefonoCliente" placeholder="*N° telefono" required>
+                                <input type="text" class="form-control @error('apellidoMaternoCliente') is invalid @enderror" id="numeroTelefonoCliente"  name="numeroTelefonoCliente" value="{{old('numeroTelefonoCliente')}}" placeholder="*N° telefono" required>
+                                @error('numeroTelefonoCliente')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{$message}}</strong>
+                                </span>
+                                @enderror 
                             </div>
                             <div class="form-group col-md-6">
-                                <input type="text" class="form-control" id="inputNumeroTelefono2"  name="numeroTelefonoDosCliente" placeholder="N° telefono 2">
+                                <input type="text" class="form-control @error('numeroTelefonoDosCliente') is invalid @enderror" id="numeroTelefonoDosCliente"  name="numeroTelefonoDosCliente" value="{{old('numeroTelefonoDosCliente')}}" placeholder="N° telefono 2">
+                                @error('numeroTelefonoDosCliente')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{$message}}</strong>
+                                </span>
+                                @enderror 
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="form-group col-md-6">
-                                <input type="text" class="form-control" id="inputNumeroTelefono3"  name="numeroTelefonoTresCliente" placeholder="N° telefono 3">
+                                <input type="text" class="form-control @error('numeroTelefonoTresCliente') is invalid @enderror" id="numeroTelefonoTresCliente"  name="numeroTelefonoTresCliente" value="{{old('numeroTelefonoTresCliente')}}" placeholder="N° telefono 3">
+                                @error('numeroTelefonoTresCliente')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{$message}}</strong>
+                                </span>
+                                @enderror 
                             </div>
                         </div>
                         <div class="form-row ">
                             <div class="form-group col-md-5">
 
-                                <input id="inputState" class="form-control" id="estadoCivil" name="estadoCivilCliente" placeholder="Estado civil">
-                
+                                <input  class="form-control  @error('estadoCivilCliente') is invalid @enderror" id="estadoCivilCliente" name="estadoCivilCliente" value="{{old('estadoCivilCliente')}}" placeholder="Estado civil">
+                                @error('estadoCivilCliente')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{$message}}</strong>
+                                </span>
+                                @enderror 
                             </div>
                         </div>
                         <div class="form-row form-inline">
                             <div class="col-md-6 mb-3">
                                 <label for="fechaNacimiento">Fecha de nacimiento</label>
-                                <input type="date" class="form-control" id="fechaNacimiento"  name="fechaNacimientoCliente">
+                                <input type="date" class="form-control @error('fechaNacimientoCliente') is invalid @enderror" id="fechaNacimientoCliente" value="{{old('fechaNacimientoCliente')}}" name="fechaNacimientoCliente">
+                                @error('fechaNacimientoCliente')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{$message}}</strong>
+                                </span>
+                                @enderror 
                             </div>
                         </div>
                         <div class="form-group">
@@ -102,53 +155,94 @@
 
                         <div class="form-row form-inline">
                             <div class="col-md-5 mb-3">
-                                <select id="estado" class="form-control" name="estadoCliente"  required>                                    
-                                <option selected>*Estado...</option>
-                                @foreach($estados as $estado)
-                                
-                                <option value="{{$estado->cveEstado}}">{{$estado->nomEstado}}</option> 
+                                <select id="estado" class="form-control @error('cveEstadoCliente') is invalid @enderror" name="cveEstadoCliente" value="{{old('cveEstadoCliente')}}" required>                                    
+                               
+                                @foreach($estados->get() as $index => $estado)
+                                <option value="{{$index}}"{{ old('cveEstadoCliente')  == $index ? 'selected' :''}} >
+                                  {{$estado}}  
+                                </option> 
                                 @endforeach
                                 </select>
-                                <button id="abrir-popupEstado" type="button" class="agregarElemento"> <i class="fa-solid fa-circle-plus fa-lg"></i></button>
+                                 @error('cveEstadoCliente')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{$message}}</strong>
+                                </span>
+                                @enderror 
                             </div>
 
                             <div class="col-md-6 mb-2">
-                                <select id="municipio" class="form-control" name="municipioCliente"  required>
+                                <select id="municipio" data-old="{{old('cveMunicipioCliente')}}" class="form-control @error('cveMuncipioCliente') is invalid @enderror" value="{{old('cveMuncipioCliente')}}" name="cveMuncipioCliente"  required>
                                     
                                 </select>
                                 <button id="abrir-popupMunicipio" type="button" class="agregarElemento"> <i class="fa-solid fa-circle-plus fa-lg"></i></button>
+                                @error('cveMunicipioCliente')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{$message}}</strong>
+                                </span>
+                                @enderror 
                             </div>
                         </div>
                         <div class="form-row form-inline">
                             <div class="col-md-7 mb-3">
-                                <select id="colonia" name="coloniaCliente"   class="form-control" required>
+                                <select id="colonia" name="cveColoniaCliente" data-old="{{old('cveColoniaCliente')}}" value="{{old('cveColoniaCliente')}}"  class="form-control @error('cveColoniaCliente') is invalid @enderror" required>
                                    
                                 </select>
                                 <button id="abrir-popupColonia" type="button" class="agregarElemento"> <i class="fa-solid fa-circle-plus fa-lg"></i></button>
+                                @error('cveColoniaCliente')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{$message}}</strong>
+                                </span>
+                                @enderror 
                             </div>
 
                         </div>
                         <div class="form-row">
                             <div class="col-md-5 mb-3">
-                                <input type="text" class="form-control" id="calle" name="calleCliente"  placeholder="*Calle" required>
+                                <input type="text" class="form-control @error('calleCliente') is invalid @enderror" id="calle" name="calleCliente" value="{{old('calleCliente')}}" placeholder="*Calle" required>
+                            
                             </div>
+                            @error('calleCliente')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{message}}</strong>
+                                </span>
+                                @enderror 
                         </div>
                         <div class="form-row">
                             <div class="form-group col-md-4">
-                                <input type="text" class="form-control" name="numeroExteriorCasaCliente"  id="nExt" placeholder="*N° ext" required>
+                                <input type="text" class="form-control @error('numeroExteriorCasaCliente') is invalid @enderror" name="numeroExteriorCasaCliente" value="{{old('numeroExteriorCasaCliente')}}" id="nExt" placeholder="*N° ext" required>
+                                @error('numeroExteriorCasaCliente')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{$message}}</strong>
+                                </span>
+                                @enderror  
                             </div>
                             <div class="form-group col-md-4">
-                                <input type="text" class="form-control" name="numeroInteriorCasaCliente"  id="nInt" placeholder="N° int">
+                                <input type="text" class="form-control @error('cveMuncipioCliente') is invalid @enderror" name="numeroInteriorCasaCliente" value="{{old('numeroInteriorCasaCliente')}}" id="nInt" placeholder="N° int">
+                                @error('numeroInteriorCasaCliente')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{$message}}</strong>
+                                </span>
+                                @enderror 
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="form-group col-md-7">
-                                <input type="text" class="form-control"  name="entreCallesCliente"  id="inputEntreCalles" placeholder="Entre calles">
+                                <input type="text" class="form-control @error('entreCallesCliente') is invalid @enderror" value="{{old('entreCallesCliente')}}" name="entreCallesCliente"  id="inputEntreCalles" placeholder="Entre calles">
+                                @error('entreCallesCliente')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{$message}}</strong>
+                                </span>
+                                @enderror 
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="form-group col-md-8">
-                                <input type="text" class="form-control" name="referenciasCasaCliente" id="referenciasDomicilio" placeholder="Referencias del domicilio">
+                                <input type="text" class="form-control @error('referenciasCasaCliente') is invalid @enderror" value="{{old('referenciasCasaCliente')}}" name="referenciasCasaCliente" id="referenciasDomicilio" placeholder="Referencias del domicilio">
+                                @error('referenciasCasaCliente')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{$message}}</strong>
+                                </span>
+                                @enderror  
                             </div>
                         </div>
 
@@ -160,44 +254,75 @@
                             <div class="form-row form-inline">
 
                                 <div class="col-md-6 mb-3">
-                                    <select id="municipioCobro" name="municipioClienteCobro"  class="form-control" >
-                                        <option selected></option>
+                                    <select id="municipioCobro" name="cveMunicipioClienteCobro" value="{{old('cveMunicipioClienteCobro')}}" data-old="{{old('cveMunicipioClienteCobro')}}" class="form-control @error('cveMunicipioClienteCobro') is invalid @enderror" >
                                         
                                     </select>
-                                    
+                                    @error('cveMunicipioClienteCobro')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{$message}}</strong>
+                                </span>
+                                @enderror  
                                 </div>
                             </div>
                             <div class="form-row form-inline">
                                 <div class="col-md-5 mb-3">
-                                    <select id="coloniaCobro" name="coloniaClienteCobro"   class="form-control">
-                                        <option selected></option>
+                                    <select id="coloniaCobro" name="cveColoniaClienteCobro" value="{{old('cveColoniaClienteCobro')}}" data-old="{{old('cveColoniaClienteCobro')}}"   class="form-control @error('cveColoniaClienteCobro') is invalid @enderror">
                                        
                                     </select>
-                                   
+                                    @error('cveColoniaClienteCobro')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{$message}}</strong>
+                                </span>
+                                @enderror 
                                 </div>
 
                             </div>
                             <div class="form-row">
                                 <div class="form-group col-md-7">
-                                    <input type="text" class="form-control" name="calleClienteCobro"  id="calleCobro" placeholder="*Calle">
+                                    <input type="text" class="form-control @error('calleClienteCobro') is invalid @enderror" name="calleClienteCobro" value="{{old('calleClienteCobro')}}"  id="calleCobro" placeholder="*Calle">
+                                    @error('calleClienteCobro')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{$message}}</strong>
+                                </span>
+                                @enderror 
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="form-group col-md-4">
-                                    <input type="text" class="form-control" id="numeroExteriorCasaClienteCobro" name="numeroExteriorCasaClienteCobro" placeholder="*N° ext">
+                                    <input type="text" class="form-control @error('numeroExteriorCasaClienteCobro') is invalid @enderror" id="numeroExteriorCasaClienteCobro" value="{{old('numeroExteriorCasaClienteCobro')}}"  name="numeroExteriorCasaClienteCobro" placeholder="*N° ext">
+                                    @error('numeroExteriorCasaClienteCobro')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{$message}}</strong>
+                                </span>
+                                @enderror 
                                 </div>
                                 <div class="form-group col-md-4">
-                                    <input type="text" class="form-control" id="numeroInteriorCasaClienteCobro" name="numeroInteriorCasaClienteCobro" placeholder="*N° int">
+                                    <input type="text" class="form-control @error('numeroInteriorCasaClienteCobro') is invalid @enderror" value="{{old('numeroInteriorCasaClienteCobro')}}" id="numeroInteriorCasaClienteCobro" name="numeroInteriorCasaClienteCobro" placeholder="*N° int">
+                                    @error('numeroInteriorCasaClienteCobro')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{$message}}</strong>
+                                </span>
+                                @enderror 
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="form-group col-md-7">
-                                    <input type="text" class="form-control" id="entreCallesClienteCobro" name="entreCallesClienteCobro" placeholder="Entre calles">
+                                    <input type="text" class="form-control @error('entreCallesClienteCobro') is invalid @enderror" id="entreCallesClienteCobro" value="{{old('entreCallesClienteCobro')}}" name="entreCallesClienteCobro" placeholder="Entre calles">
+                                    @error('entreCallesClienteCobro')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{$message}}</strong>
+                                </span>
+                                @enderror 
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="form-group col-md-8">
-                                    <input type="text" class="form-control" id="referenciasCasaClienteCobro" name="referenciasCasaClienteCobro" placeholder="Referencias del domicilio">
+                                    <input type="text" class="form-control @error('referenciasCasaClienteCobro') is invalid @enderror" id="referenciasCasaClienteCobro" name="referenciasCasaClienteCobro" value="{{old('referenciasCasaClienteCobro')}}" placeholder="Referencias del domicilio">
+                                    @error('referenciasCasaClienteCobro')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{$message}}</strong>
+                                </span>
+                                @enderror
                                 </div>
                             </div>
                         </div>
@@ -214,45 +339,72 @@
                         </center>
                         <div class="form-row">
                             <div class="col-md-4 mb-3">
-                                <input type="text" class="form-control" id="nSolicitudRe" placeholder="N° solicitud" readonly>
+                                <input type="text" class="form-control" id="nSolicitudRe" value=""  readonly>
+                            
                             </div>
                             <div class="col-md-4 mb-3">
-                                <input type="text" class="form-control " id="nContratoRe" placeholder="N° contrato" readonly>
+                                <input type="text" class="form-control " id="nContratoRe" value="" readonly>
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="col-md-5 mb-3">
-                                <select  class="form-control" id="paquete" name="nomPaquete" required>
+                                <select  class="form-control @error('cvePaquete') is invalid @enderror" id="paquete" value="{{old('cvePaquete')}}" name="cvePaquete" required>
                                     <option selected>Paquete...</option>
                                     @foreach($paquetes as $paquete)
                                 <option value="{{$paquete->cvePaquete}}">{{$paquete->nombrePaquete}}</option> 
                                 @endforeach
                                 </select>
+                                @error('cvePaquete')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{$message}}</strong>
+                                </span>
+                                @enderror
+                                
                             </div>
                             <div class="col-md-3 mb-3 ">
-                                <input type="text" class="form-control " id="precio"  placeholder="*Precio" readonly>
+                                <input type="text" class="form-control @error('costoPaquete') is invalid @enderror" name="costoPaquete"  id="precio" value="{{old('costoPaquete')}}"  readonly>
+                                @error('costoPaquete')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{$message}}</strong>
+                                </span>
+                                @enderror
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="form-group col-md-4 ">
-                                <input type="text" class="form-control " id="costoAdicional" name="extraPaquete" placeholder="$$ adicional" >
+                                <input type="text" class="form-control @error('extraPaquete') is invalid @enderror" id="costoAdicional" value="{{old('extraPaquete')}}" name="extraPaquete" placeholder="$$ adicional" >
+                                @error('extraPaquete')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{$message}}</strong>
+                                </span>
+                                @enderror
                             </div>
                         </div>
                         <div class="form-row form-inline">
                             <div class="col-md-8 mb-3">
-                                <select id="vendedor" name="nombreVendedor" class="form-control" required>
+                                <select id="vendedor" name="cveVendedor" class="form-control @error('cveVendedor') is invalid @enderror" value="{{old('cveVendedor')}}" required>
                                     <option selected>*Vendedor...</option>
                                     @foreach($vendedores as $vendedor)
-                                <option>{{ $vendedor->nombreVendedor}} {{ $vendedor-> apellidoPaternoVendedor}} {{ $vendedor-> apellidoMaternoVendedor}}</option> 
+                                <option value="{{ $vendedor->cveVendedor}}">{{ $vendedor->nombreVendedor}} {{ $vendedor-> apellidoPaternoVendedor}} {{ $vendedor-> apellidoMaternoVendedor}}</option> 
                                 @endforeach
                                 </select>
+                                @error('cveVendedor')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{$message}}</strong>
+                                </span>
+                                @enderror
                                 
                             </div>
                         </div>
                         <div class="form-row form-inline">
                             <div class="col-md-6 mb-3">
                                 <label for="fechaAfilacion">Fecha de afiliación</label>
-                                <input type="date" class="form-control" name="fechaSolicitud" id="fechaSolicitud">
+                                <input type="date" class="form-control @error('fechaSolicitud') is invalid @enderror" name="fechaSolicitud" value="{{old('fechaSolicitud')}}" id="fechaSolicitud">
+                                @error('fechaSolicitud')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{$message}}</strong>
+                                </span>
+                                @enderror
                             </div>
                         </div>
                         <div class="form-group">
@@ -267,31 +419,50 @@
                         </center>
                         <div class="form-row">
                             <div class="form-group col-md-4">
-                                <select id="formaPago" name="formaPago" class="form-control" required>
+                                <select id="formaPago" name="cveFormaPago" value="{{old('cveFormaPago')}}" class="form-control @error('cveFormaPago') is invalid @enderror" required>
                                     <option selected>*Forma pago...</option>
                                     @foreach($formaPagos as $formaPago)
-                                <option>{{ $formaPago->nomFormaPago}} </option> 
+                                <option value="{{ $formaPago->cveFormaPago}}">{{ $formaPago->nomFormaPago}} </option> 
                                 @endforeach
                                 </select>
+                                @error('cveFormaPago')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{$message}}</strong>
+                                </span>
+                                @enderror
                             </div>
                         </div>
                         <div class="form-row form-inline">
                             <div class="col-md-8 mb-5">
-                                <select class="form-control" name="nombreCobrador" id="nombreCobrador" required>
+                                <select class="form-control @error('cveCobrador') is invalid @enderror" name="cveCobrador" value="{{old('cveCobrador')}}" id="nombreCobrador" required>
                                     <option selected>*Cobrador...</option>
                                     @foreach($cobradores as $cobrador)
-                                <option>{{ $cobrador->nombreCobrador}} {{ $cobrador-> apellidoPaternoCobrador}} {{ $cobrador-> apellidoMaternoCobrador}} </option> 
+                                <option value="{{ $cobrador->cveCobrador}}">{{ $cobrador->nombreCobrador}} {{ $cobrador-> apellidoPaternoCobrador}} {{ $cobrador-> apellidoMaternoCobrador}} </option> 
                                 @endforeach
                                 </select>
-                               
+                                @error('cveCobrador')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{$message}}</strong>
+                                </span>
+                                @enderror
                             </div>
                         </div>
                         <div class="form-row">
                         <div class="col-md-4 mb-3">
-                                <input type="text" class="form-control" name="bonificación" id="bonificación" placeholder="Bonificación">
+                                <input type="text" class="form-control @error('bonificacion') is invalid @enderror" value="{{old('bonificacion')}}" name="bonificación" id="bonificación" placeholder="Bonificación">
+                                @error('bonificacion')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{$message}}</strong>
+                                </span>
+                                @enderror
                             </div>
                             <div class="col-md-4 mb-3">
-                                <input type="text" class="form-control" name="inversionInicial" id="inversionInicial" placeholder="Inversion incial">
+                                <input type="text" class="form-control @error('inversionInicial') is invalid @enderror" name="inversionInicial" id="inversionInicial" value="{{old('inversionInicial')}}" placeholder="Inversion incial">
+                                @error('inversionInicial')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{$message}}</strong>
+                                </span>
+                                @enderror
                             </div>
                         </div>
                         <div class="form-row">
@@ -335,11 +506,12 @@
                     @csrf
                         <div class="form-row ">
                             <div class="form-group col-md-5">
-
                                 <select id="nombreEstadoNew" class="form-control" required>
-                                    <option selected>Estado</option>
-                                    @foreach($estados as $estado)
-                                <option>{{$estado->nomEstado}}</option> 
+                                    <option selected>Estado....</option>
+                                    @foreach($estados->get() as $index => $estado)
+                                <option value="{{$index}}" >
+                                  {{$estado}}  
+                                </option> 
                                 @endforeach
                                 </select>
                             </div>
@@ -365,11 +537,8 @@
                         <div class="form-row ">
                             <div class="form-group col-md-5">
 
-                                <select id="municipioColoniaNew" class="form-control">
-                                    <option selected>Municipio</option>
-                                    @foreach($municipios as $municipio)
-                                <option>{{$municipio->nomMunicipio}}</option> 
-                                @endforeach
+                                <select id="municipioColoniaNew" name="municipioColoniaNew" class="form-control">
+                                    
                                 </select>
                             </div>
                         </div>
@@ -402,14 +571,14 @@
 $(document).ready(function(){
     $('#btnGuardarEstado').click(function(e){    
     e.preventDefault();
-    var nomEstado = $('#nomEstado').val();
+    var cveEstado = $('#nomEstado').val();
     var _token = $("input[name=_token]").val();
-    console.log(nomEstado);
+    console.log(cveEstado);
     $.ajax({
         type:"POST",
         url:"{{ route('insertarEstado.insertarEstado') }}",
         data:{
-            nomEstado:nomEstado,
+            cveEstado:cveEstado,
             _token:_token
         },
         success:function(res){
@@ -432,7 +601,7 @@ $(document).ready(function(){
 });
 $('#guardarMunicipio').click(function(e){    
     e.preventDefault();
-    var nomEstado = $('#nombreEstadoNew').val();
+    var cveEstado = $('#nombreEstadoNew').val();
     var nomMunicipio = $('#nombreMunicipioNew').val();
     var _token = $("input[name=_token]").val();
     console.log(nomMunicipio);
@@ -440,7 +609,7 @@ $('#guardarMunicipio').click(function(e){
         type:"POST",
         url:"{{ route('insertarMunicipio.insertarMunicipio') }}",
         data:{
-            nomEstado:nomEstado,
+            cveEstado:cveEstado,
             nomMunicipio:nomMunicipio,
             _token:_token
         },
@@ -465,15 +634,15 @@ $('#guardarMunicipio').click(function(e){
 });  
 $('#guardarColonia').click(function(e){    
     e.preventDefault();
-    var nomMunicipio = $('#municipioColoniaNew').val();
+    var cveMunicipio = $('#municipioColoniaNew').val();
     var nomColonia = $('#nomColoniaNew').val();
     var _token = $("input[name=_token]").val();
-    console.log(nomColonia);
+    console.log(cveMunicipio);
     $.ajax({
         type:"POST",
         url:"{{ route('insertarColonia.insertarColonia') }}",
         data:{
-            nomMunicipio:nomMunicipio,
+            cveMunicipio:cveMunicipio,
             nomColonia:nomColonia,
             _token:_token
         },
@@ -497,15 +666,19 @@ $('#guardarColonia').click(function(e){
     return false;
 }); 
 $("#estado").on('change',function(){
-var cveEstado = $("#estado").val();
+var cveEstado = $(this).val();
 console.log(cveEstado);
 if ($.trim(cveEstado)!=''){
 $.get('consultarMunicipio',{cveEstado : cveEstado},function(municipios){
+    console.log(municipios);
        $('#municipio').empty();
-        $('#municipio').append("<option value=''> Municipios..</option>");
-        $.each(municipios,function(cveMunicipio,nomMunicipio){
-            $('#municipio').append("<option value= '" + cveMunicipio + "' >"+nomMunicipio+"</option>");
-            $('#municipioCobro').append("<option value= '" + cveMunicipio + "' >"+nomMunicipio+"</option>");
+       $('#municipio').append("<option value=''> Municipios..</option>");
+       $('#municipioCobro').append("<option value=''> Municipios..</option>");
+       $('#municipioColoniaNew').append("<option value=''> Municipios..</option>");
+        $.each(municipios,function(index,value){
+            $('#municipio').append("<option value= '" + index + "' >"+value+"</option>");
+            $('#municipioCobro').append("<option value= '" + index + "' >"+value+"</option>");
+            $('#municipioColoniaNew').append("<option value= '" + index + "' >"+value+"</option>");
         })
         }           
 );
@@ -513,14 +686,14 @@ $.get('consultarMunicipio',{cveEstado : cveEstado},function(municipios){
 });
 
 $("#municipio").on('change',function(){
-var cveMunicipio = $("#municipio").val();
+var cveMunicipio = $(this).val();
 console.log(cveMunicipio);
 if ($.trim(cveMunicipio)!=''){
 $.get('consultarColonia',{cveMunicipio : cveMunicipio},function(colonias){
        $('#colonia').empty();
         $('#colonia').append("<option value=''> Colonias..</option>");
-        $.each(colonias,function(cveColonia,nomColonia){
-            $('#colonia').append("<option value= '" + cveColonia + "' >"+nomColonia+"</option>");
+        $.each(colonias,function(index,value){
+            $('#colonia').append("<option value= '" + index + "' >"+value+"</option>");
         })
         }           
 );
@@ -528,14 +701,14 @@ $.get('consultarColonia',{cveMunicipio : cveMunicipio},function(colonias){
 });
 
 $("#municipioCobro").on('change',function(){
-var cveMunicipio = $("#municipioCobro").val();
+var cveMunicipio = $(this).val();
 console.log(cveMunicipio);
 if ($.trim(cveMunicipio)!=''){
 $.get('consultarColonia',{cveMunicipio : cveMunicipio},function(colonias){
        $('#coloniaCobro').empty();
         $('#coloniaCobro').append("<option value=''> Colonias..</option>");
-        $.each(colonias,function(cveColonia,nomColonia){
-            $('#coloniaCobro').append("<option value= '" + cveColonia + "' >"+nomColonia+"</option>");
+        $.each(colonias,function(index,value){
+            $('#coloniaCobro').append("<option value= '" + index + "' >"+value+"</option>");
         })
         }           
 );
@@ -548,16 +721,23 @@ console.log(cvePaquete);
 if ($.trim(cvePaquete)!=''){
 $.get('consultarPaquete',{cvePaquete : cvePaquete},function(paquetes){
        $('#precio').empty();
-       paquetes,function(costoPaquete){
-        console.log('paquetes');
-        console.log('costoPaquete');
-        $('#precio').value=costoPaquete;
-       }
-        }           
-);
+       $.each(paquetes,function(cvePaquete,costoPaquete){
+        $('#precio').val(costoPaquete);
+        console.log(costoPaquete);
+        }) 
+                 
+    });
 }
 });
-
+$("#noSolicitud").on('change',function(){
+    var noSolicitud = $("#noSolicitud").val();
+    $('#nSolicitudRe').val(noSolicitud);
+});
+$("#noContrato").on('change',function(){
+    var noContrato = $("#noContrato").val();
+    console.log(noContrato);
+    $('#nContratoRe').val(noContrato);
+});
 
 });
 </script>
