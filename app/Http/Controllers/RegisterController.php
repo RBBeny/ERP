@@ -13,8 +13,19 @@ class RegisterController extends Controller
         return view('Registro.register');
     }
 
-    public function register(RegisterRequest $request){
-        $user = User::create($request->validated());
+    public function register(Request $request){
+        //User::create($request->validated());
+        return redirect('/TablaUsuariosGC')->with('success', 'Cuenta creada');
+        $user = new User();
+        $user->nombreUsuario=$request->input('nombreUsuario');
+        $user->apellidoPaternoUsuario=$request->input('apellidoPaternoUsuario');
+        $user->apellidoMaternoUsuario=$request->input('apellidoMaternoUsuario');
+        $user->nomUsuario=$request->input('nomUsuario');
+        $user->password=$request->input('password');
+        $user->password=$request->input('cveTipoUsuario');
+        $user->password=$request->input('cveEstatus');
+        $user->save();
         return redirect('/TablaUsuariosGC')->with('success', 'Cuenta creada');
     }
+
 }
