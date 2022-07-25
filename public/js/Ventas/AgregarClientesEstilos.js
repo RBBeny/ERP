@@ -1,6 +1,5 @@
 
 
-
 //Variables para el formulario por partes
 var cnp1 = document.getElementById("cnp1");
 var cnp2 = document.getElementById("cnp2");
@@ -14,11 +13,12 @@ var atrasP2 = document.getElementById("atrasP2");
 var atrasP3 = document.getElementById("atrasP3");
 var progress = document.getElementById("progress");
 //Variables para popup's
+/* 
 var abrirpopupEstado = document.getElementById('abrir-popupEstado');
 var popupEstado = document.getElementById('popupEstado');
 var btnCerrarPopupEstado = document.getElementById('btn-cerrar-popup');
 var overlayEstado = document.getElementById('overlayEstado');
-
+*/
 var abrirpopupMunicipio = document.getElementById('abrir-popupMunicipio');
 var popupMunicipio = document.getElementById('popupMunicipio');
 var btnCerrarPopupMunicipio = document.getElementById('btn-cerrar-popupMunicipio');
@@ -77,7 +77,7 @@ atrasP3.onclick = function() {
 }
 
 //Funciones para los popup's
-
+/*
 abrirpopupEstado.addEventListener('click', function() {
     popupEstado.classList.add('active');
     overlayEstado.classList.add('active'); 
@@ -86,7 +86,7 @@ btnCerrarPopupEstado.addEventListener('click', function () {
         popupEstado.classList.remove('active');
         overlayEstado.classList.remove('active');
     });
-
+*/
 abrirpopupMunicipio.addEventListener('click', function() {
     popupMunicipio.classList.add('active');
     overlayMunicipio.classList.add('active'); 

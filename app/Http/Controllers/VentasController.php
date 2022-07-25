@@ -9,10 +9,10 @@ use App\Models\FormaPago;
 use App\Models\Vendedor;
 use App\Models\Paquete;
 use App\Models\Cobrador;
-use Exception;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use PhpParser\Node\Stmt\TryCatch;
+
 
 class VentasController extends Controller
 {
@@ -23,7 +23,7 @@ class VentasController extends Controller
      
     public function clientes(){
         $Datos['clientes'] = DB::table('tcliente')
-        ->select('cveCliente','tsolicitud.cveSolicitud','tcontrato.cveContrato','nomCliente',"apellidoPaternoCliente","apellidoMaternoCliente","nomEstado","nomMunicipio","nomColonia","numeroExteriorCasaClienteCobro","numeroInteriorCasaClienteCobro","telefonoCliente","nomEstatusContrato")
+        ->select('cveCliente','tsolicitud.cveSolicitud','tcontrato.cveContrato','nomCliente',"apellidoPaternoCliente","apellidoMaternoCliente","nomEstado","nomMunicipio","nomColonia","numeroExteriorCasaCliente","telefonoCliente","nomEstatusContrato")
         ->join('tcontrato', 'tcontrato.cveContrato', '=', 'tcliente.cveContrato')
         ->join('tsolicitud', 'tsolicitud.cveContrato', '=', 'tcliente.cveContrato')
         ->join('cestado', 'cestado.cveEstado', '=', 'tcliente.cveEstadoCliente')
@@ -53,6 +53,7 @@ class VentasController extends Controller
         ->select('cveCobrador','nombreCobrador','apellidoPaternoCobrador','apellidoMaternoCobrador')
         ->where('cveEstatus','=','3')
         ->get();
+       
         return view('Ventas.agregarClientesVentas',
         ['estados'=>$Estados,
         'vendedores'=>$Vendedores,'paquetes'=>$Paquetes,'formaPagos'=>$FormaPagos,
@@ -83,7 +84,7 @@ class VentasController extends Controller
         ->where ('tcliente.cveCliente', '=',$cliente)
         ->limit (1)
         ->get();
-
+       
         $Pagos = DB::table('tpago')
         ->select('tcontrato.cveContrato','nomFormaPago','cvePago','fechaPago','cantidadPago','restantePaquete','nombreCobrador',"apellidoPaternoCobrador","apellidoMaternoCobrador")
         ->join('tcobrador', 'tcobrador.cveCobrador', '=', 'tpago.cveCobrador')
@@ -96,8 +97,8 @@ class VentasController extends Controller
 
         $Cobros = DB::table('tcliente')
         ->select('nomMunicipio',"nomColonia")
-        ->join('cmunicipio', 'cmunicipio.cveMunicipio', '=', 'tcliente.cveMunicipioClienteCobro')
-        ->join('ccolonia', 'ccolonia.cveColonia', '=', 'tcliente.cveColoniaClienteCobro')
+        ->join('cmunicipio', 'cmunicipio.cveMunicipio', '=', 'tcliente.cveMunicipioCliente')
+        ->join('ccolonia', 'ccolonia.cveColonia', '=', 'tcliente.cveColoniaCliente')
         ->where ('tcliente.cveCliente', '=',$cliente)
         ->get();
 
@@ -136,7 +137,7 @@ class VentasController extends Controller
                 }
     }
     public function insertarCliente(Request $request){
-        $request->validate([
+       /* $request->validate([
             'noSolicitud'=>'required|unique:tsolicitud,cveSolicitud|numeric|integer|max:8|min:1',
             'noContrato'=>'required|unique:tcontrato,cveContrato|regex:/^[0-9,A-Z][0-9]+/|max:8|min:1',
             'nombreCliente'=>'required|regex:/^[A-Z][A-Z,a-z]+/|max:30',
@@ -151,8 +152,8 @@ class VentasController extends Controller
             'cveMunicipioCliente'=>'required|numeric|integer|max:2|exists:cmunicipio,cveMunicipio',
             'cveColoniaCliente'=>'required|numeric|integer|max:4|exists:ccolonia,cveColonia',
             'calleCliente'=>'required|regex:/^[0-9,A-Z][A-Z,a-z,0-9]+/|max:30',
-            'numeroExteriorCasaCliente'=>'required|regex:/^[A-Z][A-Z,a-z]+/|max:10',
-            'numeroInteriorCasaCliente'=>'nullable|regex:/^[A-Z][A-Z,a-z]+/|max:10',
+            'numeroExteriorCasaCliente'=>'required|regex:/^[0-9,A-Z][0-9,A-Z]+/|max:10',
+            'numeroInteriorCasaCliente'=>'nullable|regex:/^[0-9,A-Z][0-9,A-Z]+/|max:10',
             'entreCallesCliente'=>'nullable|regex:/^[0-9,A-Z][A-Z,a-z,0-9]+/|max:50',
             'referenciasCasaCliente'=>'nullable|regex:/^[A-Z][A-Z,a-z]+/|max:50',
             'cveMunicipioClienteCobro'=>'nullable|numeric|integer|max:2|exists:cmunicipio,cveMunicipio',
@@ -172,20 +173,14 @@ class VentasController extends Controller
             'bonificacion'=>'nullable|regex:/^[0-9]+[.][0-9]{2}+/|max:11',
             'inversionInicial'=>'nullable|regex:/^[0-9]+[.][0-9]{2}+/|max:11'
 
-        ],[
-            'noSolicitud.required'=> 'EL campo no puede estar vacio'
-        ]
-    
-    
-    );
-
-      DB::select('call sp_AgregarCliente(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)', 
-        [$request->noSolicitud,$request->noContrato,$request->nombreCliente,$request->apellidoPaternoCliente,$request->apellidoMaternoCliente,$request->numeroTelefonoCliente,$request->numeroTelefonoDosCliente,$request->numeroTelefonoTresCliente,$request->estadoCivilCliente,$request->fechaNacimientoCliente,$request->cveEstadoCliente,$request->cveMunicipioCliente,$request->cveColoniaCliente,$request->calleCliente,$request->numeroExteriorCasaCliente,$request->numeroInteriorCasaCliente,$request->entreCallesCliente,$request->referenciasCasaCliente,$request->cveMunicipioClienteCobro,$request->cveColoniaClienteCobro, $request->calleClienteCobro,$request->numeroExteriorCasaClienteCobro,$request->numeroInteriorCasaClienteCobro, $request->entreCallesClienteCobro,$request->referenciasCasaClienteCobro, $request->cvePaquete,$request->costoPaquete,$request->extraPaquete,$request->cveVendedor,$request->fechaSolicitud,$request->cveFormaPago,$request->cveCobrador,$request->bonificacion,$request->inversionInicial]);
+        ]);
+      
+      */  
+      DB::select('call sp_AgregarCliente(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)', 
+        [$request->noSolicitud,$request->noContrato,$request->nombreCliente,$request->apellidoPaternoCliente,$request->apellidoMaternoCliente,$request->numeroTelefonoCliente,$request->numeroTelefonoDosCliente,$request->numeroTelefonoTresCliente,$request->estadoCivilCliente,$request->fechaNacimientoCliente,$request->cveEstadoCliente,$request->cveMunicipioCliente,$request->cveColoniaCliente,$request->calleCliente,$request->numeroExteriorCasaCliente,$request->numeroInteriorCasaCliente,$request->entreCallesCliente,$request->referenciasCasaCliente,$request->cveMunicipioClienteCobro,$request->cveColoniaClienteCobro,$request->calleClienteCobro,$request->numeroExteriorCasaClienteCobro,$request->numeroInteriorCasaClienteCobro,$request->entreCallesClienteCobro,$request->referenciasCasaClienteCobro,$request->cvePaquete,$request->extraPaquete,$request->cveVendedor,$request->fechaSolicitud,$request->cveFormaPago,$request->cveCobrador,$request->bonificacion,$request->inversionInicial]);
        return back()->with('success','¡Formulario validado exitosamente');
-
     }
 
-    
     public function getConsultarMunicipio(Request $request){
         if($request->ajax()){
         $municipios = DB::table('cmunicipio')
