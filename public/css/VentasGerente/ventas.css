@@ -1,8 +1,8 @@
-.contenedor{
+.contenedor_ventas{
    
     padding-top: 100px;
-    padding-left: 50px;
-
+    padding-left: 70px;
+z-index: -1;
 }
 :root{
 	--white-text:#fff;
@@ -22,30 +22,42 @@
 }
 
 
-* {
-	padding: 0;
-	margin: 0;
-	text-decoration: none;
-	box-sizing: border-box;
-	border: none;
-}
+
 
 
 body {
 	font-family: Arial, Helvetica, sans-serif;	
 }
-
-.container{
-	display: flex;
-	justify-content: center;
-	height: 100vh;
-    align-items: center;
+.cabezera_consulta{
+	background-color: #fff;
+	background: #fff;
+	position: relative;
+	margin-bottom: 50px;
 }
-
+.contIzq{
+	float:left;
+	
+}
+.contDer{
+	float: right;
+	margin-right:50px ;
+	z-index: -3;
+}
+.fecha{
+	color:black;
+	background-color: #fff;
+	z-index: -2;
+}
+.cards{
+	display: flex;
+	
+	height: 100vh;
+  
+}
 .card {
 	background-color:var(--white-text);
 	border-radius: 1rem;
-	box-shadow: 0 1rem 1rem rgba(0, 0, 0, 0.2);
+	box-shadow: 0 1rem 1rem rgba(51, 42, 42, 0.2);
 	display: flex;	
 	margin: 1.5rem;
 	overflow: hidden;
@@ -98,7 +110,7 @@ body {
 }
 
 .button {
-	border-radius: 2rem;
+	border-radius: 4rem;
 	box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
 	color: var(--white-text);
 	font-size: 1.2rem;

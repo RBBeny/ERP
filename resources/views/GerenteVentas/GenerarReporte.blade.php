@@ -14,13 +14,23 @@
 
 @include('includes.navbarGVentas')
 
-<div class="contenedor">
+<div class="contenedor_ventas">
     <nav aria-label="breadcrumb" style="padding: 10px;">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="/homeGVentas">Home</a></li>
             <li class="breadcrumb-item active" aria-current="page">Ventas</li>
         </ol>
     </nav>
+    <div class="cabezera_consulta">
+        <div class="contIzq">
+            @foreach($Fecha as $Fecha)
+        <h1 class="Fecha">{{$Fecha}}</h1>
+        @endforeach
+        </div>
+        <div class="contDer">
+        <button type="button" class="btn btn-primary">Consultar</button>
+        </div>
+    </div>
     <div class="cards">
     <div class="card">
         <div class="left-column background1-left-column">
@@ -29,7 +39,7 @@
 
         <div class="right-column">
             
-            <button class="button background1-left-column">Empezar</button>
+           <button></button>
         </div>
 
     </div>
@@ -45,6 +55,19 @@
         </div>
 
     </div>
+    <div class="card">
+        <div class="left-column background1-left-column">
+        <i class="fa-solid fa-user-tie fa-5x"></i>
+        </div>
+
+        <div class="right-column">
+            
+           <button></button>
+        </div>
+
+    </div>
+   
+   
     </div>
 
 
@@ -52,7 +75,7 @@
 
 @section('js')
 <script src="js/GerenteCobranza/agregarUsuario.js"></script>
-<script src="https://cdn.datatables.net/1.11.4/js/jquery.dataTables.min.js" type="text/javascript"></script>
+app/Http/Controllers/VentasGerenteController.php<script src="https://cdn.datatables.net/1.11.4/js/jquery.dataTables.min.js" type="text/javascript"></script>
 <script src="https://cdn.datatables.net/1.11.4/js/dataTables.bootstrap5.min.js" type="text/javascript"></script>
 <script type="text/javascript">
     $(document).ready(function() {

@@ -69,7 +69,7 @@
                                             <i class="formulario__validacion-estado fas fa-times-circle"></i>
                                         </div>
                                         <p class="formulario__input-error">El Numero de solicitud tiene que ser de 1 a 8 dígitos y solo puede contener numeros</p>
-
+                                        <p class="formulario__input-error-required">Este campo es requirido</p>
 
                                         @error('noSolicitud')
                                         <span class="invalid-feedback" role="alert">
@@ -84,6 +84,7 @@
                                             <i class="formulario__validacion-estado fas fa-times-circle"></i>
                                         </div>
                                         <p class="formulario__input-error">El Numero de contrato tiene que ser de 1 a 8 dígitos, solo puede contener una letra y numeros</p>
+                                        <p class="formulario__input-error-required">Este campo es requirido</p>
                                         @error('noContrato')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{$message}}</strong>
@@ -98,6 +99,7 @@
                                             <i class="formulario__validacion-estado fas fa-times-circle"></i>
                                         </div>
                                         <p class="formulario__input-error">El nombre del cliente tiene que ser de maximo 30 caracteres y solo puede contener letras</p>
+                                        <p class="formulario__input-error-required">Este campo es requirido</p>
                                         @error('nombreCliente')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{$message}}</strong>
@@ -112,7 +114,7 @@
                                             <i class="formulario__validacion-estado fas fa-times-circle"></i>
                                         </div>
                                         <p class="formulario__input-error">El apellido del cliente tiene que ser de maximo 30 caracteres y solo puede contener letras</p>
-
+                                        <p class="formulario__input-error-required">Este campo es requirido</p>
                                         @error('apellidoPaternoCliente')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{$message}}</strong>
@@ -125,7 +127,7 @@
                                             <i class="formulario__validacion-estado fas fa-times-circle"></i>
                                         </div>
                                         <p class="formulario__input-error">El apellido del cliente tiene que ser de maximo 30 caracteres y solo puede contener letras</p>
-
+                                        <p class="formulario__input-error-required">Este campo es requirido</p>
                                         @error('apellidoMaternoCliente')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{$message}}</strong>
@@ -140,7 +142,7 @@
                                             <i class="formulario__validacion-estado fas fa-times-circle"></i>
                                         </div>
                                         <p class="formulario__input-error">El Numero de telefono tiene que ser de 10 a 11 dígitos y solo puede contener numeros</p>
-
+                                        <p class="formulario__input-error-required">Este campo es requirido</p>
                                         @error('numeroTelefonoCliente')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{$message}}</strong>
@@ -183,7 +185,7 @@
                                             <i class="formulario__validacion-estado fas fa-times-circle"></i>
                                         </div>
                                         <p class="formulario__input-error">Tiene que ser de maximo 12 caracteres y solo puede contener letras</p>
-
+                                       
                                         @error('estadoCivilCliente')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{$message}}</strong>
@@ -227,6 +229,7 @@
                                         <i class="formulario__validacion-estado fas fa-times-circle"></i>
                                         </div>
                                         <p class="formulario__input-error">La opción no es valida</p>
+                                        
                                         @error('cveEstadoCliente')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{$message}}</strong>
@@ -271,11 +274,11 @@
                                 <div class="form-row">
                                     <div class="col-md-6 mb-4" id="grupo__calleCliente">
                                         <div class="formulario__grupo-input">
-                                            <input type="text" class="form-control formulario__input @error('calleCliente') is invalid @enderror" id="calle" name="calleCliente" value="{{old('calleCliente')}}" placeholder="*Calle" required>
+                                            <input type="text" class="form-control formulario__input @error('calleCliente') is invalid @enderror" id="calleCliente" name="calleCliente" value="{{old('calleCliente')}}" placeholder="*Calle" required>
                                             <i class="formulario__validacion-estado fas fa-times-circle"></i>
                                         </div>
                                         <p class="formulario__input-error">la calle tiene que ser de maximo 30 caracteres, solo puede contener letras y numeros</p>
-
+                                        <p class="formulario__input-error-required">Este campo es requirido</p>
                                     </div>
                                     @error('calleCliente')
                                     <span class="invalid-feedback" role="alert">
@@ -286,11 +289,11 @@
                                 <div class="form-row">
                                     <div class="form-group col-md-4" id="grupo__numeroExteriorCasaCliente">
                                         <div class="formulario__grupo-input">
-                                            <input type="text" class="form-control formulario__input @error('numeroExteriorCasaCliente') is invalid @enderror" name="numeroExteriorCasaCliente" value="{{old('numeroExteriorCasaCliente')}}" id="nExt" placeholder="*N° ext" required>
+                                            <input type="text" class="form-control formulario__input @error('numeroExteriorCasaCliente') is invalid @enderror" name="numeroExteriorCasaCliente" value="{{old('numeroExteriorCasaCliente')}}" id="numeroExteriorCasaCliente" placeholder="*N° ext" required>
                                             <i class="formulario__validacion-estado fas fa-times-circle"></i>
                                         </div>
                                         <p class="formulario__input-error">El Numero de la casa tiene que ser de maximo 10 dígitos, solo puede contener numeros y letras</p>
-
+                                        <p class="formulario__input-error-required">Este campo es requirido</p>
                                         @foreach ($errors->get('numeroExteriorCasaCliente') as $error)
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $error }}</strong>
@@ -299,7 +302,7 @@
                                     </div>
                                     <div class="form-group col-md-4" id="grupo__numeroInteriorCasaCliente">
                                         <div class="formulario__grupo-input">
-                                            <input type="text" class="form-control formulario__input @error('numeroInteriorCasaCliente') is invalid @enderror" name="numeroInteriorCasaCliente" value="{{old('numeroInteriorCasaCliente')}}" id="nInt" placeholder="N° int">
+                                            <input type="text" class="form-control formulario__input @error('numeroInteriorCasaCliente') is invalid @enderror" name="numeroInteriorCasaCliente" value="{{old('numeroInteriorCasaCliente')}}" id="numeroInteriorCasaCliente" placeholder="N° int">
                                             <i class="formulario__validacion-estado fas fa-times-circle"></i>
                                         </div>
                                         <p class="formulario__input-error">El Numero de la casa tiene que ser de maximo 10 dígitos, solo puede contener numeros y letras</p>
@@ -315,7 +318,7 @@
 
                                     <div class="form-group col-md-9" id="grupo__entreCallesCliente">
                                         <div class="formulario__grupo-input">
-                                            <input type="text" class="form-control formulario__input @error('entreCallesCliente') is invalid @enderror" value="{{old('entreCallesCliente')}}" name="entreCallesCliente" id="inputEntreCalles" placeholder="Entre calles">
+                                            <input type="text" class="form-control formulario__input @error('entreCallesCliente') is invalid @enderror" value="{{old('entreCallesCliente')}}" name="entreCallesCliente" id="entreCallesCliente" placeholder="Entre calles">
                                             <i class="formulario__validacion-estado fas fa-times-circle"></i>
                                         </div>
                                         <p class="formulario__input-error">Tiene que ser de maximo 50 caracteres, solo puede contener letras y numeros</p>
@@ -329,7 +332,7 @@
                                 <div class="form-row">
                                     <div class="form-group col-md-9" id="grupo__referenciasCasaCliente">
                                         <div class="formulario__grupo-input">
-                                            <input type="text" class="form-control formulario__input @error('referenciasCasaCliente') is invalid @enderror" value="{{old('referenciasCasaCliente')}}" name="referenciasCasaCliente" id="referenciasDomicilio" placeholder="Referencias del domicilio">
+                                            <input type="text" class="form-control formulario__input @error('referenciasCasaCliente') is invalid @enderror" value="{{old('referenciasCasaCliente')}}" name="referenciasCasaCliente" id="referenciasCasaCliente" placeholder="Referencias del domicilio">
                                             <i class="formulario__validacion-estado fas fa-times-circle"></i>
                                         </div>
                                         <p class="formulario__input-error">Tiene que ser de maximo 50 caracteres y solo puede contener letras</p>
@@ -384,7 +387,7 @@
                                     <div class="form-row">
                                         <div class="form-group col-md-7" id="grupo__calleClienteCobro">
                                             <div class="formulario__grupo-input">
-                                                <input type="text" class="form-control formulario__input  @error('calleClienteCobro') is invalid @enderror" name="calleClienteCobro" value="{{old('calleClienteCobro')}}" id="calleCobro" placeholder="*Calle">
+                                                <input type="text" class="form-control formulario__input  @error('calleClienteCobro') is invalid @enderror" name="calleClienteCobro" value="{{old('calleClienteCobro')}}" id="calleClienteCobro" placeholder="*Calle">
                                                 <i class="formulario__validacion-estado fas fa-times-circle"></i>
                                             </div>
                                             <p class="formulario__input-error">la calle tiene que ser de maximo 30 caracteres, solo puede contener letras y numeros</p>
@@ -725,5 +728,7 @@
         <script src="https://code.jquery.com/jquery-3.5.1.js" type="text/javascript"></script>
         <script src="{{ asset('js/Ventas/AgregarClientesEstilos.js') }}" charset="utf8" type="text/javascript"></script>
         <script src="{{ asset('js/Ventas/AgregarClienteAjax.js') }}" charset="utf8" type="text/javascript"></script>
-         @endsection
+        <script src="{{ asset('js/Ventas/AgregarClienteValidaciones.js') }}" charset="utf8" type="text/javascript"></script>
+       
+        @endsection
         @endsection

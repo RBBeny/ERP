@@ -89,14 +89,16 @@ class VentasGerenteController extends Controller
         
     }
     public function Reporte(){
-       $Datos['pagos'] = DB::table('tpago')
+       $Datos = DB::table('tpago')
        ->select('tcontrato.cveContrato','nomFormaPago','cvePago','fechaPago','cantidadPago','restantePaquete','nombreCobrador',"apellidoPaternoCobrador","apellidoMaternoCobrador")
        ->join('tcobrador', 'tcobrador.cveCobrador', '=', 'tpago.cveCobrador')
        ->join('tcontrato', 'tcontrato.cveContrato', '=', 'tpago.cveContrato')
        ->join('tsolicitud', 'tsolicitud.cveContrato', '=', 'tpago.cveContrato')
        ->join('cformapago', 'cformapago.cveFormaPago', '=', 'tsolicitud.cveFormaPago')
        ->get();
-        return view('GerenteVentas.GenerarReporte',$Datos);
+       date_default_timezone_set("America/Mexico_City");
+       $Fecha =  date("F-Y");
+        return view('GerenteVentas.GenerarReporte',['pagos'=> $Datos, 'Fecha'=>$Fecha]);
        
     }
     public function insertarUsuario(Request $request){

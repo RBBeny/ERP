@@ -195,10 +195,18 @@ visibility: hidden;
 	margin-bottom: 0;
 	display: none;
 }
+.formulario__input-error-required {
+	font-size: 12px;
+	margin-bottom: 0;
+	display: none;
+}
 .formulario__grupo-input {
 	position: relative;
 }
 .formulario__input-error-activo {
+	display: block;
+}
+.formulario__input-error-required-activo {
 	display: block;
 }
 
