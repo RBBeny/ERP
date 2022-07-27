@@ -1,6 +1,6 @@
 @extends('layouts.plantilla')
 
-@section('titulo','Usuarios RH')
+@section('titulo','Vendedores RH')
 @section('css')
 {{-- <script src="{{ asset('js/Ventas/clientesVentas.js') }}" type="text/javascript" ></script> --}}
 <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.1/css/bootstrap.min.css" type="text/css" rel="stylesheet">
@@ -18,9 +18,10 @@
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb">
     <li class="breadcrumb-item"><a href="/homeRh">Home</a></li>
-    <li class="breadcrumb-item active" aria-current="page">UsuariosRH</li>
+    <li class="breadcrumb-item active" aria-current="page">VendedoresRH</li>
   </ol>
 </nav>
+
 <!-- Button trigger modal -->
 <div align="right" style="padding-right: 40px;">
 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
@@ -58,7 +59,14 @@
                                 <option value="2">Cobranza</option>
                     </select>
         </div>
-
+        <div class="form-group">
+    <label for="InputcveEstatus">Estatus</label>
+  <select class="form-select" id="cveEstatus" placeholder="Esttus"  name="cveEstatus" aria-label="Default select example">
+  @foreach($estados as $estado)
+  <option value="{{ $estado->cveEstatus}} ">{{$estado-> nomEstatus}}</option>
+  @endforeach
+</select>
+</div>
         <button id="btn" type="submit" class="btn btn-primary btn-block" disabled>Submit</button>
       </form>
       </div>
@@ -99,6 +107,9 @@
     $(document).ready(function() {
         $('#clienteVentas').DataTable();
     });
+</script>
+<script>
+  
 </script>
 @endsection
 @endsection

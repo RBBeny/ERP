@@ -11,6 +11,7 @@ Route:: get('/ClienteCobranza',[CobranzaController::class, 'ClienteCobranza']);
 Route:: get('/TablasClientesC',[CobranzaController::class, 'TablasClientesC']);
 Route::post('insertarPago',[CobranzaController::class,'insertarPago'])->name('insertarPago.insertarPago');
 Route:: get('/VerCliente/{id}', [CobranzaController::class, 'cliente']);
+Route::get('delete/{cvePago}',[CobranzaController::class,'eliminarPago'])->name('eliminarPago');
 
 Route:: get('/homeGCobranza', [CobranzaGerenteController::class, 'home']);
 Route:: get('/TablaUsuariosGC', [CobranzaGerenteController::class, 'usuarios']);

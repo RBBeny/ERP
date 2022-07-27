@@ -10,4 +10,9 @@ class Cobrador extends Model
     protected $table = "tcobrador";
     protected $primaryKey="cveCobrador";
     protected $fillable = ['nombreCobrador','apellidoPaternoCobrador','apellidoMaternoCobrador','comisionCobrador','cveEstatus'];
+    
+    public $timestamps=false;
+
 }
+
+

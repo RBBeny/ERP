@@ -24,9 +24,24 @@ class CobranzaController extends Controller
         ->join('tsolicitud', 'tsolicitud.cveContrato', '=', 'tpago.cveContrato')
         ->join('cformapago', 'cformapago.cveFormaPago', '=', 'tsolicitud.cveFormaPago')
         ->get();
-        return view('Cobranza.PagosCobranza',$Datos);
+
+        $cobradores['cobradores'] = DB::table('tcobrador')
+        ->select('tcobrador.cveCobrador','nombreCobrador','apellidoPaternoCobrador','apellidoMaternoCobrador')
+        ->get();
+        return view('Cobranza.PagosCobranza',$Datos,$cobradores);
     }    
     public function insertarPago(Request $request){
+        //validaciones
+        $this->validate($request, [
+            'cvePago'=>'required|min:1|max:10|unique:tpago',
+            'fechaPago'=>'required',
+            'cantidadPago'=>'required',
+            'cveContrato'=>'required',
+            'cveCobrador'=>'required',
+            
+        ]);
+        //fin
+        
         $Pago = new Pago();
         $Pago->cvePago=$request->input('cvePago');
         $Pago->fechaPago=$request->input('fechaPago');
@@ -34,6 +49,9 @@ class CobranzaController extends Controller
         $Pago->cveContrato=$request->input('cveContrato');
         $Pago->cveCobrador=$request->input('cveCobrador');
         $Pago->save();
+
+        return back()->with('mensaje','se agrego');
+        
     }
     public function Recibos(){
         return view('Cobranza.Recibos');
@@ -98,6 +116,19 @@ class CobranzaController extends Controller
 
 
         return view('Cobranza.ClientesCobranza',['clientes'=>$Datos,'pagos'=>$Pagos,'cobros'=>$Cobros]);
+    }
+
+    public function eliminarPago(Request $request, $cvePago){
+        if($request->ajax()){
+            $Pago = tpago::find($cvePago);
+            $Pago->delete();
+
+
+            return response()->json([
+                'mensaje'=> '<strong>Se acaba de eliminar </strong> el pago('. $Pago->cvePago . ') Exitosamente'
+            ]);
+    
+        }
     }
 
 }

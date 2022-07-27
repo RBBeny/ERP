@@ -1,6 +1,6 @@
 @extends('layouts.plantilla')
 
-@section('titulo','Clientes Cobranza')
+@section('titulo','Pagos Cobranza')
 @section('css')
 {{-- <script src="{{ asset('js/Ventas/clientesVentas.js') }}" type="text/javascript" ></script> --}}
 <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.1/css/bootstrap.min.css" type="text/css" rel="stylesheet">
@@ -36,15 +36,34 @@ Agregar Pagos
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
+  
+
       <form>
+<!-- aqui-->
+@if($errors->any())
+          <div class="alert alert-danger">
+            <ul>
+              @foreach($errors->all() as $error)
+                <li>{{$error}}</li>
+              @endforeach
+            </ul>
+          </div>
+        @endif
+
   <div class="form-group">
     @csrf
-    <label for="InputCveContrato">Clave Contrato</label>
-    <input type="number" class="form-control" id="cveContrato" placeholder="Clave del Contrato" value="cveContrato" name="cveContrato" required>
+    <label for="InputCveContrato">Numero de Contrato</label>
+    @error('cveContrato')
+      <br>
+    <small>*{{$message}}</small>
+    <br>
+   @enderror
+    <input type="number" class="form-control" id="cveContrato" placeholder="Numero de Contrato" value="cveContrato" name="cveContrato" required>
+
   </div>
   <div class="form-group">
     <label for="InputNombre">Nombre del Cliente</label>
-    <input type="text" class="form-control" id="InputNombre" placeholder="Nombre" readonly required>
+    <input type="text" class="form-control" id="InputNombre" placeholder="Nombre" readonly >
   </div>
   <div class="form-group">
     <label for="InputFecha">Fecha</label>
@@ -59,10 +78,16 @@ Agregar Pagos
     <input type="number" class="form-control" id="cantidadPago" placeholder="Cantidad" value="cantidadPago" name="cantidadPago"  required>
   </div>
   <div class="form-group">
-    <label for="InputCveCobrador">Clave Cobrador</label>
-    <input type="number" class="form-control" id="cveCobrador" placeholder="Clave Cobrador" value="cveCobrador" name="cveCobrador" required>
-  </div>
-  <button type="submit" id="btnGuardarPago" class="btn btn-success">Guardar</button>
+    <label for="InputCveCobrador">Nombre Cobrador</label>
+  <select class="form-select" id="cveCobrador" placeholder="Clave Cobrador" value="cveCobrador" name="cveCobrador aria-label="Default select example">
+  <option selected>Cobredores</option>
+  @foreach($cobradores as $cobrador)
+  <option value="{{ $cobrador->cveCobrador}} ">{{ $cobrador->nombreCobrador}} {{ $cobrador-> apellidoPaternoCobrador}} {{ $cobrador-> apellidoMaternoCobrador}}</option>
+  @endforeach
+</select>
+</div>
+  <button type="button"  data-bs-dismiss="modal" aria-label="Close" class="btn btn-danger">Cancelar</button>
+  <button type="submit" id="btnGuardarPago" class="btn btn-success" >Guardar</button>
 
 </form>
       </div>
@@ -73,7 +98,7 @@ Agregar Pagos
 <br>
 <br>
 <div>
-                    <table id="pagos" class="display compact" style="width:100%">
+                    <table id="pagos"  class="table display table-striped table-bordered nowrap" style="width:100%">
                         <thead>
                             <tr>
                             <th scope="col">Numero de Pago</th>
@@ -83,10 +108,12 @@ Agregar Pagos
                             <th scope="col">Restante</th>
                             <th scope="col">Fecha</th>
                             <th scope="col">Cobrador</th>
-                                
+                            <th scope="col">Elimimar</th>
+
                             </tr>
                         </thead>
                         <tbody>
+                          
                         @foreach($pagos as $pago)
                             <tr>
                                 <td>{{ $pago-> cvePago}}</td>
@@ -96,7 +123,18 @@ Agregar Pagos
                                 <td>{{ $pago-> restantePaquete}}</td>
                                 <td>{{ $pago-> fechaPago}}</td>
                                 <td>{{ $pago->nombreCobrador}} {{ $pago-> apellidoPaternoCobrador}} {{ $pago-> apellidoMaternoCobrador}}</td>
-                            </tr>
+                                <td>
+                                  <form name="form-data" id="form-data" action="{{ route('eliminarPago',$pago->cvePago)}}" method="POST">
+                                    {{method_field('DELETE') }}
+                                    {{csrf_field () }}
+                                    <a href="#" class="btn-delete btn btn-danger btn-sm" id="{{ $pago->cvePago}}" title="Borrar Pago">
+                                      <i class="zmdi zmdi-delete zmdi-hc-lg"></i>
+                                      Eliminar
+                                    </a>
+
+                                  </form>
+                                </td>
+                              </tr>
                             @endforeach
                         </tbody>
                     </table>
@@ -126,6 +164,34 @@ $(document).ready(function () {
 });
 </script>
 <script>
+  $(document).ready(function (){
+    $('contenMsjs').hide();
+
+    $(".btn-delete").click(function (e){
+      e.preventDefault();
+      var id = $(this).attr("id");
+
+      var form  =$(this).parents("form");
+      var url   =form.attr('action');
+        $.ajax({
+          type: "DELETE",
+          url: url,
+          data: $("#form-data").serialize(),
+          success: function(data)
+          {
+            $("#contenMsjs").show();
+            $('#msj').html(datamensaje);
+            $('#tpagoAll').html(data.totalprofesores);
+            $("#registro" + id).hide('slow');
+          setTimeout(function(){
+            $("#contenMsjs").fadeOut("slow");
+          },4000);            
+          }
+        });
+    });
+  });
+</script>
+<script>
     $(document).ready(function(){
         $('#clienteVentas').DataTable();
 
@@ -152,11 +218,11 @@ $(document).ready(function () {
        },
        success:function(res){
                console.log('Se ha creado un registro correctamente');
-               alertSucces("Se agrego el estado");
+               alertSucces("Se agrego el pago");
                document.getElementById('#nomEstado');
             },
         error:function(res){
-            alertDanger("No se agrego el estatado")
+            alertDanger("No se agrego el pago")
             console.log("No se ha hecho el registro");
         }            
    });
