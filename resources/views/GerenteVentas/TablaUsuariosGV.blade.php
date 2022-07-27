@@ -4,7 +4,7 @@
 @section('css')
 {{-- <script src="{{ asset('js/Ventas/clientesVentas.js') }}" type="text/javascript" ></script> --}}
 <link href="https://cdn.datatables.net/1.11.4/css/dataTables.bootstrap5.min.css" type="text/css" rel="stylesheet">
-
+<link href="https://cdn.datatables.net/1.11.4/css/dataTables.bootstrap5.min.css" type="text/css" rel="stylesheet">
 
 <link href="{{ asset('css/Ventas/clientesVentas.css') }}" rel="stylesheet">
 @endsection
@@ -57,8 +57,9 @@
             <div class="mb-3">
               <label class="form-label">Rol</label>
               <select name="cveTipoUsuario" class="form-select" aria-label=" select example" required>
-                <option selected value="">Selecciona opcion</option>
-                <option value=5>Cobranza</option>
+              @foreach($rols as $rol) 
+              <option value="{{$rol->cveTipoUsuario}}">{{ $rol-> nomTipoUsuario}}</option>
+              @endforeach
               </select>
             </div>
             <div class="mb-3">
@@ -68,7 +69,7 @@
             <div class="mb-3">
               <input type="number" name="cveEstatus" value="3" class="form-control" hidden>
             </div>
-            <button id="btn" type="submit" class="btn btn-primary btn-block">Submit</button>
+            <button id="btn" type="submit" class="btn btn-primary btn-block">Guardar</button>
           </form>
         </div>
       </div>
@@ -81,22 +82,22 @@
             <thead>
                 <tr>
                     <th scope="col">Nombre</th>
-                    <th scope="col">Rol</th>
                     <th scope="col">Nickname</th>
+                    <th scope="col">Rol</th>
                     <th scope="col">Opciones</th>    
                 </tr>
             </thead>
             <tbody>
+            @foreach($usuario as $usuario)
                 <tr>
-                    <td>Adrian Eduardo Villanueva</td>
-                    <td>Cobrador</td>
-                    <td>adrian.villanueva</td>
+                    <td>{{ $usuario-> nombreUsuario}} {{ $usuario-> apellidoPaternoUsuario}} {{ $usuario-> apellidoMaternoUsuario}}</td>
+                    <td>{{ $usuario-> nomUsuario}}</td>
+                    <td>{{ $usuario-> nomTipoUsuario}}</td>
+                    <td>{{ $usuario-> nomEstatus}}</td>
                     <td><a data-bs-toggle="modal" onclick="eliminar()"><i style="font-size:25px; color:red;" class="bi bi-trash"></i></a>
                     <a data-bs-toggle="modal" data-bs-target="#EditarUsuario"><i style="font-size:25px; color:blue;" class="bi bi-pencil-square"></i></a></td>
-                   
-
-
         </tr>
+        @endforeach
       </tbody>
     </table>
 

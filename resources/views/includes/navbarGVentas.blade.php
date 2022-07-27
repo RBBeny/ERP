@@ -11,20 +11,24 @@
                <h3>ERP <span>Jarcie</span></h3>
            </div>
            <div class="Derecha_area">
-                <a href="/logout" class="cerrarSesion_btn">logout</a>
-            </div>
-            </div>
-        </div>
-        <div class="barraMenu">
-            <center>
-            <i class="fas fa-user fa-5x" ></i>
-            <h4>Usuario</h4>
+           
+            <a href="/logout" class="cerrarSesion_btn">Cerrar Sesión</a>
+         </div>
+         </div>
+     </div>
+     <div class="barraMenu">
+         <center>
+         <i class="fas fa-user fa-5x" ></i>
+         <h4>
+             @if(auth()->check())
+             {{ auth()->user()->nomUsuario }}
+      @endif
+         </h4>
             </center>
             <a href="/homeGVentas"> <i class="fas fa-home fa-lg"></i></i><span>Home</span></a>
-            <a href="/TablaUsuariosGV"> <i class="fas fa-users fa-lg"></i></i><span>Ver Usuarios</span></a>
-           <!-- <a href="/TablaClienteGV"> <i class="fas fa-users fa-lg"></i></i><span>Ver Clientes</span></a>
-            <a href="/GenerarReporte"> <i class="bi bi-card-text"></i><span>Generar Reporte</span></a>-->
-
+            <a href="/TablaUsuariosGV"> <i class="fa-solid fa-user-group fa-lg"></i></i><span>Usuarios</span></a>
+          <a href="/TablaClienteGV"> <i class="fas fa-users fa-lg"></i></i><span>Clientes</span></a>
+            <a href="/GenerarReporte"> <i class="bi bi-card-text"></i><span>Ventas</span></a>
         </div>
 
-   
+      

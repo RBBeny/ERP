@@ -10,16 +10,21 @@
                <h3>ERP <span>Jarcie</span></h3>
            </div>
            <div class="Derecha_area">
-               <a href="#" class="cerrarSesion_btn">logout</a>
+           
+               <a href="/logout" class="cerrarSesion_btn">Cerrar Sesión</a>
             </div>
             </div>
         </div>
         <div class="barraMenu">
             <center>
             <i class="fas fa-user fa-5x" ></i>
-            <h4>Usuario</h4>
+            <h4>
+                @if(auth()->check())
+                {{ auth()->user()->nomUsuario }}
+         @endif
+            </h4>
             </center>
-            <a href="/HomeAdmin"> <i class="fas fa-home fa-lg"></i></i><span>Home</span></a>
+            <a href="/homeAdmin"> <i class="fas fa-home fa-lg"></i></i><span>Home</span></a>
             <a href="/verUsuarios"> <i class="fas fa-user-plus fa-lg"></i></i><span>Usuarios</span></a>
             <a href="/verUsuarioAdmin"> <i class="fas fa-desktop"></i></i><span>Monitoreo</span></a>
 

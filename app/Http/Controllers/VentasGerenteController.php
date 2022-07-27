@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class VentasGerenteController extends Controller
 {
@@ -11,10 +12,22 @@ class VentasGerenteController extends Controller
         return view('GerenteVentas.homeGVentas');
     }
     public function usuarios(){
-        return view('GerenteVentas.TablaUsuariosGV');
+        $usuario = DB::table('tusuario')
+        ->select('nombreUsuario','apellidoPaternoUsuario','apellidoMaternoUsuario','nomUsuario','ctipousuario.nomTipoUsuario','cEstatus.nomEstatus')
+        ->join('ctipousuario','ctipousuario.cveTipoUsuario','=','tusuario.cveTipoUsuario')
+        ->join('cEstatus','cEstatus.cveEstatus','=','tusuario.cveEstatus')
+        ->where('ctipousuario.nomTipoUsuario','=','Ventas')
+        ->get();
+
+        $rols=DB::table('ctipousuario')
+        ->select('cveTipoUsuario','nomTipoUsuario')
+        ->where('ctipousuario.nomTipoUsuario','=','Ventas')
+        ->get();
+
+        return view('GerenteVentas.TablaUsuariosGV',['usuario'=>$usuario,'rols'=>$rols]);
     }
     public function clientes(){
-       /* $Datos['clientes'] = DB::table('tcliente')
+        $Datos['clientes'] = DB::table('tcliente')
         ->select('cveCliente','tsolicitud.cveSolicitud','tcontrato.cveContrato','nomCliente',"apellidoPaternoCliente","apellidoMaternoCliente","nomEstado","nomMunicipio","nomColonia","numeroExteriorCasaClienteCobro","numeroInteriorCasaClienteCobro","telefonoCliente","nomEstatusContrato")
         ->join('tcontrato', 'tcontrato.cveContrato', '=', 'tcliente.cveContrato')
         ->join('tsolicitud', 'tsolicitud.cveContrato', '=', 'tcliente.cveContrato')
@@ -23,11 +36,11 @@ class VentasGerenteController extends Controller
         ->join('ccolonia', 'ccolonia.cveColonia', '=', 'tcliente.cveColoniaClienteCobro')
         ->join('cEstatusContrato', 'cEstatusContrato.cveEstatusContrato', '=', 'tcontrato.cveEstatusContrato')
         ->get();
-         return view('GerenteVentas.TablaClienteGV',$Datos);*/
-        return view('GerenteVentas.TablaClienteGV');
+         return view('GerenteVentas.TablaClienteGV',$Datos);
+     
     }
-    public function cliente(){
-      /*  $Datos = DB::table('tcliente')
+    public function cliente($cliente){
+       $Datos = DB::table('tcliente')
         ->select('tcontrato.cveContrato','tsolicitud.cveSolicitud',"nomEstatusContrato",
         'nomCliente',"apellidoPaternoCliente","apellidoMaternoCliente","telefonoCliente",
         "telefonoDosCliente","telefonoTresCliente","estadoCivilCliente","fechaNacimientoCliente"
@@ -72,20 +85,26 @@ class VentasGerenteController extends Controller
         ->where ('tcliente.cveCliente', '=',$cliente)
         ->get();
         return view('GerenteVentas.verClienteGV',['clientes'=>$Datos,'pagos'=>$Pagos,'cobros'=>$Cobros]);
-*/
 
-        return view('GerenteVentas.verClienteGV');
+        
     }
     public function Reporte(){
-     /*   $Datos['pagos'] = DB::table('tpago')
+       $Datos['pagos'] = DB::table('tpago')
        ->select('tcontrato.cveContrato','nomFormaPago','cvePago','fechaPago','cantidadPago','restantePaquete','nombreCobrador',"apellidoPaternoCobrador","apellidoMaternoCobrador")
        ->join('tcobrador', 'tcobrador.cveCobrador', '=', 'tpago.cveCobrador')
        ->join('tcontrato', 'tcontrato.cveContrato', '=', 'tpago.cveContrato')
        ->join('tsolicitud', 'tsolicitud.cveContrato', '=', 'tpago.cveContrato')
        ->join('cformapago', 'cformapago.cveFormaPago', '=', 'tsolicitud.cveFormaPago')
        ->get();
-        return view('GerenteVentas.GenerarReporte',$Datos);*/
-        return view('GerenteVentas.GenerarReporte');
+        return view('GerenteVentas.GenerarReporte',$Datos);
+       
+    }
+    public function insertarUsuario(Request $request){
+        if($request->ajax()){
+           
+             
+                }
+
     }
 
 }
