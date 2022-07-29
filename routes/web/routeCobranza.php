@@ -3,6 +3,19 @@
 use Illuminate\Support\Facades\Route;
 use App\http\Controllers\CobranzaController;
 
+<<<<<<< HEAD
+=======
+Route:: get('/homeCobranza', [CobranzaController::class, 'home']);
+Route:: get('/ClientesCobranza',[CobranzaController::class, 'clientes']);
+Route:: get('/PagosCobranza',[CobranzaController::class, 'PagosCobranza']);
+Route:: get('/Recibos',[CobranzaController::class, 'Recibos']);
+Route:: get('/ClienteCobranza',[CobranzaController::class, 'ClienteCobranza']);
+Route:: get('/TablasClientesC',[CobranzaController::class, 'TablasClientesC']);
+Route::post('insertarPago',[CobranzaController::class,'insertarPago'])->name('insertarPago.insertarPago');
+Route:: get('/VerCliente/{id}', [CobranzaController::class, 'cliente']);
+Route::get('delete/{cvePago}',[CobranzaController::class,'eliminarPago'])->name('eliminarPago');
+
+>>>>>>> 9e4a0aed4251c7669f1045e4803e9cba51c59cca
 Route::group(['middleware' => 'isCobranza'], function(){
     Route:: get('/homeCobranza', [CobranzaController::class, 'home']);
     Route:: get('/ClientesCobranza',[CobranzaController::class, 'clientes']);
