@@ -1,15 +1,18 @@
 function alertSucces(message){
     $('#alerts').append(
+        
+        '<div class="formulario__mensaje-exito" id="formulario__mensaje-exito">'+
         '<div class="alert alert-success alert-dismissible fade show" role="alert">'+
         '<strong>Se agrego el registro correctamente!</strong> '+
-        '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>'+ message+'</div>');
+        '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>'+ message+'</div></div>');
         $(window).scrollTop(0);   
 }
 function alertDanger(message){
     $('#alerts').append(
+        '<div class="formulario__mensaje" id="formulario__mensaje>'+
         '<div class="alert alert-danger alert-dismissible fade show" role="alert">'+
         '<strong>No se agrego el registro correctamente!</strong> '+
-        '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>'+ message+'</div>');
+        '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>'+ message+'</div></div>');
         $(window).scrollTop(0);   
 }
 $(document).ready(function(){
@@ -28,12 +31,6 @@ $(document).ready(function(){
         success:function(res){
                console.log('Se ha creado un registro correctamente');
                alertSucces("Se agrego el estado");
-               $('#nomEstado')[0].reset();
-              /* var html = '';
-               $(res.estados).each(function(key,value){
-                html =+ '<option>'+value.nomEstado+'<option>';
-
-               });*/
             },
         error:function(res){
             alertDanger("No se agrego el estado")
@@ -43,6 +40,8 @@ $(document).ready(function(){
     });
     return false;
 });
+
+
 $('#guardarMunicipio').click(function(e){    
     e.preventDefault();
     var cveEstado = $('#nombreEstadoNew').val();
@@ -60,13 +59,6 @@ $('#guardarMunicipio').click(function(e){
         success:function(res){
                console.log('Se ha creado un registro correctamente');
                alertSucces("Se agrego el Municipio");
-               $('#nombreEstadoNew')[0].reset();
-               $('#nombreMunicipioNew')[0].reset();
-              /* var html = '';
-               $(res.estados).each(function(key,value){
-                html =+ '<option>'+value.nomEstado+'<option>';
-
-               });*/
             },
         error:function(res){
             alertDanger("No se agrego el Municipio")
@@ -76,8 +68,9 @@ $('#guardarMunicipio').click(function(e){
     });
     return false;
 });  
-$('#guardarColonia').click(function(e){    
-    e.preventDefault();
+const AgregarColonia = document.getElementById('AgregarColonia');
+AgregarColonia.addEventListener('submit', (e) => {
+    e.preventDefault();   
     var cveMunicipio = $('#municipioColoniaNew').val();
     var nomColonia = $('#nomColoniaNew').val();
     var _token = $("input[name=_token]").val();
@@ -93,13 +86,12 @@ $('#guardarColonia').click(function(e){
         success:function(res){
                console.log('Se ha creado un registro correctamente');
                alertSucces("Se agrego la colonia");
-               $('#municipioColoniaNew')[0].reset();
-               $('#nomColoniaNew')[0].reset();
               /* var html = '';
                $(res.estados).each(function(key,value){
                 html =+ '<option>'+value.nomEstado+'<option>';
 
                });*/
+               AgregarColonia.reset();
             },
         error:function(res){
             alertDanger("No se agrego la colonia")
@@ -107,7 +99,7 @@ $('#guardarColonia').click(function(e){
         }            
         
     });
-    return false;
+   
 }); 
 $("#estado").on('change',function(){
 var cveEstado = $(this).val();

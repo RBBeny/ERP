@@ -25,14 +25,10 @@
          </h4>
             </center>
             <a href="/homeRh"> <i class="fas fa-home fa-lg"></i></i><span>Home</span></a>
-<<<<<<< HEAD
             <a href="/VendedoresRH"> <i class="fas fa-thin fa-user-tie"></i></i><span>Vendedores</span></a>
             <a href="/CobradoresRH"> <i class="fas fa-money-check-alt"></i></i><span>Cobradores</span></a>
 
-=======
-            <a href="/UsuariosRH"> <i class="fa-solid fa-user-plus fa-lg"></i></i><span>Usuarios</span></a>
-            <a href="/ConsultarVentasRH"> <i class="fa-solid fa-magnifying-glass fa-lg"></i></i><span>Consultar Ventas</span></a>
->>>>>>> 3ce1a516e74118afac5699c95d81971ad66f93ca
+
 
         </div>
 

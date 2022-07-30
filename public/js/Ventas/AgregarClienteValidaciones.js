@@ -31,12 +31,12 @@ const expresiones = {
     referenciasCasaClienteCobro: /^[a-zA-Z0-9\s]{1,50}$/,
     cvePaquete: /^\d{1,8}$/,
     costoPaquete: /^(?!0\.00)[1-9]\d{0,2}(\d{3})*(\.\d\d)?$/,
-    extraPaquete: /^(?!0\.00)[1-9]\d{0,2}(\d{3})*(\.\d\d)?$/,
+    extraPaquete: /^\d{1,8}$/,
     cveVendedor: /^\d{1,8}$/,
     cveFormaPago: /^\d{1,8}$/,
     cveCobrador: /^\d{1,8}$/,
-    bonificacion: /^(?!0\.00)[1-9]\d{0,2}(\d{3})*(\.\d\d)?$/,
-    inversionInicial: /^(?!0\.00)[1-9]\d{0,2}(,\d{3})*(\.\d\d)?$/
+    bonificacion: /^\d{1,8}$/,
+    inversionInicial: /^\d{1,8}$/
 
 }
 const campos = {
@@ -327,7 +327,7 @@ formulario.addEventListener('submit', (e) => {
         && campos.cveColoniaCliente && campos.calleCliente && campos.numeroExteriorCasaCliente && campos.numeroInteriorCasaCliente && campos.entreCallesCliente
         && campos.referenciasCasaCliente && campos.cveMunicipioClienteCobro && campos.cveColoniaClienteCobro && campos.calleClienteCobro && campos.numeroExteriorCasaClienteCobro
         && campos.numeroInteriorCasaClienteCobro && campos.entreCallesClienteCobro && campos.referenciasCasaClienteCobro && campos.cvePaquete
-        && campos.costoPaquete && campos.extraPaquete && campos.cveVendedor && campos.fechaSolicitud && campos.cveFormaPago
+        &&  campos.extraPaquete && campos.cveVendedor && campos.fechaSolicitud && campos.cveFormaPago
         && campos.cveCobrador && campos.bonificacion && campos.inversionInicial
     ) {
         var noSolicitud = document.getElementById('noSolicitud').value;
@@ -356,7 +356,6 @@ formulario.addEventListener('submit', (e) => {
         var entreCallesClienteCobro = document.getElementById('entreCallesClienteCobro').value;
         var referenciasCasaClienteCobro = document.getElementById('referenciasCasaClienteCobro').value;
         var cvePaquete = document.getElementById('paquete').value;
-        var costoPaquete = document.getElementById('precio').value;
         var extraPaquete = document.getElementById('costoAdicional').value;
         var cveVendedor = document.getElementById('vendedor').value;
         var fechaSolicitud = document.getElementById('fechaSolicitud').value;   
@@ -392,7 +391,7 @@ formulario.addEventListener('submit', (e) => {
         console.log("entreCallesClienteCobro: " + entreCallesClienteCobro);
         console.log("referenciasCasaClienteCobro: " + referenciasCasaClienteCobro);
         console.log("cvePaquete: " + cvePaquete);
-        console.log("costoPaquete: " + costoPaquete);
+       
         console.log("extraPaquete: " + extraPaquete);
         console.log("cveVendedor: " + cveVendedor);
         console.log("fechaSolicitud: " + fechaSolicitud);
@@ -403,7 +402,8 @@ formulario.addEventListener('submit', (e) => {
         console.log("token: " + _token);
         $.ajax(
         {
-            url: 'insertarCliente',type:"POST", data:{
+            url: 'insertarCliente',type:"POST", 
+            data:{
             noSolicitud : noSolicitud,
             noContrato : noContrato,
             nombreCliente : nombreCliente,
@@ -438,11 +438,11 @@ formulario.addEventListener('submit', (e) => {
             bonificacion : bonificacion,
             inversionInicial : inversionInicial,
             _token:_token
-        }
-
-        } );
-
-        document.getElementById('formulario__mensaje-exito').classList.add('formulario__mensaje-exito-activo');
+        },
+        success:function(res){
+            console.log('Se ha creado un registro correctamente');
+    
+            document.getElementById('formulario__mensaje-exito').classList.add('formulario__mensaje-exito-activo');
         formulario.reset();
         setTimeout(() => {
             document.getElementById('formulario__mensaje-exito').classList.remove('formulario__mensaje-exito-activo');
@@ -451,6 +451,24 @@ formulario.addEventListener('submit', (e) => {
         document.querySelectorAll('.formulario__grupo-correcto').forEach((icono) => {
             icono.classList.remove('formulario__grupo-correcto');
         });
+        var cnp1 = document.getElementById("cnp1");
+        var cnp2 = document.getElementById("cnp2");
+        var cnp3 = document.getElementById("cnp3");
+        var cnp4 = document.getElementById("cnp4");
+        var progress = document.getElementById("progress");
+        cnp1.style.display = "block";
+        cnp2.style.display = "none";
+        progress.style.width = "120px";
+        cnp3.style.display = "none";
+        cnp4.style.display = "none";
+         },
+     error:function(res){
+        document.getElementById('formulario__mensaje').classList.add('formulario__mensaje-activo');
+         console.log("No se ha hecho el registro");
+     } 
+
+        } );
+
     } else {
         document.getElementById('formulario__mensaje').classList.add('formulario__mensaje-activo');
     }

@@ -6,16 +6,6 @@ use App\http\Controllers\RegisterController;
 
 
 
-<<<<<<< HEAD
-    Route::post('/register', [RegisterController::class, 'register']);
-    Route::get('/homeRh', [RHController::class, 'homeRh']);
-    Route::get('/UsuariosRH', [RHController::class, 'UsuariosRH']);
-    Route::get('/VerPagosCobranza', [CobranzaController::class, 'VerPagosCobranza']);
-    Route::get('/VerRecibos', [CobranzaController::class, 'VerRecibos']);
-    Route::get('/VerClienteCobranza', [CobranzaController::class, 'VerClienteCobranza']);
-    Route::get('/TablaClientesC', [CobranzaController::class, 'TablaClientesC']);
-});
-=======
 Route::get('/registroUsuario', [RegisterController::class, 'inicio']);
 //Route::get('/register', [RegisterController::class, 'show']);
 
@@ -34,4 +24,3 @@ Route :: post('/CobradoresRH',[RHController::class, 'CobradoresRH']);
 
 
 
->>>>>>> 9e4a0aed4251c7669f1045e4803e9cba51c59cca
