@@ -225,7 +225,20 @@ visibility: hidden;
 .formulario__mensaje-activo {
 	display: block;
 }
+.formulario__mensajeAjax {
+	display: none;
+}
 
+.formulario__mensajeAjax-activo {
+	display: block;
+}
+.formulario__mensajeAjax-exito {
+	display: none;
+}
+
+.formulario__mensajeAjax-exito-activo {
+	display: block;
+}
 .formulario__mensaje p {
 	margin: 0;
 }
