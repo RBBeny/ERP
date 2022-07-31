@@ -24,10 +24,12 @@
     <center>
         <h1>REPORTE DE INGRESOS</h1>
     </center>
-    <h4>DE AL </h4>
+    <h4>DE {{$fechaInicio}} A {{$fechaFin}}</h4>
     <hr>
     <br>
-    <h3>TOTAL DE INGRESOS:16,200$ PESOS</h3>
+    <h2>TOTAL DE INGRESOS:{{$total}}$ PESOS</h2>
+    <br>
+    <H3>Subtotales por cobrador</H3>
     <br>
     <center>
         <table>
@@ -35,22 +37,36 @@
                 <td style="width: 400px;background-color:black;color:white;" >COBRADOR</td>
                 <td style="width: 200px;background-color:black;color:white;">SUBTOTAL</td>
             </tr>
+            @foreach($registros as $regis)
             <tr>
-                <td>Jack Russell</td>
-                <td>Caniche</td>
+                <td>{{$regis->nombreCobrador}} {{$regis->apellidoPaternoCobrador}} {{$regis->apellidoMaternoCobrador}}</td>
+                <td>{{$regis->Subtotal}} $</td>
             </tr>
-            <tr>
-                <td>16</td>
-                <td>9</td>
-            </tr>
-            <tr>
-                <td>Suegra</td>
-                <td>Yo</td>
-            </tr>
+            @endforeach
         </table>
         
     </center>
-    
-    
+    <br>
+    <h3>Cobros realizados por cada cobrador</h3>
+    <br>
+    <center>
+        <table>
+            <tr>
+                <td style="width: 200px;background-color:black;color:white;" >COBRADOR</td>
+                <td style="width: 200px;background-color:black;color:white;">CLIENTE</td>
+                <td style="width: 100px;background-color:black;color:white;">ABONO</td>
+                <td style="width: 100px;background-color:black;color:white;">FECHA</td>
+            </tr>
+            @foreach($detalle as $detalle)
+            <tr>
+                <td>{{$detalle->nombreCobrador}} {{$detalle->apellidoPaternoCobrador}} {{$detalle->apellidoMaternoCobrador}}</td>
+                <td>{{$detalle->nomCliente}} {{$detalle->apellidoPaternoCliente}} {{$detalle->apellidoMaternoCliente}}</td>
+                <td>{{$detalle->cantidadPago}}</td>
+                <td>{{$detalle->fechaPago}}</td>
+            </tr>
+            @endforeach
+        </table>
+        
+    </center>
 </body>
 </html>

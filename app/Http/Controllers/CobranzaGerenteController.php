@@ -90,8 +90,19 @@ class CobranzaGerenteController extends Controller
         return view('GerenteCobranza.GenerarReporte',['pagos'=>$Pagos]);
     }
 
-    public function ReporteIdetallado($request){
+    public function ReporteIdetallado($fechainicio,$fechafin){
         
+        $Detalle= DB::table('tpago')
+        ->select('nombreCobrador','apellidoPaternoCobrador','apellidoMaternoCobrador','cantidadPago','nomCliente','apellidoPaternoCliente','apellidoMaternoCliente','fechaPago')
+        ->join('tcobrador','tcobrador.cveCobrador','=','tpago.cveCobrador')
+        ->join('tcliente','tpago.cveContrato','=','tcliente.cveContrato')
+        ->whereBetween('fechaPago',[$fechainicio,$fechafin])
+        ->OrderBy('nombreCobrador','DESC')
+        ->OrderBy('apellidoPaternoCobrador','DESC')
+        ->OrderBy('apellidoMaternoCobrador','DESC')
+        ->OrderBy('fechaPago','DESC')
+        ->get();
+
         $Registros= DB::table('tpago')
         ->select('nombreCobrador','apellidoPaternoCobrador','apellidoMaternoCobrador',DB::raw('SUM(cantidadPago) as Subtotal'))
         ->join('tcobrador','tcobrador.cveCobrador','=','tpago.cveCobrador')
@@ -99,18 +110,15 @@ class CobranzaGerenteController extends Controller
         ->GroupBy('tcobrador.cveCobrador','nombreCobrador','apellidoPaternoCobrador','apellidoMaternoCobrador')
         ->get();
 
-        $Total=DB::table('tpago')
-        ->select(DB::raw('SUM(cantidadPago) as total'))
-        ->whereBetween('fechaPago',[$fechainicio,$fechafin])
-        ->get();
+
         $count=0;
 
-        foreach ($Total as $Tot) {
-            $count=$count+$Tot->total;
+        foreach ($Registros as $Tot) {
+            $count=$count+$Tot->Subtotal;
         }
         
         if ($count>0) {
-            $pdf=PDF::loadView('GerenteCobranza.reporteDetallado',['registros'=>$Registros,'total'=>$Total,'fechaInicio'=>$fechainicio,'fechaFin'=>$fechafin]);
+            $pdf=PDF::loadView('GerenteCobranza.reporteDetallado',['registros'=>$Registros,'total'=>$count,'fechaInicio'=>$fechainicio,'fechaFin'=>$fechafin,'detalle'=>$Detalle]);
             return $pdf->download('ReporteIngresosDetallado_'.$fechainicio.'-'.$fechafin.'.pdf');
         }
         return back();
