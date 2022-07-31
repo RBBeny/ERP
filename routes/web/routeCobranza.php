@@ -4,7 +4,6 @@ use Illuminate\Support\Facades\Route;
 use App\http\Controllers\CobranzaController;
 
 
-
 Route::group(['middleware' => 'isCobranza'], function(){
     Route:: get('/homeCobranza', [CobranzaController::class, 'home']);
     Route:: get('/ClientesCobranza',[CobranzaController::class, 'clientes']);
