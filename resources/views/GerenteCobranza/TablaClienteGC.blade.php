@@ -36,7 +36,7 @@
                     <td>{{ $cliente-> cveSolicitud}}</td>
                     <td>{{ $cliente-> cveContrato}}</td>
                     <td>{{ $cliente->nomCliente}} {{ $cliente-> apellidoPaternoCliente}} {{ $cliente-> apellidoMaternoCliente}}</td>
-                    <td>{{ $cliente-> nomEstado}} {{ $cliente-> nomMunicipio}} {{ $cliente-> nomColonia}} {{ $cliente-> numeroExteriorCasaClienteCobro}} {{ $cliente-> numeroInteriorCasaClienteCobro}}</td>
+                    <td>{{ $cliente-> nomEstado}} {{ $cliente-> nomMunicipio}} {{ $cliente-> nomColonia}} {{ $cliente-> numeroExteriorCasaCliente}}</td>
                     <td>{{ $cliente-> telefonoCliente}}</td>
                     <td>{{ $cliente-> nomEstatusContrato}}</td>
                     <td ><a href="/VerClienteGC/{{$cliente-> cveCliente}}"> <i class="far fa-eye fa-lg"></i></a></td>
