@@ -18,6 +18,15 @@
   .Izquierda_area span{
   color:#1DC4E7;
   }
+/*.Derecha_area{
+  
+}*/
+  .botonCerrar{
+    float:right;
+    background: #1983D3;
+    margin-right: 2%;
+    margin-top:-30px;
+  }
    .cerrarSesion_btn{
      padding: 5px;
      background: #1983D3;
@@ -59,7 +68,8 @@
      height: 100vh;
      background-position: center;
      background-size: cover;
-     transition: 0.5s;
+     transition: 0.3s;
+     z-index: 4;
    }
    #checkk{
      display: none;

@@ -16,7 +16,7 @@
 <div class="contenedor">
     <div class="formulario__mensaje" id="formulario__mensaje">
         <div class="alert alert-danger alert-dismissible fade show" role="alert">
-            <strong>LLenar todos los campos </strong>
+            <strong>LLenar los campos correctamente </strong>
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
     </div>
@@ -218,7 +218,7 @@
                     <div class="form-row form-inline">
                         <div class="col-md-5 mb-3" id="grupo__cveEstadoCliente">
                             <div class="formulario__grupo-input">
-                                <select id="estado" class="form-control formulario__input @error('cveEstadoCliente') is invalid @enderror" name="cveEstadoCliente" value="{{old('cveEstadoCliente')}}" required>
+                                <select id="cveEstadoCliente" class="form-control formulario__input @error('cveEstadoCliente') is invalid @enderror" name="cveEstadoCliente" value="{{old('cveEstadoCliente')}}" required>
 
                                     @foreach($estados->get() as $index => $estado)
                                     <option value="{{$index}}" {{ old('cveEstadoCliente')  == $index ? 'selected' :''}}>
@@ -226,7 +226,7 @@
                                     </option>
                                     @endforeach
                                 </select>
-                                <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                            
                             </div>
                             <p class="formulario__input-error">La opción no es valida</p>
 
@@ -239,7 +239,7 @@
 
                         <div class="col-md-6 mb-2" id="grupo__cveMunicipioCliente">
 
-                            <select id="municipio" data-old="{{old('cveMunicipioCliente')}}" class="form-control  @error('cveMunicipioCliente') is invalid @enderror" value="{{old('cveMunicipioCliente')}}" name="cveMunicipioCliente" required>
+                            <select id="cveMunicipioCliente" data-old="{{old('cveMunicipioCliente')}}" class="form-control  @error('cveMunicipioCliente') is invalid @enderror" value="{{old('cveMunicipioCliente')}}" name="cveMunicipioCliente" required>
 
                             </select>
 
@@ -256,7 +256,7 @@
                     <div class="form-row form-inline">
                         <div class="col-md-8 mb-4" id="grupo__cveColoniaCliente">
 
-                            <select id="colonia" name="cveColoniaCliente" data-old="{{old('cveColoniaCliente')}}" value="{{old('cveColoniaCliente')}}" class="form-control  @error('cveColoniaCliente') is invalid @enderror" required>
+                            <select id="cveColoniaCliente" name="cveColoniaCliente" data-old="{{old('cveColoniaCliente')}}" value="{{old('cveColoniaCliente')}}" class="form-control  @error('cveColoniaCliente') is invalid @enderror" required>
 
                             </select>
 
@@ -354,10 +354,10 @@
 
                             <div class="col-md-6 mb-3" id="grupo__cveMunicipioClienteCobro">
                                 <div class="formulario__grupo-input">
-                                    <select id="municipioCobro" name="cveMunicipioClienteCobro" value="{{old('cveMunicipioClienteCobro')}}" data-old="{{old('cveMunicipioClienteCobro')}}" class="form-control formulario__input @error('cveMunicipioClienteCobro') is invalid @enderror">
+                                    <select id="cveMunicipioClienteCobro" name="cveMunicipioClienteCobro" value="{{old('cveMunicipioClienteCobro')}}" data-old="{{old('cveMunicipioClienteCobro')}}" class="form-control formulario__input @error('cveMunicipioClienteCobro') is invalid @enderror">
                                         <option value="">Municipio...</option>
                                     </select>
-                                    <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                                   
                                 </div>
                                 <p class="formulario__input-error">La opción no es valida</p>
                                 @error('cveMunicipioClienteCobro')
@@ -370,10 +370,10 @@
                         <div class="form-row form-inline">
                             <div class="col-md-5 mb-3" id="grupo__cveColoniaClienteCobro">
                                 <div class="formulario__grupo-input">
-                                    <select id="coloniaCobro" name="cveColoniaClienteCobro" value="{{old('cveColoniaClienteCobro')}} " data-old="{{old('cveColoniaClienteCobro')}}" class="form-control formulario__input @error('cveColoniaClienteCobro') is invalid @enderror">
+                                    <select id="cveColoniaClienteCobro" name="cveColoniaClienteCobro" value="{{old('cveColoniaClienteCobro')}} " data-old="{{old('cveColoniaClienteCobro')}}" class="form-control formulario__input @error('cveColoniaClienteCobro') is invalid @enderror">
                                         <option value="">Colonia...</option>
                                     </select>
-                                    <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                    
                                 </div>
                                 <p class="formulario__input-error">La opción no es valida</p>
                                 @error('cveColoniaClienteCobro')
@@ -481,7 +481,7 @@
                     <div class="form-row">
                         <div class="col-md-5 mb-3" id="grupo__cvePaquete">
                             <div class="formulario__grupo-input">
-                                <select class="form-control formulario__input @error('cvePaquete') is invalid @enderror" id="paquete" value="{{old('cvePaquete')}}" name="cvePaquete" required>
+                                <select id="cvePaquete" class="form-control formulario__input @error('cvePaquete') is invalid @enderror"  value="{{old('cvePaquete')}}" name="cvePaquete" required>
                                     <option selected>Paquete...</option>
                                     @foreach($paquetes as $paquete)
                                     <option value="{{$paquete->cvePaquete}}">{{$paquete->nombrePaquete}}</option>
@@ -499,7 +499,7 @@
                         </div>
                         <div class="col-md-3 mb-3 " id="grupo__costoPaquete">
                             <div class="formulario__grupo-input">
-                                <input type="text" class="form-control formulario__input @error('costoPaquete') is invalid @enderror" id="precio" value="{{old('costoPaquete')}}" readonly>
+                                <input type="text" class="form-control formulario__input @error('costoPaquete') is invalid @enderror" name="costoPaquete" id="precio" value="{{old('costoPaquete')}}" readonly>
                                 <i class="formulario__validacion-estado fas fa-times-circle"></i>
                             </div>
                             @error('costoPaquete')
@@ -527,13 +527,13 @@
                     <div class="form-row form-inline">
                         <div class="col-md-8 mb-3" id="grupo__cveVendedor">
                             <div class="formulario__grupo-input">
-                                <select id="vendedor" name="cveVendedor" class="form-control formulario__input @error('cveVendedor') is invalid @enderror" value="{{old('cveVendedor')}}" required>
+                                <select id="cveVendedor" name="cveVendedor" class="form-control formulario__input @error('cveVendedor') is invalid @enderror" value="{{old('cveVendedor')}}" required>
                                     <option selected>*Vendedor...</option>
                                     @foreach($vendedores as $vendedor)
                                     <option value="{{ $vendedor->cveVendedor}}">{{ $vendedor->nombreVendedor}} {{ $vendedor-> apellidoPaternoVendedor}} {{ $vendedor-> apellidoMaternoVendedor}}</option>
                                     @endforeach
                                 </select>
-                                <i class="formulario__validacion-estado fas fa-times-circle"></i>
+    
                             </div>
                             <p class="formulario__input-error">La opción no es valida</p>
                             @error('cveVendedor')
@@ -568,7 +568,7 @@
                     <div class="form-row">
                         <div class="form-group col-md-4" id="grupo__cveFormaPago">
                             <div class="formulario__grupo-input">
-                                <select id="formaPago" name="cveFormaPago" value="{{old('cveFormaPago')}}" class="form-control formulario__input @error('cveFormaPago') is invalid @enderror" required>
+                                <select id="cveFormaPago" name="cveFormaPago" value="{{old('cveFormaPago')}}" class="form-control formulario__input @error('cveFormaPago') is invalid @enderror" required>
                                     <option selected>*Forma pago...</option>
                                     @foreach($formaPagos as $formaPago)
                                     <option value="{{ $formaPago->cveFormaPago}}">{{ $formaPago->nomFormaPago}} </option>
@@ -587,7 +587,7 @@
                     <div class="form-row">
                         <div class="form-group col-md-4" id="grupo__cveCobrador">
                             <div class="formulario__grupo-input">
-                                <select class="form-control formulario__input @error('cveCobrador') is invalid @enderror" name="cveCobrador" value="{{old('cveCobrador')}}" id="nombreCobrador" required>
+                                <select class="form-control formulario__input @error('cveCobrador') is invalid @enderror" name="cveCobrador" value="{{old('cveCobrador')}}" id="cveCobrador" required>
                                     <option selected>*Cobrador...</option>
                                     @foreach($cobradores as $cobrador)
                                     <option value="{{ $cobrador->cveCobrador}}">{{ $cobrador->nombreCobrador}} {{ $cobrador-> apellidoPaternoCobrador}} {{ $cobrador-> apellidoMaternoCobrador}} </option>
@@ -667,7 +667,7 @@
                     @csrf
                     <div class="form-row ">
                         <div class="form-group col-md-5">
-                            <select id="nombreEstadoNew" class="form-control" required>
+                            <select id="cveEstadoNew" class="form-control" required>
 
                                 @foreach($estados->get() as $index => $estado)
                                 <option value="{{$index}}">
@@ -678,13 +678,13 @@
                         </div>
                     </div>
                     <div class="form-row">
-                        <div class="form-group col-md-5">
+                        <div class="form-group col-md-6">
                             <input type="text" class="form-control" name="nombreMunicipioNew" id="nombreMunicipioNew" placeholder="Nombre" required>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <button type="button" id="btn-cerrar-popupMunicipio" class="btn btn-danger">Cancelar</button>
-                        <button type="button" id="guardarMunicipio" class="btn btn-success">Guardar</button>
+                    <div class="form-group botones-popup">
+                        <button type="button" id="btn-cerrar-popupMunicipio" class="btn btn-danger boton-cerrar">Cancelar</button>
+                        <button type="submit" id="guardarMunicipio" class="btn btn-success">Guardar</button>
                     </div>
                 </form>
             </div>
@@ -696,20 +696,20 @@
                 <form action="" id="AgregarColonia" method="POST">
                     @csrf
                     <div class="form-row ">
-                        <div class="form-group col-md-5">
+                        <div class="form-group col-md-8">
 
-                            <select id="municipioColoniaNew" name="municipioColoniaNew" class="form-control">
+                            <select id="cveMunicipioColoniaNew" name="municipioColoniaNew" class="form-control">
                                 <option>Municipio...</option>
                             </select>
                         </div>
                     </div>
                     <div class="form-row">
-                        <div class="form-group col-md-5">
+                        <div class="form-group col-md-9">
                             <input type="text" class="form-control" name="nomColoniaNew" id="nomColoniaNew" placeholder="Nombre">
                         </div>
                     </div>
-                    <div class="form-group">
-                        <button type="button" id="btn-cerrar-popupColonia" class="btn btn-danger">Cancelar</button>
+                    <div class="form-group botones-popup">
+                        <button type="button" id="btn-cerrar-popupColonia" class="btn btn-danger boton-cerrar">Cancelar</button>
                         <button type="submit" id="guardarColonia" class="btn btn-success">Guardar</button>
                     </div>
                 </form>

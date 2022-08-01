@@ -5,7 +5,7 @@
 
 }
 .contenedorStep{
-width: 55%;
+width: 58%;
 height: auto;
     position: relative;
     border-radius: 5px;
@@ -110,10 +110,15 @@ visibility: hidden;
     font-family: Arial, Helvetica, sans-serif;
     padding: 20px;
     text-align: center;
-    width: 400px;
+    width: 350px;
     opacity: 0;
     transition: .3s ease all;
+    z-index: 4;
     transform: scale(0.7);
+}
+
+.boton-cerrar{
+    float: inline-start;
 }
 .popup.active{
     opacity: 1;
@@ -142,10 +147,11 @@ visibility: hidden;
         font-family: Arial, Helvetica, sans-serif;
         padding: 20px;
         text-align: center;
-        width: 400px;
+        width: 350px;
         opacity: 0;
         transition: .3s ease all;
         transform: scale(0.7);
+        z-index: 4;
     }
     .popupMunicipio.active{
         opacity: 1;
@@ -253,18 +259,36 @@ visibility: hidden;
 /* ----- -----  Estilos para Validacion ----- ----- */
 .formulario__grupo-correcto .formulario__validacion-estado {
 	color: #1ed12d; 
+    border-color: #1ed12d;
+    z-index: 1;
 	opacity: 1;
+    background-color: transparent;
+    border-color: transparent;
 }
-
+.select_text-correcto{
+    border: 2px solid #1ed12d;
+    border-color: #1ed12d;
+    display: block;
+}
 .formulario__grupo-incorrecto .formulario__label {
 	color: #bb2929;
+    
 }
 
 .formulario__grupo-incorrecto .formulario__validacion-estado {
 	color: #bb2929;
+    border-color: #bb2929;
+    z-index: 1;
 	opacity: 1;
+    background-color: transparent;
+    border-color: transparent;
 }
-
+.select_text-incorrecto{
+    border: 2px solid #bb2929;
+    border-color: #bb2929;
+    display: block;
+}
 .formulario__grupo-incorrecto .formulario__input {
 	border: 2px solid #bb2929;
+    border-color: #bb2929;
 }

@@ -1,5 +1,5 @@
 .contenedor{
-   
+ 
     padding-top: 100px;
     padding-left: 50px;
 
@@ -13,5 +13,6 @@
 
 .tablaclientes td i{
     color:gold;
-    padding-left: 40px;
+    margin-left: 10px;
+    margin-right: 10px;
 }

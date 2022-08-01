@@ -1,13 +1,13 @@
-var abrirpopupReporte = document.getElementById('abrir-popupReporte');
-var popupReporte = document.getElementById('popupReporte');
-var btnCerrarPopupReporte = document.getElementById('btn-cerrar-popupReporte');
-var overlayReporte = document.getElementById('overlayReporte');
-
-abrirpopupReporte.addEventListener('click', function() {
-    popupReporte.classList.add('active');
-    overlayReporte.classList.add('active'); 
-});
-btnCerrarPopupReporte.addEventListener('click', function() {
-    popupReporte.classList.remove('active');
-    overlayReporte.classList.remove('active');
-});
+var Mostrar = function(cveVendedor){
+   var route = "/MostrarCuentas/"+cveVendedor;
+    $.get(route,{cveVendedor : cveVendedor},function(cuentas){
+        $.each(cuentas,function(index,value){
+            $('#cuentas_ventas').append(
+            "<td>"+value.cveContrato+"</td>"+
+            "<td>"+value.cveSolicitud+"</td>"+
+            "<td>"+value.nomCliente + value.apellidoPaternoCliente + value.apellidoMaternoCliente+"</td>"
+            );
+         }) 
+                  
+     });
+ }

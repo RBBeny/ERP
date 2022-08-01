@@ -61,12 +61,12 @@
         </div>
         </form>
         <hr>
-        <table id="clienteVentas" class="table display table-striped table-bordered nowrap" style="width:100%">
+        <table id="clienteVentas" class="table display table-striped table-bordered nowrap" style="width:90%">
             <thead>
                 <tr>
-                    <th scope="col">Numero de Pago</th>
-                    <th scope="col">Numero del Contrato</th>
-                    <th scope="col">Forma de pago</th>
+                    <th scope="col">N° Pago</th>
+                    <th scope="col">N° Cont</th>
+                    <th scope="col">Forma pago</th>
                     <th scope="col">Pago</th>
                     <th scope="col">Restante</th>
                     <th scope="col">Fecha</th>

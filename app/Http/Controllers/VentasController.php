@@ -2,9 +2,13 @@
 
 namespace App\Http\Controllers;
 
+
 use App\Models\Estado;
 use App\Models\Municipio;
 use App\Models\Colonia;
+use App\Models\Contrato;
+use App\Models\Solicitud;
+use App\Models\Cliente;
 use App\Models\Pago;
 use App\Models\FormaPago;
 use App\Models\Vendedor;
@@ -209,8 +213,8 @@ class VentasController extends Controller
       */
         if ($request->ajax()) {
             $request->validate([
-                'noSolicitud' => 'required|unique:tsolicitud,cveSolicitud|max:8|min:1',
-                'noContrato' => 'required|unique:tcontrato,cveContrato|max:8|min:1',
+                'cveSolicitud' => 'required|unique:tsolicitud,cveSolicitud|max:8|min:1',
+                'cveContrato' => 'required|unique:tcontrato,cveContrato|max:8|min:1',
                 'cveEstadoCliente' => 'required|max:2|exists:cestado,cveEstado',
                 'cveMunicipioCliente' => 'required|max:2|exists:cmunicipio,cveMunicipio',
                 'cveColoniaCliente' => 'required|max:4|exists:ccolonia,cveColonia',
@@ -222,12 +226,53 @@ class VentasController extends Controller
                 'cveCobrador' => 'required|max:8|exists:tcobrador,cveCobrador'
 
             ]);
-
-
-            DB::select(
-                'call sp_AgregarCliente(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)',
-                [$request->noSolicitud, $request->noContrato, $request->nombreCliente, $request->apellidoPaternoCliente, $request->apellidoMaternoCliente, $request->numeroTelefonoCliente, $request->numeroTelefonoDosCliente, $request->numeroTelefonoTresCliente, $request->estadoCivilCliente, $request->fechaNacimientoCliente, $request->cveEstadoCliente, $request->cveMunicipioCliente, $request->cveColoniaCliente, $request->calleCliente, $request->numeroExteriorCasaCliente, $request->numeroInteriorCasaCliente, $request->entreCallesCliente, $request->referenciasCasaCliente, $request->cveMunicipioClienteCobro, $request->cveColoniaClienteCobro, $request->calleClienteCobro, $request->numeroExteriorCasaClienteCobro, $request->numeroInteriorCasaClienteCobro, $request->entreCallesClienteCobro, $request->referenciasCasaClienteCobro, $request->cvePaquete, $request->extraPaquete, $request->cveVendedor, $request->fechaSolicitud, $request->cveFormaPago, $request->cveCobrador, $request->bonificacion, $request->inversionInicial]
-            );
+                $Contrato = new Contrato();
+                $Contrato->cveContrato = $request->input('cveContrato');
+                $Contrato->fechaEmision = $request->input('fechaEmision');
+                $Contrato->cvePaquete = $request->input('cvePaquete');
+                $Contrato->ExtraPaquete = $request->input('ExtraPaquete');
+                $Contrato->totalPagado = $request->input('totalPagado');
+                $Contrato->restantePaquete = $request->input('restantePaquete');
+                $Contrato->cveEstatusContrato = $request->input('cveEstatusContrato');
+                $Contrato->save();
+                $Solicitud = new Solicitud();
+                $Solicitud->cveSolicitud = $request->input('cveSolicitud');
+                $Solicitud->cveFormaPago = $request->input('cveFormaPago');
+                $Solicitud->aportacionInicial = $request->input('aportacionInicial');
+                $Solicitud->fechaSolicitud = $request->input('fechaSolicitud');
+                $Solicitud->cveContrato = $request->input('cveContrato');
+                $Solicitud->bonificacion = $request->input('bonificacion');
+                $Solicitud->comentarioPaquete = $request->input('comentarioPaquete');
+                $Solicitud->cveVendedor = $request->input('cveVendedor');
+                $Solicitud->cveCobrador = $request->input('cveCobrador');
+                $Solicitud->save();
+                $Cliente = new Cliente();
+                $Cliente->nomCliente = $request->input('nomCliente');
+                $Cliente->apellidoPaternoCliente = $request->input('apellidoPaternoCliente');
+                $Cliente->apellidoMaternoCliente = $request->input('apellidoMaternoCliente');
+                $Cliente->cveEstadoCliente = $request->input('cveEstadoCliente');
+                $Cliente->cveMunicipioCliente = $request->input('cveMunicipioCliente');
+                $Cliente->cveColoniaCliente = $request->input('cveColoniaCliente');
+                $Cliente->numeroExteriorCasaCliente = $request->input('numeroExteriorCasaCliente');
+                $Cliente->numeroInteriorCasaCliente = $request->input('numeroInteriorCasaCliente');
+                $Cliente->calleCliente = $request->input('calleCliente');
+                $Cliente->entreCallesCliente = $request->input('entreCallesCliente');
+                $Cliente->referenciasCasaCliente = $request->input('referenciasCasaCliente');
+                $Cliente->cveMunicipioClienteCobro = $request->input('cveMunicipioClienteCobro');
+                $Cliente->cveColoniaClienteCobro = $request->input('cveColoniaClienteCobro');
+                $Cliente->numeroExteriorCasaClienteCobro = $request->input('numeroExteriorCasaClienteCobro');
+                $Cliente->numeroInteriorCasaClienteCobro = $request->input('numeroInteriorCasaClienteCobro');
+                $Cliente->calleClienteCobro = $request->input('calleClienteCobro');
+                $Cliente->entreCallesClienteCobro = $request->input('entreCallesClienteCobro');
+                $Cliente->telefonoCliente = $request->input('telefonoCliente');
+                $Cliente->telefonoDosCliente = $request->input('telefonoDosCliente');
+                $Cliente->telefonoTresCliente = $request->input('telefonoTresCliente');
+                $Cliente->estadoCivilCliente = $request->input('estadoCivilCliente');
+                $Cliente->fechaNacimientoCliente = $request->input('fechaNacimientoCliente');
+                $Cliente->cveSolicitud = $request->input('cveSolicitud');
+                $Cliente->cveContrato = $request->input('cveContrato');
+                $Cliente->save();
+            
         }
         return back()->with('success', '¡Formulario validado exitosamente');
     }

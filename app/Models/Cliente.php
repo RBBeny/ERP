@@ -9,23 +9,24 @@ class Cliente extends Model
     protected $table = "tcliente";
     protected $primaryKey="cveCliente";
     protected $fillable = ['nomCliente','apellidoPaternoCliente','apellidoMaternoCliente',
-    'cveEstadoCliente','cveMunicipioCliente','cveColoniaCliente','numeroExteriorCasaCliente','entreCallesCliente','referenciasCasaCliente',
-    'cveMunicipioClienteCobro','cveColoniaClienteCobro','numeroExteriorCasaClienteCobro',
+    'cveEstadoCliente','cveMunicipioCliente','cveColoniaCliente','numeroExteriorCasaCliente','numeroInteriorCasaCliente','calleCliente','entreCallesCliente','referenciasCasaCliente',
+    'cveMunicipioClienteCobro','cveColoniaClienteCobro','numeroExteriorCasaClienteCobro','numeroInteriorCasaClienteCobro','calleClienteCobro','entreCallesClienteCobro',
     'referenciasCasaClienteCobro','telefonoCliente',
-    'telefonoDosCliente','estadoCivilCliente','fechaNacimientoCliente',
+    'telefonoDosCliente','telefonoTresCliente','estadoCivilCliente','fechaNacimientoCliente',
     'cveSolicitud','cveContrato'];
+    public $timestamps=false;
     //Relacion M:1
     public function estadoCliente(){
      return $this->belongsTo('App\Models\Estado','cveEstado');
     }
     public function municipioCliente(){
-        return $this->belongsTo('App\\Models\Municipio','cveMunicipio');
+        return $this->belongsTo('App\Models\Municipio','cveMunicipio');
        }
     public function coloniaCliente(){
-        return $this->belongsTo('App\\Models\Colonia','cveColonia');
+        return $this->belongsTo('App\Models\Colonia','cveColonia');
     }
     public function municipioClienteCobro(){
-        return $this->belongsTo('App\\Models\Municipio','cveMunicipio');
+        return $this->belongsTo('App\Models\Municipio','cveMunicipio');
        }
     public function coloniaClienteCobro(){
         return $this->belongsTo('App\Models\Colonia','cveColonia');

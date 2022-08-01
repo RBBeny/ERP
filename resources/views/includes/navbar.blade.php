@@ -11,7 +11,7 @@
         </div>
         <div class="Derecha_area">
            
-            <a href="/logout" class="cerrarSesion_btn">Cerrar Sesión</a>
+            <a href="/logout" class="btn btn-primary botonCerrar">Cerrar Sesión</a>
          </div>
          </div>
      </div>

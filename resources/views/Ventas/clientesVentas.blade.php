@@ -35,7 +35,7 @@
                     <th scope="col">Telefono</th>
                     <th scope="col">Estatus</th>
                     <th scope="col">Ver</th>
-                    <th scope="col">Domicilio</th>
+    
                 </tr>
             </thead>
             <tbody>
@@ -47,8 +47,6 @@
                      <td>{{ $cliente-> telefonoCliente}}</td>
                     <td>{{ $cliente-> nomEstatusContrato}}</td>
                     <td ><a href="/VerClienteVentas/{{$cliente-> cveCliente}}"> <i class="far fa-eye fa-lg"></i></a></td>
-                    <td> {{ $cliente-> nomMunicipio}} {{ $cliente-> nomColonia}} {{ $cliente-> numeroExteriorCasaCliente}}</td>
-                   
                 </tr>
                 @endforeach
             </tbody>

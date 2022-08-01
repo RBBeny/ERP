@@ -1,18 +1,18 @@
 function alertSucces(message){
     $('#alerts').append(
         
-        '<div class="formulario__mensaje-exito" id="formulario__mensaje-exito">'+
+       
         '<div class="alert alert-success alert-dismissible fade show" role="alert">'+
         '<strong>Se agrego el registro correctamente!</strong> '+
-        '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>'+ message+'</div></div>');
+        '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>'+ message+'</div>');
         $(window).scrollTop(0);   
 }
 function alertDanger(message){
     $('#alerts').append(
-        '<div class="formulario__mensaje" id="formulario__mensaje>'+
+       
         '<div class="alert alert-danger alert-dismissible fade show" role="alert">'+
         '<strong>No se agrego el registro correctamente!</strong> '+
-        '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>'+ message+'</div></div>');
+        '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>'+ message+'</div>');
         $(window).scrollTop(0);   
 }
 $(document).ready(function(){
@@ -42,9 +42,10 @@ $(document).ready(function(){
 });
 
 
-$('#guardarMunicipio').click(function(e){    
+const AgregarMunicipio = document.getElementById('AgregarMunicipio');
+AgregarMunicipio.addEventListener('submit', (e) => {
     e.preventDefault();
-    var cveEstado = $('#nombreEstadoNew').val();
+    var cveEstado = $('#cveEstadoNew').val();
     var nomMunicipio = $('#nombreMunicipioNew').val();
     var _token = $("input[name=_token]").val();
     console.log(nomMunicipio);
@@ -59,6 +60,7 @@ $('#guardarMunicipio').click(function(e){
         success:function(res){
                console.log('Se ha creado un registro correctamente');
                alertSucces("Se agrego el Municipio");
+               AgregarMunicipio.reset();
             },
         error:function(res){
             alertDanger("No se agrego el Municipio")
@@ -71,7 +73,7 @@ $('#guardarMunicipio').click(function(e){
 const AgregarColonia = document.getElementById('AgregarColonia');
 AgregarColonia.addEventListener('submit', (e) => {
     e.preventDefault();   
-    var cveMunicipio = $('#municipioColoniaNew').val();
+    var cveMunicipio = $('#cveMunicipioColoniaNew').val();
     var nomColonia = $('#nomColoniaNew').val();
     var _token = $("input[name=_token]").val();
     console.log(cveMunicipio);
@@ -86,11 +88,6 @@ AgregarColonia.addEventListener('submit', (e) => {
         success:function(res){
                console.log('Se ha creado un registro correctamente');
                alertSucces("Se agrego la colonia");
-              /* var html = '';
-               $(res.estados).each(function(key,value){
-                html =+ '<option>'+value.nomEstado+'<option>';
-
-               });*/
                AgregarColonia.reset();
             },
         error:function(res){
@@ -101,60 +98,59 @@ AgregarColonia.addEventListener('submit', (e) => {
     });
    
 }); 
-$("#estado").on('change',function(){
+$("#cveEstadoCliente").on('change',function(){
 var cveEstado = $(this).val();
 console.log(cveEstado);
 if ($.trim(cveEstado)!=''){
 $.get('consultarMunicipio',{cveEstado : cveEstado},function(municipios){
     console.log(municipios);
-       $('#municipio').empty();
-      $('#municipio').append("<option value=''> Municipios..</option>");
-       //$('#municipioCobro').append("<option value=''> Municipios..</option>");
-       //$('#municipioColoniaNew').append("<option value=''> Municipios..</option>");
+       $('#cveMunicipioCliente').empty();
+      $('#cveMunicipioCliente').append("<option value=''> Municipios..</option>");
+
         $.each(municipios,function(index,value){
-            $('#municipio').append("<option value='"+index+"'>"+value+"</option>");
-            $('#municipioCobro').append("<option value='"+index+"'>"+value+"</option>");
+            $('#cveMunicipioCliente').append("<option value='"+index+"'>"+value+"</option>");
+            $('#cveMunicipioClienteCobro').append("<option value='"+index+"'>"+value+"</option>");
         })
         $.each(municipios,function(index,value){
-            $('#municipioColoniaNew').append("<option value='"+index+"'>"+value+"</option>");
+            $('#cveMunicipioColoniaNew').append("<option value='"+index+"'>"+value+"</option>");
         })
         }           
 );
 }
 });
 
-$("#municipio").on('change',function(){
+$("#cveMunicipioCliente").on('change',function(){
 var cveMunicipio = $(this).val();
 console.log(cveMunicipio);
 if ($.trim(cveMunicipio)!=''){
 $.get('consultarColonia',{cveMunicipio : cveMunicipio},function(colonias){
-       $('#colonia').empty();
-        $('#colonia').append("<option value=''> Colonias..</option>");
+       $('#cveColoniaCliente').empty();
+        $('#cveColoniaCliente').append("<option value=''> Colonias..</option>");
         $.each(colonias,function(index,value){
-            $('#colonia').append("<option value='"+index+"'>"+value+"</option>");
+            $('#cveColoniaCliente').append("<option value='"+index+"'>"+value+"</option>");
         })
         }           
 );
 }
 });
 
-$("#municipioCobro").on('change',function(){
+$("#cveMunicipioClienteCobro").on('change',function(){
 var cveMunicipio = $(this).val();
 console.log(cveMunicipio);
 if ($.trim(cveMunicipio)!=''){
 $.get('consultarColonia',{cveMunicipio : cveMunicipio},function(colonias){
-       $('#coloniaCobro').empty();
-        $('#coloniaCobro').append("<option value=''> Colonias..</option>");
+       $('#cveColoniaClienteCobro').empty();
+        $('#cveColoniaClienteCobro').append("<option value=''> Colonias..</option>");
         $.each(colonias,function(index,value){
-            $('#coloniaCobro').append("<option value='"+index+"'>"+value+"</option>");
+            $('#cveColoniaClienteCobro').append("<option value='"+index+"'>"+value+"</option>");
         })
         }           
 );
 }
 });
 
-$("#paquete").on('change',function(){
-var cvePaquete = $("#paquete").val();
+$("#cvePaquete").on('change',function(){
+var cvePaquete = $(this).val();
 console.log(cvePaquete);
 if ($.trim(cvePaquete)!=''){
 $.get('consultarPaquete',{cvePaquete : cvePaquete},function(paquetes){
