@@ -547,7 +547,7 @@
                     <div class="form-row form-inline">
                         <div class="col-md-6 mb-3">
                             <label for="fechaSolicitud">* Fecha de afiliación</label>
-                            <input type="date" class="form-control @error('fechaSolicitud') is invalid @enderror" name="fechaSolicitud" value="{{old('fechaSolicitud')}}" id="v" required>
+                            <input type="date" class="form-control @error('fechaSolicitud') is invalid @enderror" name="fechaSolicitud" value="{{old('fechaSolicitud')}}" id="fechaSolicitud" required>
                             @error('fechaSolicitud')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{$message}}</strong>
@@ -726,6 +726,9 @@
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js" integrity="sha384-W8fXfP3gkOKtndU4JGtKDvXbO53Wy8SZCQHczT5FMiiqmQfUpWbYdTil/SxwZgAN" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.min.js" integrity="sha384-skAcpIdS7UcVUC05LJ9Dxay8AXcDYfBJqt1CJ85S/CFujBsIzCIv+l9liuYLaMQ/" crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/jquery-3.5.1.js" type="text/javascript"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.blockUI/2.70/jquery.blockUI.js"></script>
+<script src="js/notificacion.js"></script>
+<script type="text/javascript" src="js/alertify.js"></script>
 <script src="{{ asset('js/Ventas/AgregarClientesEstilos.js') }}" charset="utf8" type="text/javascript"></script>
 <script src="{{ asset('js/Ventas/AgregarClienteAjax.js') }}" charset="utf8" type="text/javascript"></script>
 <script src="{{ asset('js/Ventas/AgregarClienteValidaciones.js') }}" charset="utf8" type="text/javascript"></script>
