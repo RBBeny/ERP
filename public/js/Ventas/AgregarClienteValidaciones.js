@@ -69,7 +69,7 @@ const campos = {
     costoPaquete:true,
     extraPaquete: true,
     cveVendedor: false,
-    fechaSolicitud: false,
+    fechaSolicitud: true,
     cveFormaPago: false,
     cveCobrador: false,
     bonificacion: true,
@@ -305,7 +305,7 @@ selects.forEach((select) => {
 
 formulario.addEventListener('submit', (e) => {
     e.preventDefault();
-    
+    block();
     
     console.log("noSolicitud: " + campos.noSolicitud);
     console.log("noContrato: " + campos.noContrato);
@@ -503,8 +503,9 @@ formulario.addEventListener('submit', (e) => {
             _token:_token
         },
         success:function(res){
+            unBlock();
             console.log('Se ha creado un registro correctamente');
-    
+            
             document.getElementById('formulario__mensaje-exito').classList.add('formulario__mensaje-exito-activo');
         formulario.reset();
         setTimeout(() => {
@@ -527,7 +528,9 @@ formulario.addEventListener('submit', (e) => {
          },
      error:function(res){
         document.getElementById('formulario__mensaje').classList.add('formulario__mensaje-activo');
+          unBlock();
          console.log("No se ha hecho el registro");
+       
      } 
 
         } );

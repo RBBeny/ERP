@@ -31,7 +31,7 @@
 
         </div>
         <div class="contDer">
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#miModal">Consultar ventas</button>
+        {{-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#miModal">Consultar ventas</button> --}}    
         </div>
     </div>
     <div class="tablaclientes">

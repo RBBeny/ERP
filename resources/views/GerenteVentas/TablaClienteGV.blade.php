@@ -43,7 +43,7 @@
                     <td>{{ $cliente->nomCliente}} {{ $cliente-> apellidoPaternoCliente}} {{ $cliente-> apellidoMaternoCliente}}</td>
                      <td>{{ $cliente-> telefonoCliente}}</td>
                     <td>{{ $cliente-> nomEstatusContrato}}</td>
-                    <td ><a href="/VerClienteGC/{{$cliente-> cveCliente}}"> <i class="far fa-eye fa-lg"></i></a></td>
+                    <td ><a href="/VerClienteGV/{{$cliente-> cveCliente}}"> <i class="far fa-eye fa-lg"></i></a></td>
                 </tr>
                 @endforeach
             </tbody>
