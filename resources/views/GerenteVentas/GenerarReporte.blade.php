@@ -79,13 +79,10 @@
      <table class="table">
         <thead>
             <th scope="col">N° Cont</th>
-            <th scope="col"> N° Sol</th>
-            <th scope="col"> Nombre</th>
+            <th scope="col">Cliente</th>
     </thead>
-        <tbody>
-            <tr id="cuentas_ventas">
-            
-            </tr>
+        <tbody id="cuentas_ventas">
+          
             
         </tbody>
      </table>

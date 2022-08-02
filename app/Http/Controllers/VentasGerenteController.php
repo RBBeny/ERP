@@ -103,31 +103,18 @@ class VentasGerenteController extends Controller
        
     }
 
-    public function cuentas($cveVendedor){
-        if($cveVendedor->ajax()){
+    public function cuentas(Request $request){
+        if($request->ajax()){
             date_default_timezone_set("America/Mexico_City");
        $mes =  date("m");
             $cuentas = DB::table('tcliente')
-            ->select('tcliente.cveContrato','tcliente.cveSolicitud','tcliente.nomCliente','tcliente.apellidoPaternoCliente', 'tcliente.apellidoMaternoCliente', DB::raw('count(tsolicitud.cveSolicitud) as Ventas'))
-       ->join('tsolicitud','tsolicitud.cveVendedor', '=', 'tcliente.cveSolicitud')
+            ->select('tcliente.cveContrato', DB::raw("concat(tcliente.nomCliente,' ',tcliente.apellidoPaternoCliente,' ',tcliente.apellidoMaternoCliente) as Ventas"))
+       ->join('tsolicitud','tsolicitud.cveSolicitud', '=', 'tcliente.cveSolicitud')
        ->whereMonth('tsolicitud.fechaSolicitud','=',$mes)
-       ->where('tvendedor.cveVendedor','=',$cveVendedor)
+       ->where('tsolicitud.cveVendedor','=',$request->cveVendedor)
        ->get();
        foreach ($cuentas as $cuenta) {
-        $cuentaArray[$cuenta->cveContrato] = [
-            'cveContrato'=>$cuenta->cveContrato,
-            'cveSolicitud'=>$cuenta->cveSolicitud,
-            'nomCliente'=>$cuenta->nomCliente,
-            'apellidoPaternoCliente'=>$cuenta->apellidoPaternoCliente,
-            'apellidoMaternoCliente'=>$cuenta->apellidoMaternoCliente
-           ];
-       $cuentasArray=[
-        'cveContrato'=>$cuenta->cveContrato,
-        'cveSolicitud'=>$cuenta->cveSolicitud,
-        'nomCliente'=>$cuenta->nomCliente,
-        'apellidoPaternoCliente'=>$cuenta->apellidoPaternoCliente,
-        'apellidoMaternoCliente'=>$cuenta->apellidoMaternoCliente
-       ];
+        $cuentaArray[$cuenta->cveContrato]=$cuenta->Ventas;
     }
     }
     return response()->json($cuentaArray);  

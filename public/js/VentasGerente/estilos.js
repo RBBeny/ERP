@@ -1,12 +1,15 @@
 var Mostrar = function(cveVendedor){
-   var route = "/MostrarCuentas/"+cveVendedor;
-    $.get(route,{cveVendedor : cveVendedor},function(cuentas){
+    $('#cuentas_ventas').empty()
+    console.log(cveVendedor);
+    $.get('MostrarCuentas',{cveVendedor : cveVendedor},function(cuentas){ 
         $.each(cuentas,function(index,value){
             $('#cuentas_ventas').append(
-            "<td>"+value.cveContrato+"</td>"+
-            "<td>"+value.cveSolicitud+"</td>"+
-            "<td>"+value.nomCliente + value.apellidoPaternoCliente + value.apellidoMaternoCliente+"</td>"
+            "<tr>"+
+            "<td>"+index+"</td>"+
+            "<td>"+value+"</td>"+"</tr>"
             );
+            console.log(index);
+            console.log(value);
          }) 
                   
      });

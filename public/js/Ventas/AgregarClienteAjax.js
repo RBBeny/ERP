@@ -105,6 +105,8 @@ if ($.trim(cveEstado)!=''){
 $.get('consultarMunicipio',{cveEstado : cveEstado},function(municipios){
     console.log(municipios);
        $('#cveMunicipioCliente').empty();
+       $('#cveMunicipioClienteCobro').empty();
+       $('#cveMunicipioColoniaNew').empty();
       $('#cveMunicipioCliente').append("<option value=''> Municipios..</option>");
 
         $.each(municipios,function(index,value){
@@ -143,6 +145,7 @@ $.get('consultarColonia',{cveMunicipio : cveMunicipio},function(colonias){
         $('#cveColoniaClienteCobro').append("<option value=''> Colonias..</option>");
         $.each(colonias,function(index,value){
             $('#cveColoniaClienteCobro').append("<option value='"+index+"'>"+value+"</option>");
+            
         })
         }           
 );
