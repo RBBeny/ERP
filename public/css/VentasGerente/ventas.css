@@ -1,37 +1,12 @@
 .contenedor_ventas{
-   
+  margin-left: 50px;
     padding-top: 100px;
     padding-left: 70px;
-z-index: -1;
-}
-:root{
-	--white-text:#fff;
-	--background:#c8e8f1;
-	--black-text:rgb(68, 66, 66)	
-	--prueba: (180deg,#21c8f6,#637bff);
 }
 
-.background1-left-column{
-	background: linear-gradient(180deg,#21c8f6,#637bff);
-   
-}
-
-
-.background2-left-column{
-	background: linear-gradient(180deg ,#6edcc4,#1aab8b);
-}
-
-
-
-
-
-body {
-	font-family: Arial, Helvetica, sans-serif;	
-}
 .cabezera_consulta{
-	background-color: #fff;
-	background: #fff;
-	position: relative;
+	
+	
 	margin-bottom: 50px;
 }
 .contIzq{
@@ -39,84 +14,35 @@ body {
 	
 }
 .contDer{
-	float: right;
 	margin-right:50px ;
-	z-index: -3;
+	margin-left: 80%;
 }
 .fecha{
 	color:black;
-	background-color: #fff;
-	z-index: -2;
-}
-.cards{
-	display: flex;
+	position: relative;
 	
-	height: 100vh;
-  
-}
-.card {
-	background-color:var(--white-text);
-	border-radius: 1rem;
-	box-shadow: 0 1rem 1rem rgba(51, 42, 42, 0.2);
-	display: flex;	
-	margin: 1.5rem;
-	overflow: hidden;
-	width: 15rem;
-	height: 7rem;
-}
-
-.card h6 {
-	opacity: 0.6;	
-	letter-spacing: .05rem;
-	text-transform: uppercase;
-}
-
-.card  h2 {
-	letter-spacing: .05rem;
-	margin: 1rem 0;
-	color: var(black-text);
-}
-
-.left-column {	
-	color: var(--white-text);
-	padding: 1rem;
-	max-width: 5rem;
-	display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-   
-}
-
-.left-column h2{
-	color: var(--white-text);
-}
-
-
-
-.right-column {
-	padding: 30px;
-	width: 100%;
-	display: flex;
-    flex-direction: column;
-    align-items: start;
-    justify-content: space-between;
 	
 }
+.tablaclientes{
+    padding-top: 50px; 
+    padding-right: 30px;
 
-.right-column p{	
-	font-size: .4rem;
-	color: var(--black-text)
+
 }
 
-.button {
-	border-radius: 4rem;
-	box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
-	color: var(--white-text);
-	font-size: 1.2rem;
-	padding: .8rem .75rem;
-	letter-spacing: .05rem;
-	align-self: flex-end;
+.tablaclientes td i{
+    color:gold;
+    margin-left: 10px;
+    margin-right: 10px;
 }
 
+		.boton-cerrar{
+			float: inline-end;
+		}
+		.agregarElemento{
+			border-radius: 100%;
+			color:rgb(221, 218, 33);
+			background-color: transparent;
+			border-color: transparent;
+		}
 

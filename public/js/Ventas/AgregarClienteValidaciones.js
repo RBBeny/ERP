@@ -31,12 +31,12 @@ const expresiones = {
     referenciasCasaClienteCobro: /^[a-zA-Z0-9\s]{1,50}$/,
     cvePaquete: /^\d{1,8}$/,
     costoPaquete: /^(?!0\.00)[1-9]\d{0,2}(\d{3})*(\.\d\d)?$/,
-    extraPaquete: /^(?!0\.00)[1-9]\d{0,2}(\d{3})*(\.\d\d)?$/,
+    extraPaquete: /^\d{1,8}$/,
     cveVendedor: /^\d{1,8}$/,
     cveFormaPago: /^\d{1,8}$/,
     cveCobrador: /^\d{1,8}$/,
-    bonificacion: /^(?!0\.00)[1-9]\d{0,2}(\d{3})*(\.\d\d)?$/,
-    inversionInicial: /^(?!0\.00)[1-9]\d{0,2}(,\d{3})*(\.\d\d)?$/
+    bonificacion: /^\d{1,8}$/,
+    inversionInicial: /^\d{1,8}$/
 
 }
 const campos = {
@@ -66,7 +66,7 @@ const campos = {
     entreCallesClienteCobro: true,
     referenciasCasaClienteCobro: true,
     cvePaquete: false,
-    costoPaquete: true,
+    costoPaquete:true,
     extraPaquete: true,
     cveVendedor: false,
     fechaSolicitud: true,
@@ -135,10 +135,10 @@ const validarFormulario = (e) => {
             ValidarCampoNull(expresiones.numeroInteriorCasaCliente, e.target, 'numeroInteriorCasaCliente');
             break;
         case "cveMunicipioClienteCobro":
-            ValidarCampoNull(expresiones.cveMunicipioClienteCobro, e.target, 'cveMunicipioClienteCobro');
+            ValidarCampoSelectNull(expresiones.cveMunicipioClienteCobro, e.target, 'cveMunicipioClienteCobro');
             break;
         case "cveColoniaClienteCobro":
-            ValidarCampoNull(expresiones.cveColoniaClienteCobro, e.target, 'cveColoniaClienteCobro');
+            ValidarCampoSelectNull(expresiones.cveColoniaClienteCobro, e.target, 'cveColoniaClienteCobro');
             break;
         case "calleClienteCobro":
             ValidarCampoNull(expresiones.calleClienteCobro, e.target, 'calleClienteCobro');
@@ -158,9 +158,9 @@ const validarFormulario = (e) => {
         case "cvePaquete":
             ValidarCampoSelect(expresiones.cvePaquete, e.target, 'cvePaquete');
             break;
-        case "costoPaquete":
-            ValidarCampo(expresiones.costoPaquete, e.target, 'costoPaquete');
-            break;
+            case "costoPaquete":
+                ValidarCampoNull(expresiones.cvePaquete, e.target, 'cvePaquete');
+                break;
         case "extraPaquete":
             ValidarCampoNull(expresiones.extraPaquete, e.target, 'extraPaquete');
             break;
@@ -186,9 +186,28 @@ const ValidarCampoSelect = (expresion, select, campo) => {
 
     if (expresion.test(select.value)) {
         campos[campo] = true;
-    } else {
-
+        document.getElementById(`${campo}`).classList.remove('select_text-incorrecto');
+        document.getElementById(`${campo}`).classList.add('select_text-correcto');
+       } else {
+        document.getElementById(`${campo}`).classList.add('select_text-incorrecto');
+        document.getElementById(`${campo}`).classList.remove('select_text-correcto');
         campos[campo] = false;
+
+    }
+}
+const ValidarCampoSelectNull = (expresion, select, campo) => {
+
+    if (expresion.test(select.value)) {
+        campos[campo] = true;
+        document.getElementById(`${campo}`).classList.remove('select_text-incorrecto');
+        document.getElementById(`${campo}`).classList.add('select_text-correcto');
+       } else {
+        document.getElementById(`${campo}`).classList.add('formulario__grupo-incorrecto');
+        document.getElementById(`${campo}`).classList.remove('formulario__grupo-correcto');
+        campos[campo] = false;
+        if (select.value == null || select.value.length == 0 || /^\s+$/.test(select.value)) {
+           campos[campo] = true;
+        }
 
     }
 }
@@ -327,53 +346,89 @@ formulario.addEventListener('submit', (e) => {
         && campos.cveColoniaCliente && campos.calleCliente && campos.numeroExteriorCasaCliente && campos.numeroInteriorCasaCliente && campos.entreCallesCliente
         && campos.referenciasCasaCliente && campos.cveMunicipioClienteCobro && campos.cveColoniaClienteCobro && campos.calleClienteCobro && campos.numeroExteriorCasaClienteCobro
         && campos.numeroInteriorCasaClienteCobro && campos.entreCallesClienteCobro && campos.referenciasCasaClienteCobro && campos.cvePaquete
-        && campos.costoPaquete && campos.extraPaquete && campos.cveVendedor && campos.fechaSolicitud && campos.cveFormaPago
-        && campos.cveCobrador && campos.bonificacion && campos.inversionInicial
+        &&  campos.extraPaquete && campos.cveVendedor && campos.fechaSolicitud && campos.cveFormaPago
+        && campos.cveCobrador && campos.bonificacion && campos.inversionInicial && campos.costoPaquete
     ) {
-        var noSolicitud = document.getElementById('noSolicitud').value;
-        var noContrato = document.getElementById('noContrato').value;
-        var nombreCliente = document.getElementById('nombreCliente').value;
+        var cveSolicitud = document.getElementById('noSolicitud').value;
+        var cveContrato = document.getElementById('noContrato').value;
+        var nomCliente = document.getElementById('nombreCliente').value;
         var apellidoPaternoCliente = document.getElementById('apellidoPaternoCliente').value;
         var apellidoMaternoCliente = document.getElementById('apellidoMaternoCliente').value;
-        var numeroTelefonoCliente = document.getElementById('numeroTelefonoCliente').value;
-        var numeroTelefonoDosCliente = document.getElementById('numeroTelefonoDosCliente').value;
-        var numeroTelefonoTresCliente = document.getElementById('numeroTelefonoTresCliente').value;
+        var telefonoCliente = document.getElementById('numeroTelefonoCliente').value;
+        var telefonoDosCliente = document.getElementById('numeroTelefonoDosCliente').value;
+        var telefonoTresCliente = document.getElementById('numeroTelefonoTresCliente').value;
         var estadoCivilCliente = document.getElementById('estadoCivilCliente').value;
         var fechaNacimientoCliente = document.getElementById('fechaNacimientoCliente').value;
-        var cveEstadoCliente = document.getElementById('estado').value;
-        var cveMunicipioCliente = document.getElementById('municipio').value;
-        var cveColoniaCliente = document.getElementById('colonia').value;
+        var cveEstadoCliente = document.getElementById('cveEstadoCliente').value;
+        var cveMunicipioCliente = document.getElementById('cveMunicipioCliente').value;
+        var cveColoniaCliente = document.getElementById('cveColoniaCliente').value;
         var calleCliente = document.getElementById('calleCliente').value;
         var numeroExteriorCasaCliente = document.getElementById('numeroExteriorCasaCliente').value;
         var numeroInteriorCasaCliente = document.getElementById('numeroInteriorCasaCliente').value;
         var entreCallesCliente = document.getElementById('entreCallesCliente').value;
         var referenciasCasaCliente = document.getElementById('referenciasCasaCliente').value;
-        var cveMunicipioClienteCobro = document.getElementById('municipioCobro').value;
-        var cveColoniaClienteCobro = document.getElementById('coloniaCobro').value;
+        var cveMunicipioClienteCobro = document.getElementById('cveMunicipioClienteCobro').value;
+        var cveColoniaClienteCobro = document.getElementById('cveColoniaClienteCobro').value;
         var calleClienteCobro = document.getElementById('calleClienteCobro').value;
         var numeroExteriorCasaClienteCobro = document.getElementById('numeroExteriorCasaClienteCobro').value;
         var numeroInteriorCasaClienteCobro = document.getElementById('numeroInteriorCasaClienteCobro').value;
         var entreCallesClienteCobro = document.getElementById('entreCallesClienteCobro').value;
         var referenciasCasaClienteCobro = document.getElementById('referenciasCasaClienteCobro').value;
-        var cvePaquete = document.getElementById('paquete').value;
+        var cvePaquete = document.getElementById('cvePaquete').value;
         var costoPaquete = document.getElementById('precio').value;
-        var extraPaquete = document.getElementById('costoAdicional').value;
-        var cveVendedor = document.getElementById('vendedor').value;
+        var ExtraPaquete = document.getElementById('costoAdicional').value;
+        var cveVendedor = document.getElementById('cveVendedor').value;
         var fechaSolicitud = document.getElementById('fechaSolicitud').value;   
-        var cveFormaPago = document.getElementById('formaPago').value;
-        var cveCobrador = document.getElementById('nombreCobrador').value;
+        var cveFormaPago = document.getElementById('cveFormaPago').value;
+        var cveCobrador = document.getElementById('cveCobrador').value;
         var bonificacion = document.getElementById('bonificacion').value;
-        var inversionInicial = document.getElementById('inversionInicial').value;
+        var aportacionInicial = document.getElementById('inversionInicial').value;
+        var cveEstatusContrato = 5;
         var _token = $("input[name=_token]").val();
+        if (ExtraPaquete == null || ExtraPaquete.length == 0 ){
+            ExtraPaquete = 0.00;
+        }
+        if (bonificacion == null || bonificacion.length == 0){
+            bonificacion = 0.00;
+        }
+        if (aportacionInicial == null || aportacionInicial.length == 0){
+            aportacionInicial = 0.00;
+        }
+        var restantePaquete = ((costoPaquete+ExtraPaquete)-bonificacion)-aportacionInicial;
+        var date = new Date();
+        const formatDate  =(date)=>{
+            let formatted_date = date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate()
+            return formatted_date;
+        }
+        console.log(formatDate(date));
+        fechaEmision = formatDate(date);
+
        
-        console.log("noSolicitud: " + noSolicitud);
-        console.log("noContrato: " + noContrato);
-        console.log("nombreCliente: " + nombreCliente);
+
+        function formatoDate(fechaSolicitud) {
+            var d = new Date(fechaSolicitud),
+                month = '' + (d.getMonth() + 1),
+                day = '' + d.getDate(),
+                year = d.getFullYear();
+        
+            if (month.length < 2) 
+                month = '0' + month;
+            if (day.length < 2) 
+                day = '0' + day;
+        
+            return [year, month, day].join('-');
+        }
+        console.log(formatoDate(fechaSolicitud));
+        fechaSolicitud = formatoDate(fechaSolicitud);
+
+        console.log("noSolicitud: " + cveSolicitud);
+        console.log("noContrato: " + cveContrato);
+        console.log("nomCliente: " + nomCliente);
         console.log("apellidoPaternoCliente: " + apellidoPaternoCliente);
         console.log("apellidoMaternoCliente: " + apellidoMaternoCliente);
-        console.log("numeroTelefonoCliente: " + numeroTelefonoCliente);
-        console.log("numeroTelefonoDosCliente: " + numeroTelefonoDosCliente);
-        console.log("numeroTelefonoTresCliente: " + numeroTelefonoTresCliente);
+        console.log("numeroTelefonoCliente: " + telefonoCliente);
+        console.log("numeroTelefonoDosCliente: " + telefonoDosCliente);
+        console.log("numeroTelefonoTresCliente: " + telefonoTresCliente);
         console.log("estadoCivilCliente: " + estadoCivilCliente);
         console.log("fechaNacimientoCliente: " + fechaNacimientoCliente);
         console.log("cveEstadoCliente: " + cveEstadoCliente);
@@ -392,26 +447,30 @@ formulario.addEventListener('submit', (e) => {
         console.log("entreCallesClienteCobro: " + entreCallesClienteCobro);
         console.log("referenciasCasaClienteCobro: " + referenciasCasaClienteCobro);
         console.log("cvePaquete: " + cvePaquete);
-        console.log("costoPaquete: " + costoPaquete);
-        console.log("extraPaquete: " + extraPaquete);
+       console.log("costoPaquete: " + costoPaquete);
+        console.log("extraPaquete: " + ExtraPaquete);
         console.log("cveVendedor: " + cveVendedor);
         console.log("fechaSolicitud: " + fechaSolicitud);
         console.log("cveFormaPago: " + cveFormaPago);
         console.log("cveCobrador: " + cveCobrador);
         console.log("bonificacion: " + bonificacion);
-        console.log("inversionInicial: " + inversionInicial);
+        console.log("inversionInicial: " + aportacionInicial);
+        console.log("restantePaquete: " + restantePaquete);
+        console.log("cveEstatusContrato: "+ cveEstatusContrato);
+        console.log("fechaEmision: "+fechaEmision);
         console.log("token: " + _token);
         $.ajax(
         {
-            url: 'insertarCliente',type:"POST", data:{
-            noSolicitud : noSolicitud,
-            noContrato : noContrato,
-            nombreCliente : nombreCliente,
+            url: 'insertarCliente',type:"POST", 
+            data:{
+            cveSolicitud : cveSolicitud,
+            cveContrato : cveContrato,
+            nomCliente : nomCliente,
             apellidoPaternoCliente : apellidoPaternoCliente,
             apellidoMaternoCliente : apellidoMaternoCliente,
-            numeroTelefonoCliente : numeroTelefonoCliente,
-            numeroTelefonoDosCliente : numeroTelefonoDosCliente,
-            numeroTelefonoTresCliente:numeroTelefonoTresCliente,
+            telefonoCliente : telefonoCliente,
+            telefonoDosCliente : telefonoDosCliente,
+            telefonoTresCliente:telefonoTresCliente,
             estadoCivilCliente : estadoCivilCliente, 
             fechaNacimientoCliente : fechaNacimientoCliente, 
             cveEstadoCliente : cveEstadoCliente, 
@@ -430,19 +489,23 @@ formulario.addEventListener('submit', (e) => {
             entreCallesClienteCobro : entreCallesClienteCobro,
             referenciasCasaClienteCobro : referenciasCasaClienteCobro,
             cvePaquete : cvePaquete,
-            extraPaquete : extraPaquete, 
+            costoPaquete : costoPaquete,
+            ExtraPaquete : ExtraPaquete, 
             cveVendedor : cveVendedor,
             fechaSolicitud : fechaSolicitud, 
+            fechaEmision : fechaEmision,
             cveFormaPago : cveFormaPago, 
             cveCobrador : cveCobrador, 
             bonificacion : bonificacion,
-            inversionInicial : inversionInicial,
+            aportacionInicial : aportacionInicial,
+            restantePaquete : restantePaquete,
+            cveEstatusContrato : cveEstatusContrato,
             _token:_token
-        }
-
-        } );
-
-        document.getElementById('formulario__mensaje-exito').classList.add('formulario__mensaje-exito-activo');
+        },
+        success:function(res){
+            console.log('Se ha creado un registro correctamente');
+    
+            document.getElementById('formulario__mensaje-exito').classList.add('formulario__mensaje-exito-activo');
         formulario.reset();
         setTimeout(() => {
             document.getElementById('formulario__mensaje-exito').classList.remove('formulario__mensaje-exito-activo');
@@ -451,6 +514,24 @@ formulario.addEventListener('submit', (e) => {
         document.querySelectorAll('.formulario__grupo-correcto').forEach((icono) => {
             icono.classList.remove('formulario__grupo-correcto');
         });
+        var cnp1 = document.getElementById("cnp1");
+        var cnp2 = document.getElementById("cnp2");
+        var cnp3 = document.getElementById("cnp3");
+        var cnp4 = document.getElementById("cnp4");
+        var progress = document.getElementById("progress");
+        cnp1.style.display = "block";
+        cnp2.style.display = "none";
+        progress.style.width = "120px";
+        cnp3.style.display = "none";
+        cnp4.style.display = "none";
+         },
+     error:function(res){
+        document.getElementById('formulario__mensaje').classList.add('formulario__mensaje-activo');
+         console.log("No se ha hecho el registro");
+     } 
+
+        } );
+
     } else {
         document.getElementById('formulario__mensaje').classList.add('formulario__mensaje-activo');
     }

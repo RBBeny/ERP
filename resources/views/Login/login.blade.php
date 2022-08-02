@@ -1,6 +1,6 @@
 @extends('layouts.plantilla')
 
-@section('titulo','prueba')
+@section('titulo','ERP FunJarcie')
 
 @section('content')
 

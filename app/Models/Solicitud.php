@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -11,7 +11,7 @@ class Solicitud extends Model
     protected $table = "tsolicitud";
     protected $primaryKey="cveSolicitud";
     protected $fillable = ['cveFormaPago','aportacionInicial','fechaSolicitud','cveContrato','bonificacion','comentarioPaquete','cveVendedor','cveCobrador'];
-
+    public $timestamps=false;
 public function Contrato(){
     return $this->belongsTo('App\Models\Contrato','cveContrato');
 }

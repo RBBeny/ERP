@@ -10,4 +10,5 @@ class Cobrador extends Model
     protected $table = "cEstatus";
     protected $primaryKey="cveEstatus";
     protected $fillable = ['nomEstatus'];
+    public $timestamps=false;
 }

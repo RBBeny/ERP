@@ -1,0 +1,48 @@
+
+.row_uno{
+    background-color: rgba(71, 69, 69, 0.928);
+    color: rgb(255, 255, 255);
+    border-radius: 10px;
+    box-shadow: 0px 0px 5px 1px rgb(124, 123, 123);
+}
+
+.btn_reporte{
+    width: 100%;
+    box-shadow: 0px 0px 5px 1px rgb(72, 72, 72);
+}
+.form-control-error{
+    color: red;
+    opacity: 1;
+}
+.form-control-correcta{
+    color: green;
+    opacity: 1;
+}
+.fecha_error{
+    font-size:12px;
+    margin-bottom: 0;
+    display: none;
+}
+.fecha_error-activo{
+    display:block;
+    color: red;
+}
+.fecha_error2{
+    font-size:12px;
+    margin-bottom: 0;
+    display: none;
+}
+.fecha_error2-activo{
+    display:block;
+    color: red;
+}
+.fecha_error3{
+    font-size:12px;
+    margin-bottom: 0;
+    display: none;
+}
+.fecha_error3-activo{
+    display:block;
+    color: red;
+}
+

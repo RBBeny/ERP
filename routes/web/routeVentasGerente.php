@@ -12,4 +12,5 @@ Route::group(['middleware' => 'isVentasG'], function () {
     Route::get('/TablaClienteGV', [VentasGerenteController::class, 'clientes']);
     Route::get('/GenerarReporte', [VentasGerenteController::class, 'Reporte']);
     Route::get('/VerClienteGV/{id}', [VentasGerenteController::class, 'cliente']);
+    Route::get('MostrarCuentas', [VentasGerenteController::class, 'cuentas']);
 });

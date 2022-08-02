@@ -5,6 +5,7 @@ use App\http\Controllers\CobranzaController;
 use App\http\Controllers\RegisterController;
 
 
+<<<<<<< HEAD
 Route:: get('/homeCobranza', [CobranzaController::class, 'home']);
 Route:: get('/PCobranza', [CobranzaController::class, 'PCobranza']);
 Route:: get('/ClientesCobranza',[CobranzaController::class, 'clientes']);
@@ -18,6 +19,8 @@ Route::post('/Ppago', [CobranzaController::class, 'registerC']);
 Route::post('/PagosC', [CobranzaController::class, 'registerPC']);
 
 
+=======
+>>>>>>> b62cc898e7a437c5552225977956672f81b666ae
 
 Route::group(['middleware' => 'isCobranza'], function(){
     Route:: get('/homeCobranza', [CobranzaController::class, 'home']);
@@ -27,10 +30,15 @@ Route::group(['middleware' => 'isCobranza'], function(){
     Route:: get('/ClienteCobranza',[CobranzaController::class, 'ClienteCobranza']);
     Route:: get('/TablasClientesC',[CobranzaController::class, 'TablasClientesC']);
     Route:: get('/VerCliente/{id}', [CobranzaController::class, 'cliente']);
+<<<<<<< HEAD
     Route::post('/Ppago', [CobranzaController::class, 'register']);
     Route::post('/registrarPagos', [CobranzaController::class, 'registerP']);
     Route:: get('/PCobranza', [CobranzaController::class, 'PCobranza']);
 
+=======
+    Route::get('delete/{cvePago}',[CobranzaController::class,'eliminarPago'])->name('eliminarPago');
+    
+>>>>>>> b62cc898e7a437c5552225977956672f81b666ae
     Route:: get('/homeGCobranza', [CobranzaGerenteController::class, 'home']);
     Route:: get('/TablaUsuariosGC', [CobranzaGerenteController::class, 'usuarios']);
     Route:: get('/TablaClientesGC', [CobranzaGerenteController::class, 'clientes']);

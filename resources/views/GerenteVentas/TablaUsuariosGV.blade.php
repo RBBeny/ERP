@@ -22,7 +22,7 @@
     </ol>
   </nav>
   <!-- Button trigger modal -->
-  <div align="right" style="padding-right: 40px;">
+  <div style="padding-right: 40px;">
     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
       agregar usuario
     </button>
