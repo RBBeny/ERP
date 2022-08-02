@@ -5,7 +5,7 @@
 {{-- <script src="{{ asset('js/Ventas/clientesVentas.js') }}" type="text/javascript" ></script> --}}
 <link href="https://cdn.datatables.net/1.11.4/css/dataTables.bootstrap5.min.css" type="text/css" rel="stylesheet">
 
-
+<link href="{{ asset('css/Ventas/agregarClientes.css') }}" rel="stylesheet">
 <link href="{{ asset('css/Ventas/clientesVentas.css') }}" rel="stylesheet">
 @endsection
 
@@ -93,12 +93,12 @@
                 <label for="cveTipoUsuario" class="form-label formulario__label">Rol</label>
                 <div class="formulario__grupo-input">
                   <select name="cveTipoUsuario" id="cveTipoUsuario" class="form-select formulario__input" aria-label=" select example">
-                    <option selected value="">Selecciona opcion</option>
-                    <option value=5>Cobranza</option>
+                    <option value="">Selecciona opcion</option>
+                    <option selected value=5>Cobranza</option>
 
                   </select>
                 </div>
-                <p class="formulario__input-error">El rol solo puede ser del del 1 al 9</p>
+                <p class="formulario__input-error">El rol solo puede ser Cobranza</p>
               </div>
             </div>
 
@@ -207,6 +207,7 @@
 
   });
 </script>
+<script src="{{ asset('js/Registro/registroValidaciones.js') }}" type="text/javascript"></script>
 
 
 @endsection

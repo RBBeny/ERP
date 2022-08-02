@@ -7,6 +7,7 @@
 <link href="https://cdn.datatables.net/1.11.4/css/dataTables.bootstrap5.min.css" type="text/css" rel="stylesheet">
 
 <link href="{{ asset('css/Ventas/clientesVentas.css') }}" rel="stylesheet">
+<link href="{{ asset('css/Ventas/agregarClientes.css') }}" rel="stylesheet">
 @endsection
 
 
@@ -36,40 +37,90 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <form action="/register" method="POST">
+          <form action="/registrarUsuarios" method="POST" class="formulario" id="formulario">
             @csrf
+
+            <!-- Grupo: Nombre -->
             <div class="mb-3">
-              <label class="form-label">Nombre</label>
-              <input type="text" name="nombreUsuario" class="form-control" required>
+              <div class="formulario__grupo" id="grupo__nombreUsuario">
+                <label for="nombreUsuario" class="form-label formulario__label">Nombre</label>
+                <div class="formulario__grupo-input">
+                  <input type="text" class="formulario__input form-control" name="nombreUsuario" id="nombreUsuario">
+                  <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                </div>
+                <p class="formulario__input-error">El usuario tiene que ser de 4 a 30 dígitos y solo puede contener letras.</p>
+              </div>
             </div>
+
+            <!-- Grupo: apellidoPaternoUsuario -->
             <div class="mb-3">
-              <label class="form-label">Apellido Paterno</label>
-              <input type="text" name="apellidoPaternoUsuario" class="form-control" required>
+              <div class="formulario__grupo" id="grupo__apellidoPaternoUsuario">
+                <label for="apellidoPaternoUsuario" class="form-label formulario__label">Apellido Paterno</label>
+                <div class="formulario__grupo-input">
+                  <input type="text" class="formulario__input form-control" name="apellidoPaternoUsuario" id="apellidoPaternoUsuario">
+                  <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                </div>
+                <p class="formulario__input-error">El apellido tiene que ser de 4 a 30 dígitos y solo puede contener letras.</p>
+              </div>
             </div>
+
+            <!-- Grupo: apellidoMaternoUsuario -->
             <div class="mb-3">
-              <label class="form-label">Apellido Materno</label>
-              <input type="text" name="apellidoMaternoUsuario" class="form-control" required>
+              <div class="formulario__grupo" id="grupo__apellidoMaternoUsuario">
+                <label for="apellidoMaternoUsuario" class="form-label formulario__label">Apellido Materno</label>
+                <div class="formulario__grupo-input">
+                  <input type="text" class="formulario__input form-control" name="apellidoMaternoUsuario" id="apellidoMaternoUsuario">
+                  <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                </div>
+                <p class="formulario__input-error">El apellido tiene que ser de 4 a 30 dígitos y solo puede contener letras.</p>
+              </div>
             </div>
+
+            <!-- Grupo: nomUsuario -->
             <div class="mb-3">
-              <label class="form-label">Nombre de Usuario</label>
-              <input type="text" name="nomUsuario" class="form-control" required>
+              <div class="formulario__grupo" id="grupo__nomUsuario">
+                <label for="nomUsuario" class="form-label formulario__label">Nickname</label>
+                <div class="formulario__grupo-input">
+                  <input type="text" class="formulario__input form-control" name="nomUsuario" id="nomUsuario">
+                  <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                </div>
+                <p class="formulario__input-error">El usuario tiene que ser de 4 a 16 dígitos y solo puede contener numeros, letras y guion bajo.</p>
+              </div>
             </div>
+
+            <!-- Grupo: cveTipoUsuario -->
             <div class="mb-3">
-              <label class="form-label">Rol</label>
-              <select name="cveTipoUsuario" class="form-select" aria-label=" select example" required>
-              @foreach($rols as $rol) 
-              <option value="{{$rol->cveTipoUsuario}}">{{ $rol-> nomTipoUsuario}}</option>
-              @endforeach
-              </select>
+              <div class="formulario__grupo" id="grupo__cveTipoUsuario">
+                <label for="cveTipoUsuario" class="form-label formulario__label">Rol</label>
+                <div class="formulario__grupo-input">
+                  <select name="cveTipoUsuario" id="cveTipoUsuario" class="form-select formulario__input" aria-label=" select example">
+                    <option value="">Selecciona opcion</option>
+                    <<option selected value=4>Ventas</option>
+
+                  </select>
+                </div>
+                <p class="formulario__input-error">El rol solo puede ser Ventas</p>
+              </div>
             </div>
+
+
+            <!-- Grupo: password -->
             <div class="mb-3">
-              <label class="form-label">Password</label>
-              <input type="password" name="password" class="form-control" required>
+              <div class="formulario__grupo" id="grupo__password">
+                <label for="password" class="form-label formulario__label">Contraseña</label>
+                <div class="formulario__grupo-input">
+                  <input type="password" class="formulario__input form-control" name="password" id="password">
+                  <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                </div>
+                <p class="formulario__input-error">La contraseña tiene que ser minimo de 4 caracteres y maximo de 16</p>
+              </div>
             </div>
+
+
             <div class="mb-3">
-              <input type="number" name="cveEstatus" value="3" class="form-control" hidden>
+              <input type="number" name="cveEstatus" id="cveEstatus" value="3" class="form-control" hidden>
             </div>
-            <button id="btn" type="submit" class="btn btn-primary btn-block">Guardar</button>
+            <button id="btn" type="submit" class="btn btn-primary btn-block">Submit</button>
           </form>
         </div>
       </div>
@@ -157,7 +208,7 @@
 
   });
 </script>
-
+<script src="{{ asset('js/Registro/registroValidaciones.js') }}" type="text/javascript"></script>
 
 @endsection
 @endsection

@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\http\Controllers\CobranzaGerenteController;
 use App\http\Controllers\RegisterController;
-
+use App\Http\Controllers\AdministradorController;
 
 Route::group(['middleware' => 'isCobranzaG'], function () {
     Route:: get('/homeGCobranza', [CobranzaGerenteController::class, 'home']);
@@ -14,6 +14,8 @@ Route::group(['middleware' => 'isCobranzaG'], function () {
     Route:: get('/Reporte/{fechainicio}/{fechafin}', [CobranzaGerenteController::class, 'ReporteIngresos']);
     Route:: get('/ReporteDetallado/{fechainicio}/{fechafin}', [CobranzaGerenteController::class, 'ReporteIdetallado']);
     Route:: get('/VerClienteGC/{id}', [CobranzaGerenteController::class, 'cliente']);
+
+    Route::post('/registrarUsuarios', [AdministradorController::class, 'register']);
 });
     
 
