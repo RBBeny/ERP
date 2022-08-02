@@ -88,7 +88,19 @@
     </div>
   </div>
 </div>
+<div class="col-lg-12" id="contenMsjs">
+  <div class="alert alert-seccess">
+    <button type="button" class="close success-op" data-dismiss="alert" aria-label="Close">
+  <span class="icon-sc-c1" aria-hidden="true">&times;</span>       
+  </button>
+ <span class="adminpro-icon">
+        <p class="messge-alert-none" id="msj">
+          {{ session('mensaje')}}
+        </p>
+      </span>
+  </div>
 
+</div>
 
 <table id="pagos"  class="table display table-striped table-bordered nowrap" style="width:100%">
                         <thead>
@@ -115,10 +127,12 @@
                                 <td>{{ $pago-> restantePaquete}}</td>
                                 <td>{{ $pago-> fechaPago}}</td>
                                 <td>{{ $pago->nombreCobrador}} {{ $pago-> apellidoPaternoCobrador}} {{ $pago-> apellidoMaternoCobrador}}</td>
-                                <td>
-                           
-                                </td>
+                                            <td><a data-bs-toggle="modal" data-bs-target="#modal-delete-{{$pago-> cvePago}}"><i class="fas fa-trash fa-lg"></i></a></td>
+     
+                                
                               </tr>
+                              @include('Cobranza.PagoDelete')
+
                             @endforeach
                         </tbody>
                     </table>
