@@ -31,6 +31,11 @@ class CobranzaController extends Controller
         ->get();
         return view('Cobranza.PCobranza',$pagos,$cobradores);
     }
+    public function destroy(Pago $pago)
+{
+    $pago->delete();
+    return redirect()->route('Cobranza.PCobranza');
+}
 
     public function PagosCobranza(){
         $Datos['pagos'] = DB::table('tpago')
@@ -124,19 +129,13 @@ class CobranzaController extends Controller
         $pagos->save();
         return redirect('/PCobranza')->with('success', 'Cuenta creada');
     }
-
-    
-    public function eliminarPago(Request $request, $cvePago){
-        if($request->ajax()){
-            $Pago = tpago::find($cvePago);
-            $Pago->delete();
-
-
-            return response()->json([
-                'mensaje'=> '<strong>Se acaba de eliminar </strong> el pago('. $Pago->cvePago . ') Exitosamente'
-            ]);
-    
-        }
+    public function destroyP($cvePago)
+    {
+        $pagos = Pago::findOrFail($cvePago);
+        $pagos -> delete();
+        return redirect()->route('PCobranza');
     }
+    
+
 
 }

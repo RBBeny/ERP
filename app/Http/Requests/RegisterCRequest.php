@@ -24,7 +24,7 @@ class RegisterCRequest extends FormRequest
     public function rules()
     {
         return [
-            'nombreCobrador'=> 'required',
+            'nombreCobrador'=> 'required|max:30|min:1',
             'apellidoPaternoCobrador'=> 'required',
             'apellidoMaternoCobrador'=> 'required',
             'comisionCobrador'=> 'required|numeric|regex:/^[\d]{0,11}(\.[\d]{1,2})?$/',

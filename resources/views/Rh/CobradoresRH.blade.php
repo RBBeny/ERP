@@ -7,6 +7,8 @@
 <link href="https://cdn.datatables.net/1.11.4/css/dataTables.bootstrap5.min.css" type="text/css" rel="stylesheet">
 
 <link href="{{ asset('css/Ventas/clientesVentas.css') }}" rel="stylesheet">
+<link href="{{ asset('css/Administrador/usuariosAdmin.css') }}" rel="stylesheet">
+
 @endsection
 
 
@@ -55,7 +57,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-      <form action="/CjCobrador" method="POST">
+      <form action="/CjCobrador" method="POST"  class="formulario" id="formulario">
         @csrf
         <div class="mb-3">
           <label for=""  class="form-label">Nombre Cobrador</label>
