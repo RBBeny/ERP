@@ -6,7 +6,7 @@ use App;
 use App\Models\Pago;
 use App\Models\Cobrador;
 use Illuminate\Http\Request;
-use DB;
+use Illuminate\Support\Facades\DB;
 use App\Http\Requests\RegisterPRequest;
 use App\Http\Requests\RegisterPCRequest;
 
@@ -110,8 +110,8 @@ class CobranzaController extends Controller
 
         $Cobros = DB::table('tcliente')
         ->select('nomMunicipio',"nomColonia")
-        ->join('cmunicipio', 'cmunicipio.cveMunicipio', '=', 'tcliente.cveMunicipioClienteCobro')
-        ->join('ccolonia', 'ccolonia.cveColonia', '=', 'tcliente.cveColoniaClienteCobro')
+        ->join('cmunicipio', 'cmunicipio.cveMunicipio', '=', 'tcliente.cveMunicipioCliente')
+        ->join('ccolonia', 'ccolonia.cveColonia', '=', 'tcliente.cveColoniaCliente')
         ->where ('tcliente.cveCliente', '=',$cliente)
         ->get();
 
