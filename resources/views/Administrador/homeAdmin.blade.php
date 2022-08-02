@@ -2,9 +2,11 @@
 
 @section('titulo','Home Administrador')
 
-@include('includes.navbarAdministrador')
 @section('content')
+@include('includes.navbarAdministrador')
+
 
 
 @endsection
+
 
