@@ -129,25 +129,26 @@
   <div class="tablaclientes">
 
         <table id="clienteVentas" class="table display table-striped table-bordered nowrap" style="width:100%">
-            <thead>
-                <tr>
-                    <th scope="col">Nombre</th>
-                    <th scope="col">Rol</th>
-                    <th scope="col">Nickname</th>
-                    <th scope="col">Opciones</th>    
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Adrian Eduardo Villanueva</td>
-                    <td>Cobrador</td>
-                    <td>adrian.villanueva</td>
-                    <td><a data-bs-toggle="modal" onclick="eliminar()"><i style="font-size:25px; color:red;" class="bi bi-trash"></i></a>
-                    <a data-bs-toggle="modal" data-bs-target="#EditarUsuario"><i style="font-size:25px; color:blue;" class="bi bi-pencil-square"></i></a></td>
-                   
-
-
+        <thead>
+        <tr>
+          <th scope="col">Nombre</th>
+          <th scope="col">Nickname</th>
+          <th scope="col">Rol</th>
+          <th scope="col">Opciones</th>
         </tr>
+      </thead>
+      <tbody>
+        @foreach($usuario as $usuario)
+        <tr>
+          <td>{{ $usuario-> nombreUsuario}} {{ $usuario-> apellidoPaternoUsuario}} {{ $usuario-> apellidoMaternoUsuario}}</td>
+          <td>{{ $usuario-> nomUsuario}}</td>
+          <td>{{ $usuario-> nomTipoUsuario}}</td>
+          <td>{{ $usuario-> nomEstatus}}</td>
+          <td><a data-bs-toggle="modal" onclick="eliminar()"><i style="font-size:25px; color:red;" class="bi bi-trash"></i></a>
+            <a data-bs-toggle="modal" data-bs-target="#EditarUsuario"><i style="font-size:25px; color:blue;" class="bi bi-pencil-square"></i></a>
+          </td>
+        </tr>
+        @endforeach
       </tbody>
     </table>
 

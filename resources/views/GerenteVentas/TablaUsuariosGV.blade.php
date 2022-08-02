@@ -129,24 +129,25 @@
 
   <div class="tablaclientes">
 
-        <table id="clienteVentas" class="table display table-striped table-bordered nowrap" style="width:100%">
-            <thead>
-                <tr>
-                    <th scope="col">Nombre</th>
-                    <th scope="col">Nickname</th>
-                    <th scope="col">Rol</th>
-                    <th scope="col">Opciones</th>    
-                </tr>
-            </thead>
-            <tbody>
-            @foreach($usuario as $usuario)
-                <tr>
-                    <td>{{ $usuario-> nombreUsuario}} {{ $usuario-> apellidoPaternoUsuario}} {{ $usuario-> apellidoMaternoUsuario}}</td>
-                    <td>{{ $usuario-> nomUsuario}}</td>
-                    <td>{{ $usuario-> nomTipoUsuario}}</td>
-                    <td>{{ $usuario-> nomEstatus}}</td>
-                    <td><a data-bs-toggle="modal" onclick="eliminar()"><i style="font-size:25px; color:red;" class="bi bi-trash"></i></a>
-                    <a data-bs-toggle="modal" data-bs-target="#EditarUsuario"><i style="font-size:25px; color:blue;" class="bi bi-pencil-square"></i></a></td>
+    <table id="clienteVentas" class="table display table-striped table-bordered nowrap" style="width:100%">
+      <thead>
+        <tr>
+          <th scope="col">Nombre</th>
+          <th scope="col">Nickname</th>
+          <th scope="col">Rol</th>
+          <th scope="col">Opciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        @foreach($usuario as $usuario)
+        <tr>
+          <td>{{ $usuario-> nombreUsuario}} {{ $usuario-> apellidoPaternoUsuario}} {{ $usuario-> apellidoMaternoUsuario}}</td>
+          <td>{{ $usuario-> nomUsuario}}</td>
+          <td>{{ $usuario-> nomTipoUsuario}}</td>
+          <td>{{ $usuario-> nomEstatus}}</td>
+          <td><a data-bs-toggle="modal" onclick="eliminar()"><i style="font-size:25px; color:red;" class="bi bi-trash"></i></a>
+            <a data-bs-toggle="modal" data-bs-target="#EditarUsuario"><i style="font-size:25px; color:blue;" class="bi bi-pencil-square"></i></a>
+          </td>
         </tr>
         @endforeach
       </tbody>
@@ -164,31 +165,31 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-      <form>
-        <div class="mb-3">
-          <label  class="form-label" >Nombre</label>
-          <input  type="text" value="Adrian Eduardo" class="form-control" >
-        </div>
-        <div class="mb-3">
-          <label  class="form-label">Apellido Paterno</label>
-          <input  type="text" value="Villanueva" class="form-control">
-        </div>
-        <div class="mb-3">
-          <label  class="form-label">Apellido Materno</label>
-          <input  type="text" value="Hernandez" class="form-control">
-        </div>
-        <div class="mb-3">
-          <label  class="form-label"  >Nickname</label>
-          <input  placeholder="Kevyn69" value="adrian.villanueva" type="text" class="form-control">
-        </div>
-        <div class="mb-3">
-        <label  class="form-label"  >Rol</label>
-        <select id="ag_5" class="form-select" aria-label=" select example" disabled>
-                      <option selected value="">Cobrador</option>
-                    </select>
-        </div>
-        <button type="submit" class="btn btn-primary btn-block">Submit</button>
-      </form>
+        <form>
+          <div class="mb-3">
+            <label class="form-label">Nombre</label>
+            <input type="text" value="Adrian Eduardo" class="form-control">
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Apellido Paterno</label>
+            <input type="text" value="Villanueva" class="form-control">
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Apellido Materno</label>
+            <input type="text" value="Hernandez" class="form-control">
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Nickname</label>
+            <input placeholder="Kevyn69" value="adrian.villanueva" type="text" class="form-control">
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Rol</label>
+            <select id="ag_5" class="form-select" aria-label=" select example" disabled>
+              <option selected value="">Cobrador</option>
+            </select>
+          </div>
+          <button type="submit" class="btn btn-primary btn-block">Submit</button>
+        </form>
       </div>
     </div>
   </div>

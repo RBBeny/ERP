@@ -15,7 +15,13 @@ class CobranzaGerenteController extends Controller
         return view('GerenteCobranza.homeGCobranza');
     }
     public function usuarios(){
-        return view('GerenteCobranza.TablaUsuariosGC');
+
+        $usuario ["usuario"]= DB::table('tusuario')
+        ->select("nombreUsuario", "apellidoPaternoUsuario", "apellidoMaternoUsuario", "nomUsuario", "ctipousuario.nomTipoUsuario", "cEstatus.nomEstatus")
+        ->join("ctipousuario", "ctipousuario.cveTipoUsuario", "=", "tusuario.cveTipoUsuario")
+        ->join("cEstatus", "tusuario.cveEstatus", "=", "cEstatus.cveEstatus")
+        ->get();
+        return view('GerenteCobranza.TablaUsuariosGC', $usuario);
     }
     public function clientes(){
         $Datos['clientes'] = DB::table('tcliente')
