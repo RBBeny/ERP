@@ -133,7 +133,7 @@ class CobranzaController extends Controller
     {
         $pagos = Pago::findOrFail($cvePago);
         $pagos -> delete();
-        return redirect()->route('PCobranza');
+        return redirect('/PCobranza')->with('success', 'Cuenta creada');
     }
     
 

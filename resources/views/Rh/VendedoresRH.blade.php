@@ -104,7 +104,6 @@
                     <th scope="col">Nombre</th>
                     <th scope="col">Comision</th>
                     <th scope="col">Estatus</th>
-                    <th scope="col">Opciones</th>
                 </tr>
             </thead>
             <tbody>
@@ -114,54 +113,17 @@
                                 <td>{{ $vendedor->nombreVendedor}} {{ $vendedor-> apellidoPaternoVendedor}} {{ $vendedor-> apellidoMaternoVendedor}}</td>
                                 <td>{{ $vendedor-> comisionVendedor}}</td>
                                 <td>{{ $vendedor-> nomEstatus}}</td>
-                                <td>
                                   
                                 <!-- Button trigger modal -->
 <!--<button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#staticBackdrop2/{{$vendedor-> cveVendedor}}">
   Editar
 </button> -->
 </div>
-<!-- Modal ag_regar usuario -->
-<div class="modal fade" id="staticBackdrop2" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="staticBackdropLabel">agregar usuario</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-      <form>
-        <div class="mb-3">
-          <label   class="form-label">Nombre</label>
-          <input   type="text" id="ag_1" class="form-control" >
-        </div>
-        <div class="mb-3">
-          <label  class="form-label">Apellido Paterno</label>
-          <input  id="ag_2" type="text" class="form-control">
-        </div>
-        <div class="mb-3">
-          <label  class="form-label">Apellido Materno</label>
-          <input  id="ag_3" type="text" class="form-control">
-        </div>
-
-        <div class="mb-3">
-          <label  class="form-label">Rol</label>
-                <select id="ag_5" class="form-select" aria-label=" select example">
-                      <option selected value="">Selecciona opcion</option>
-                                <option value="1">Ventas</option>
-                                <option value="2">Cobranza</option>
-                    </select>
-        </div>
-
-        <button id="btn" type="submit" class="btn btn-primary btn-block" disabled>Submit</button>
-      </form>
-      </div>
-    </div>
-  </div>
-</div>
+<
 
                                 </td>
                               </tr>
+                              @include('Rh.agregarVendedor')
                             @endforeach
             </tbody>
         </table>

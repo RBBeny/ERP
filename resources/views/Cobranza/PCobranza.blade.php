@@ -60,23 +60,23 @@
         @csrf
         <div class="mb-3">
           <label for=""  class="form-label">cvePago</label>
-          <input id="cvePago" name="cvePago" type="number" class="form-control"  >
+          <input id="cvePago" name="cvePago" type="number" class="form-control"  required>
         </div>
         <div class="mb-3">
           <label  class="form-label">fechaPago</label>
-          <input  id="fechaPago" name="fechaPago" type="date" class="form-control" >
+          <input  id="fechaPago" name="fechaPago" type="date" class="form-control" required>
         </div>
         <div class="mb-3">
           <label  class="form-label">cantidadPago</label>
-          <input  id="cantidadPago" name="cantidadPago" type="text" class="form-control">
+          <input  id="cantidadPago" name="cantidadPago" type="text" class="form-control"required>
         </div>
         <div class="mb-3">
           <label  class="form-label">cveContrato</label>
-          <input  id="cveContrato" name="cveContrato" type="text" class="form-control" >
+          <input  id="cveContrato" name="cveContrato" type="text" class="form-control" required>
         </div>
         <div class="mb-3">
           <label  class="form-label">cveCobrador</label>
-          <input  id="cveCobrador" name="cveCobrador" type="text" class="form-control" >
+          <input  id="cveCobrador" name="cveCobrador" type="text" class="form-control"required >
         </div>
         <button type="button"  data-bs-dismiss="modal" aria-label="Close" class="btn btn-danger">Cancelar</button>
         <button type="submit"  class="btn btn-success" >Guardar</button>
@@ -88,17 +88,7 @@
     </div>
   </div>
 </div>
-<div class="col-lg-12" id="contenMsjs">
-  <div class="alert alert-seccess">
-    <button type="button" class="close success-op" data-dismiss="alert" aria-label="Close">
-  <span class="icon-sc-c1" aria-hidden="true">&times;</span>       
-  </button>
- <span class="adminpro-icon">
-        <p class="messge-alert-none" id="msj">
-          {{ session('mensaje')}}
-        </p>
-      </span>
-  </div>
+
 
 </div>
 
