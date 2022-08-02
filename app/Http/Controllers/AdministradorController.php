@@ -22,27 +22,41 @@ class AdministradorController extends Controller
         return view('Administrador.verUsuarioAdmin');
     }
 
-    public function agregarUsuarios(){
-        return view('Administrador.agregarUsuarioAdmin');
-    }
+    
     public function verUsuarios(){
         //return view('Administrador.verUsuariosAdmin');
         $usuarios ["usuario"]= DB::table('tusuario')
-        ->select("nombreUsuario", "nomUsuario", "ctipousuario.nomTipoUsuario", "cEstatus.nomEstatus")
+        ->select("id","nombreUsuario", "nomUsuario","apellidoPaternoUsuario","apellidoMaternoUsuario","ctipousuario.nomTipoUsuario", "cEstatus.nomEstatus","tusuario.cveTipoUsuario")
         ->join("ctipousuario", "ctipousuario.cveTipoUsuario", "=", "tusuario.cveTipoUsuario")
         ->join("cEstatus", "tusuario.cveEstatus", "=", "cEstatus.cveEstatus")
         ->get();
-
-
-        $roles ["rol"] = DB::table('ctipousuario')
-        ->select("cveTipoUsuario", "nomTipoUsuario")
-        ->get();
-
-
-        return view('Administrador.verUsuariosAdmin',$usuarios, $roles);
-    
+        return view('Administrador.verUsuariosAdmin',$usuarios);
+    }
+    //Edit
+    public function edit ($id){
+        $usuario = User::findOrFail($id);
+       return view('Administrador.agregarUsuarioAdmin',compact('usuario'));
     }
 
+    //Update
+    public function update (Request $request, $id){
+        $usuario= User::findOrFail($id);
+        $usuario->nombreUsuario = $request -> input('nombre');
+        $usuario->apellidoPaternoUsuario = $request -> input('apellidoPaterno');
+        $usuario->apellidoMaternoUsuario = $request -> input('apellidoMaterno');
+        $usuario->nomUsuario = $request -> input('apellidoMaterno');
+        $usuario->cveTipoUsuario = $request -> input('rol');
+        $usuario->save();
+        return redirect()->route('verUsuarios');
+
+    }
+
+    public function destroy($id)
+    {
+        $usuario = User::findOrFail($id);
+        $usuario -> delete();
+        return redirect()->route('verUsuarios');
+    }
 
   public function register(RegisterRequest $request){
     $user = User::create($request->validated());
