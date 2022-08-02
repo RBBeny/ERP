@@ -88,7 +88,7 @@ class VentasGerenteController extends Controller
 
         
     }
-    public function Reporte(){
+    public function ReporteVendedores(){
        date_default_timezone_set("America/Mexico_City");
        $mes =  date("m");
        $Ventas = DB::table('tvendedor')
@@ -99,7 +99,7 @@ class VentasGerenteController extends Controller
        ->orderBy('Ventas','desc')
        ->get();
        $Fecha =  date("F-Y");
-        return view('GerenteVentas.GenerarReporte',[ 'Fecha'=>$Fecha,'Ventas' => $Ventas]);
+        return view('GerenteVentas.Ventas',[ 'Fecha'=>$Fecha,'Ventas' => $Ventas]);
        
     }
 

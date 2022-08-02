@@ -69,7 +69,7 @@ const campos = {
     costoPaquete:true,
     extraPaquete: true,
     cveVendedor: false,
-    fechaSolicitud: true,
+    fechaSolicitud: false,
     cveFormaPago: false,
     cveCobrador: false,
     bonificacion: true,

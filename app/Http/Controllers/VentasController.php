@@ -100,6 +100,8 @@ class VentasController extends Controller
                 "entreCallesClienteCobro",
                 "referenciasCasaClienteCobro",
                 "costoPaquete",
+                "aportacionInicial",
+                "bonificacion",
                 'restantePaquete',
                 'totalPagado',
                 'nomFormaPago',

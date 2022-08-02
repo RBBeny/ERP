@@ -34,19 +34,6 @@
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#miModal">Consultar ventas</button>
         </div>
     </div>
-
-    <div class="modal fade" id="miModal" tabindex="-1" aria-hidden="true" aria-labelledby="modalTitle">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-tittle" id="modalTitle">Modal</h5>
-                </div>
-                <div class="modal-body">
-
-                </div>
-            </div>
-        </div>
-    </div>
     <div class="tablaclientes">
         <table id="clienteVentas" class="table display table-striped table-bordered nowrap" style="width:80%">
             <thead>
@@ -82,34 +69,12 @@
             <th scope="col">Cliente</th>
     </thead>
         <tbody id="cuentas_ventas">
-          
-            
         </tbody>
      </table>
       </div>
     </div>
   </div>
 </div>
-    <!-- Modal -->
-
-    {{--<div class="cards">
-        @foreach($Ventas as $ventas)
-        <div class="cards_fila">
-            <div class="card">
-                <div class="left-column background1-left-column">
-                    <i class="fa-solid fa-user-tie fa-5x"></i>
-                </div>
-                <div class="right-column">
-                    <h3>{{$ventas->nombreVendedor}} {{$ventas->apellidoPaternoVendedor}}</h3>
-    <p>{{$ventas->Ventas}}</p>
-    <button class="button background1-left-column">Ver cuentas</button>
-</div>
-</div>
-</div>
-@endforeach
-</div>
---}}
-
 
 </div>
 

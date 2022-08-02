@@ -546,8 +546,8 @@
                     </div>
                     <div class="form-row form-inline">
                         <div class="col-md-6 mb-3">
-                            <label for="fechaAfilacion">Fecha de afiliación</label>
-                            <input type="date" class="form-control @error('fechaSolicitud') is invalid @enderror" name="fechaSolicitud" value="{{old('fechaSolicitud')}}" id="fechaSolicitud">
+                            <label for="fechaSolicitud">* Fecha de afiliación</label>
+                            <input type="date" class="form-control @error('fechaSolicitud') is invalid @enderror" name="fechaSolicitud" value="{{old('fechaSolicitud')}}" id="v" required>
                             @error('fechaSolicitud')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{$message}}</strong>
