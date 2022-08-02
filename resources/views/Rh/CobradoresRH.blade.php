@@ -61,19 +61,19 @@
         @csrf
         <div class="mb-3">
           <label for=""  class="form-label">Nombre Cobrador</label>
-          <input id="nombreCobradorr" name="nombreCobrador" type="text" class="form-control"  >
+          <input id="nombreCobradorr" name="nombreCobrador" type="text" class="form-control" required >
         </div>
         <div class="mb-3">
           <label  class="form-label">Apellido Paterno</label>
-          <input  id="apellidoPaternoCobrador" name="apellidoPaternoCobrador" type="text" class="form-control" >
+          <input  id="apellidoPaternoCobrador" name="apellidoPaternoCobrador" type="text" class="form-control"required >
         </div>
         <div class="mb-3">
           <label  class="form-label">Apellido Materno</label>
-          <input  id="apellidoMaternoCobrador" name="apellidoMaternoCobrador" type="text" class="form-control">
+          <input  id="apellidoMaternoCobrador" name="apellidoMaternoCobrador" type="text" class="form-control"required>
         </div>
         <div class="mb-3">
           <label  class="form-label">Comision Vendedor</label>
-          <input  id="comisionCobrador" name="comisionCobrador" type="text" class="form-control" >
+          <input  id="comisionCobrador" name="comisionCobrador" type="text" class="form-control" required>
         </div>
 
         <div class="form-group">

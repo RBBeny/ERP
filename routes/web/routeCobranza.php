@@ -59,6 +59,7 @@ Route::group(['middleware' => 'isCobranza'], function(){
     Route:: get('/ClienteCobranza',[CobranzaController::class, 'ClienteCobranza']);
     Route:: get('/TablasClientesC',[CobranzaController::class, 'TablasClientesC']);
     Route:: get('/VerCliente/{id}', [CobranzaController::class, 'cliente']);
+    Route::delete('/destroyP/{cvePago}', [CobranzaController::class,'destroyP']);
     Route::get('delete/{cvePago}',[CobranzaController::class,'eliminarPago'])->name('eliminarPago');
     Route::post('/Ppago', [CobranzaController::class, 'registerC']);
     Route::post('/PagosC', [CobranzaController::class, 'registerPC']);
