@@ -229,6 +229,16 @@
                         </div>
                     </div>
                     <div class="row">
+                    <div class="form-field col-lg-4">
+                            <label for="aportacionInicial" class="label">Aportación inicial</label>
+                            <input type="text" class="input-text" value="{{$cliente->aportacionInicial}}"  id="aportacionInicial" readonly>
+                        </div>
+                        <div class="form-field col-lg-4">
+                            <label for="bonificacion" class="label">Bonificación</label>
+                            <input type="text" class="input-text" value="{{$cliente->bonificacion}}" id="bonificacion" readonly>
+                        </div>
+                    </div>
+                    <div class="row">
                         <div class="form-field col-lg-4">
                             <label for="Adeudo" class="label">Adeudo</label>
                             <input type="text" class="input-text" id="Adeudo" value="{{$cliente->restantePaquete}}"readonly>

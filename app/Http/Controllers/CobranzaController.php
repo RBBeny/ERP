@@ -65,11 +65,11 @@ class CobranzaController extends Controller
         ->join('tcontrato', 'tcontrato.cveContrato', '=', 'tcliente.cveContrato')
         ->join('tsolicitud', 'tsolicitud.cveContrato', '=', 'tcliente.cveContrato')
         ->join('cestado', 'cestado.cveEstado', '=', 'tcliente.cveEstadoCliente')
-        ->join('cmunicipio', 'cmunicipio.cveMunicipio', '=', 'tcliente.cveMunicipioClienteCobro')
-        ->join('ccolonia', 'ccolonia.cveColonia', '=', 'tcliente.cveColoniaClienteCobro')
+        ->join('cmunicipio', 'cmunicipio.cveMunicipio', '=', 'tcliente.cveMunicipioCliente')
+        ->join('ccolonia', 'ccolonia.cveColonia', '=', 'tcliente.cveColoniaCliente')
         ->join('cEstatusContrato', 'cEstatusContrato.cveEstatusContrato', '=', 'tcontrato.cveEstatusContrato')
         ->get();
-        return view('Cobranza.ClienteCobranza',$Datos);
+        return view('Cobranza.TablasClientesC',$Datos);
     }
 
     public function cliente( $cliente){
@@ -81,7 +81,7 @@ class CobranzaController extends Controller
         "numeroInteriorCasaCliente","entreCallesCliente","referenciasCasaCliente",
         "calleClienteCobro","numeroExteriorCasaClienteCobro",
         "numeroInteriorCasaClienteCobro","entreCallesClienteCobro","referenciasCasaClienteCobro",
-        "costoPaquete",'restantePaquete','totalPagado','nomFormaPago','fechaEmision',
+        "costoPaquete",'aportacionInicial', 'bonificacion','restantePaquete','totalPagado','nomFormaPago','fechaEmision',
         'nombreCobrador',"apellidoPaternoCobrador","apellidoMaternoCobrador",
         'nombreVendedor',"apellidoPaternoVendedor","apellidoMaternoVendedor")
         ->join('tcontrato', 'tcontrato.cveContrato', '=', 'tcliente.cveContrato')
@@ -116,7 +116,7 @@ class CobranzaController extends Controller
         ->get();
 
 
-        return view('Cobranza.ClientesCobranza',['clientes'=>$Datos,'pagos'=>$Pagos,'cobros'=>$Cobros]);
+        return view('Cobranza.VerClienteCobranza',['clientes'=>$Datos,'pagos'=>$Pagos,'cobros'=>$Cobros]);
     }
       public function registerPC(RegisterPCRequest $request){
         //User::create($request->validated());

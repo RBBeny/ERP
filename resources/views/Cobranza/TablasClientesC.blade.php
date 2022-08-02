@@ -24,7 +24,6 @@
                     <th scope="col">N°Sol</th>
                     <th scope="col">N°Cont</th>
                     <th scope="col">Nombre</th>
-                    <th scope="col">Domicilio</th>
                     <th scope="col">Telefono</th>
                     <th scope="col">Estatus</th>
                     <th scope="col">Ver Cliente</th>
@@ -36,10 +35,9 @@
                     <td>{{ $cliente-> cveSolicitud}}</td>
                     <td>{{ $cliente-> cveContrato}}</td>
                     <td>{{ $cliente->nomCliente}} {{ $cliente-> apellidoPaternoCliente}} {{ $cliente-> apellidoMaternoCliente}}</td>
-                    <td>{{ $cliente-> nomEstado}} {{ $cliente-> nomMunicipio}} {{ $cliente-> nomColonia}} {{ $cliente-> numeroExteriorCasaClienteCobro}} {{ $cliente-> numeroInteriorCasaClienteCobro}}</td>
                     <td>{{ $cliente-> telefonoCliente}}</td>
                     <td>{{ $cliente-> nomEstatusContrato}}</td>
-                    <td ><a href="/VerClienteGC/{{$cliente-> cveCliente}}"> <i class="far fa-eye fa-lg"></i></a></td>
+                    <td ><a href="/VerClienteCobranza/{{$cliente-> cveCliente}}"> <i class="far fa-eye fa-lg"></i></a></td>
                 </tr>
                 @endforeach
             </tbody>
