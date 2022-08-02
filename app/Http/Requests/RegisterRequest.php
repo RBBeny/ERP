@@ -27,7 +27,7 @@ class RegisterRequest extends FormRequest
             'nombreUsuario'=> 'required|max:30|min:1',
             'apellidoPaternoUsuario'=> 'required|max:30|min:1',
             'apellidoMaternoUsuario'=> 'required|max:30|min:1',
-            'nomUsuario'=> 'required|max:15|min:4',
+            'nomUsuario'=> 'required|max:15|min:4|unique:tusuario,nomUsuario',
             'password'=> 'required|max:15|min:4',
             'cveTipoUsuario'=> 'required',
             'cveEstatus'=> 'required',
@@ -38,6 +38,7 @@ class RegisterRequest extends FormRequest
     {
         return [
             'nomUsuario.required' => 'El Usuario es obligatorio.',
+            'nomUsuario.unique' => 'El Nombre del usuario no se puede repetir.',
             'password.required' => 'El password es obligatorio',
         ];
     }

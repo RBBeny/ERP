@@ -24,10 +24,10 @@ class RegisterPCRequest extends FormRequest
     public function rules()
     {
         return [
-            'cvePago'=> 'required',
+            'cvePago'=> 'required|unique:tpago,cvePago',
             'fechaPago'=> 'required',
             'cantidadPago'=> 'required|numeric|regex:/^[\d]{0,11}(\.[\d]{1,2})?$/',
-            'cveContrato'=> 'required|numeric|regex:/^[\d]{0,11}(\.[\d]{1,2})?$/',
+            'cveContrato'=> 'required|numeric|regex:/^[\d]{0,11}(\.[\d]{1,2})?$/|exists:tcontrato,cveContrato',
             'cveCobrador'=> 'required',
         ];
     }
@@ -36,10 +36,12 @@ class RegisterPCRequest extends FormRequest
     {
         return [
             'cvePago.required' => 'El Nombre es obligatorio.',
+            'cvePago.unique' => 'El folio del pago ya existe',
             'fechaPago.required' => 'El Apellido Paterno  es obligatorio.',
             'cantidadPago.required' => 'El Apellido Materno es obligatorio.',
             'cveContrato.required' => 'La Comision es obligatorio.',
-            'cveCobrador.numeric' => 'La Comision debe ser numerica.',                    
+            'cveCobrador.numeric' => 'La Comision debe ser numerica.',
+            'cveContrato.exists' => 'El cliente no existe'                    
         ];
         } 
     }   
