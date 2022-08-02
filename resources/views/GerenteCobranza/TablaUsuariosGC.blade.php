@@ -208,7 +208,7 @@
 
   });
 </script>
-<script src="{{ asset('js/Registro/registroValidaciones.js') }}" type="text/javascript"></script>
+<script src="{{ asset('js/GerenteCobranza/nuevoUsuario.js') }}" type="text/javascript"></script>
 
 
 @endsection

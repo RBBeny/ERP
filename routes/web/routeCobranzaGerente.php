@@ -15,7 +15,7 @@ Route::group(['middleware' => 'isCobranzaG'], function () {
     Route:: get('/ReporteDetallado/{fechainicio}/{fechafin}', [CobranzaGerenteController::class, 'ReporteIdetallado']);
     Route:: get('/VerClienteGC/{id}', [CobranzaGerenteController::class, 'cliente']);
 
-    Route::post('/registrarUsuarios', [AdministradorController::class, 'register']);
+    Route::post('/registrarUsuariosGC', [AdministradorController::class, 'registerGC']);
 });
     
 

@@ -49,7 +49,7 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <form action="/registrarUsuarios" method="POST" class="formulario" id="formulario">
+          <form action="/registrarUsuariosAdmin" method="POST" class="formulario" id="formulario">
             @csrf
             <!-- Grupo: Nombre -->
             <div class="mb-3">
@@ -181,6 +181,6 @@
   });
 </script>
 <script src="{{ asset('js/Administrador/AgregarUsuarios.js') }}" type="text/javascript"></script>
-<script src="{{ asset('js/Registro/registroValidaciones.js') }}" type="text/javascript"></script>
+<script src="{{ asset('js/Administrador/adminUser.js') }}" type="text/javascript"></script>
 @endsection
 @endsection

@@ -62,5 +62,16 @@ class AdministradorController extends Controller
     $user = User::create($request->validated());
     return redirect('/verUsuarios')->with('success', 'Cuenta creada');
 }
+
+
+public function registerAdmin(RegisterRequest $request){
+    $user = User::create($request->validated());
+    return redirect('/verUsuarios')->with('success', 'Cuenta creada');
+}
+
+public function registerGC(RegisterRequest $request){
+    $user = User::create($request->validated());
+    return redirect('/verUsuarios')->with('success', 'Cuenta creada');
+}
 }
 

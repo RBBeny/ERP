@@ -35,7 +35,7 @@ Route::group(['middleware' => 'isCobranza'], function(){
 
 
     Route::get('delete/{cvePago}',[CobranzaController::class,'eliminarPago'])->name('eliminarPago');
-    
+
 
     Route:: get('/homeGCobranza', [CobranzaGerenteController::class, 'home']);
     Route:: get('/TablaUsuariosGC', [CobranzaGerenteController::class, 'usuarios']);
@@ -44,7 +44,7 @@ Route::group(['middleware' => 'isCobranza'], function(){
     Route:: get('/VerClienteGC/{id}', [CobranzaGerenteController::class, 'cliente']);
 
     Route::get('delete/{cvePago}',[CobranzaController::class,'eliminarPago'])->name('eliminarPago');
-    
+
     //Route:: get('/homeGCobranza', [CobranzaGerenteController::class, 'home']);
     //Route:: get('/TablaUsuariosGC', [CobranzaGerenteController::class, 'usuarios']);
     //Route:: get('/TablaClientesGC', [CobranzaGerenteController::class, 'clientes']);

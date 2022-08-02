@@ -11,5 +11,5 @@ Route::group(['middleware' => 'isAdministrador'], function () {
     Route::get('/verUsuarios', [AdministradorController::class, 'verUsuarios'])->name('verUsuarios');;
     Route::put('/update/{id}', [AdministradorController::class,'update'])->name('update');
     Route::delete('/destroy/{id}', [AdministradorController::class,'destroy']);
-    Route::post('/registrarUsuarios', [AdministradorController::class, 'register']);
+    Route::post('/registrarUsuariosAdmin', [AdministradorController::class, 'registerAdmin']);
 });
