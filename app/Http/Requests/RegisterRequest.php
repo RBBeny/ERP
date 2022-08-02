@@ -24,13 +24,21 @@ class RegisterRequest extends FormRequest
     public function rules()
     {
         return [
-            'nombreUsuario'=> 'required',
-            'apellidoPaternoUsuario'=> 'required',
-            'apellidoMaternoUsuario'=> 'required',
-            'nomUsuario'=> 'required',
-            'password'=> 'required',
+            'nombreUsuario'=> 'required|max:30|min:1',
+            'apellidoPaternoUsuario'=> 'required|max:30|min:1',
+            'apellidoMaternoUsuario'=> 'required|max:30|min:1',
+            'nomUsuario'=> 'required|max:15|min:4',
+            'password'=> 'required|max:15|min:4',
             'cveTipoUsuario'=> 'required',
             'cveEstatus'=> 'required',
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'nomUsuario.required' => 'El Usuario es obligatorio.',
+            'password.required' => 'El password es obligatorio',
         ];
     }
 }
