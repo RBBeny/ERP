@@ -24,7 +24,7 @@
           <input  type="text" name="apellidoMaterno" class="form-control" value="{{$usuario->apellidoMaternoUsuario}}">
         </div>
         <div class="mb-3">
-          <label  class="form-label"  >Nickname</label>
+          <label  class="form-label" >Nickname</label>
           <input  name="nomUsuario"  type="text" class="form-control" value="{{$usuario->nomUsuario}}">
         </div>
         <div class="mb-3">

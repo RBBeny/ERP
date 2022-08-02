@@ -106,9 +106,9 @@
                     <option value="6">Gerente de ventas</option>
                     <option value="7">Gerente de cobranza</option>
                     <option value="4">Ventas</option>
-                              <option value="5">Cobranza</option>
-                                <option value="8">RH</option>
-                                <option value="9">Finanzas</option>
+                    <option value="5">Cobranza</option>
+                    <option value="8">RH</option>
+                    <option value="9">Finanzas</option>
                   </select>
                 </div>
                 <p class="formulario__input-error">El rol solo puede ser del del 1 al 9</p>
@@ -141,8 +141,8 @@
       <thead>
         <tr>
           <th scope="col">Nombre</th>
-          <th scope="col">Rol</th>
           <th scope="col">Nickname</th>
+          <th scope="col">Rol</th>
           <th scope="col">Estatus</th>
           <th scope="col">Editar</th>
           <th scope="col">Eliminar</th>

@@ -44,7 +44,7 @@ class AdministradorController extends Controller
         $usuario->nombreUsuario = $request -> input('nombre');
         $usuario->apellidoPaternoUsuario = $request -> input('apellidoPaterno');
         $usuario->apellidoMaternoUsuario = $request -> input('apellidoMaterno');
-        $usuario->nomUsuario = $request -> input('apellidoMaterno');
+        $usuario->nomUsuario = $request -> input('nomUsuario');
         $usuario->cveTipoUsuario = $request -> input('rol');
         $usuario->save();
         return redirect()->route('verUsuarios');
