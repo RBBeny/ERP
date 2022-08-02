@@ -27,8 +27,22 @@ class RegisterCRequest extends FormRequest
             'nombreCobrador'=> 'required',
             'apellidoPaternoCobrador'=> 'required',
             'apellidoMaternoCobrador'=> 'required',
-            'comisionCobrador'=> 'required',
+            'comisionCobrador'=> 'required|numeric|regex:/^[\d]{0,11}(\.[\d]{1,2})?$/',
             'cveEstatus'=> 'required',
+        ];
+    }
+    
+    public function messages()
+    {
+        return [
+            'nombreCobrador.required' => 'El Nombre es obligatorio.',
+            'apellidoPaternoCobrador.required' => 'El Apellido Paterno  es obligatorio.',
+            'apellidoMaternoCobrador.required' => 'El Apellido Materno es obligatorio.',
+            'comisionCobrador.required' => 'La Comision es obligatorio.',
+            'comisionCobrador.numeric' => 'La Comision debe ser numerica.',
+            'cveEstatus.required' => 'El Estatus es obligatorio.',
+            
+
         ];
     }
 }    

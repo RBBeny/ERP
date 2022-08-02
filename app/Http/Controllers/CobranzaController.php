@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Pago;
-use App\Models\PagosCobranza;
+use App;
+use App\Models\Pago;
 use App\Models\Cobrador;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
+use DB;
+use App\Http\Requests\RegisterPRequest;
+use App\Http\Requests\RegisterPCRequest;
+
 
 class CobranzaController extends Controller
 {
@@ -14,7 +17,20 @@ class CobranzaController extends Controller
     public function home(){
         return view('Cobranza.homeCobranza');
     }
+    public function PCobranza(){
+        $pagos['pagos'] = DB::table('tpago')
+        ->select('tcontrato.cveContrato','nomFormaPago','cvePago','fechaPago','cantidadPago','restantePaquete','nombreCobrador',"apellidoPaternoCobrador","apellidoMaternoCobrador")
+        ->join('tcobrador', 'tcobrador.cveCobrador', '=', 'tpago.cveCobrador')
+        ->join('tcontrato', 'tcontrato.cveContrato', '=', 'tpago.cveContrato')
+        ->join('tsolicitud', 'tsolicitud.cveContrato', '=', 'tpago.cveContrato')
+        ->join('cformapago', 'cformapago.cveFormaPago', '=', 'tsolicitud.cveFormaPago')
+        ->get();
 
+        $cobradores['cobradores'] = DB::table('tcobrador')
+        ->select('tcobrador.cveCobrador','nombreCobrador','apellidoPaternoCobrador','apellidoMaternoCobrador')
+        ->get();
+        return view('Cobranza.PCobranza',$pagos,$cobradores);
+    }
 
     public function PagosCobranza(){
         $Datos['pagos'] = DB::table('tpago')
@@ -30,29 +46,9 @@ class CobranzaController extends Controller
         ->get();
         return view('Cobranza.PagosCobranza',$Datos,$cobradores);
     }    
-    public function insertarPago(Request $request){
-        //validaciones
-        $this->validate($request, [
-            'cvePago'=>'required|min:1|max:10|unique:tpago',
-            'fechaPago'=>'required',
-            'cantidadPago'=>'required',
-            'cveContrato'=>'required',
-            'cveCobrador'=>'required',
-            
-        ]);
-        //fin
-        
-        $Pago = new Pago();
-        $Pago->cvePago=$request->input('cvePago');
-        $Pago->fechaPago=$request->input('fechaPago');
-        $Pago->cantidadPago=$request->input('cantidadPago');
-        $Pago->cveContrato=$request->input('cveContrato');
-        $Pago->cveCobrador=$request->input('cveCobrador');
-        $Pago->save();
 
-        return back()->with('mensaje','se agrego');
-        
-    }
+
+  
     public function Recibos(){
         return view('Cobranza.Recibos');
     }
@@ -117,7 +113,19 @@ class CobranzaController extends Controller
 
         return view('Cobranza.ClientesCobranza',['clientes'=>$Datos,'pagos'=>$Pagos,'cobros'=>$Cobros]);
     }
+      public function registerPC(RegisterPCRequest $request){
+        //User::create($request->validated());
+        $pagos = new Pago();
+        $pagos->cvePago=$request->input('cvePago');
+        $pagos->fechaPago=$request->input('fechaPago');
+        $pagos->cantidadPago=$request->input('cantidadPago');
+        $pagos->cveContrato=$request->input('cveContrato');
+        $pagos->cveCobrador=$request->input('cveCobrador');
+        $pagos->save();
+        return redirect('/PCobranza')->with('success', 'Cuenta creada');
+    }
 
+    
     public function eliminarPago(Request $request, $cvePago){
         if($request->ajax()){
             $Pago = tpago::find($cvePago);

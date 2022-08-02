@@ -28,6 +28,25 @@
   Agregar Vendedor
 </button>
 </div>
+<br>
+<br>
+<div class="col-md-12">
+@if(count($errors) > 0)
+                <div class="errors">
+
+                    @foreach($errors->all() as $error)
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert" width:"200px">
+
+                        {{ $error }}
+
+                        
+                    </div>
+
+
+                    @endforeach
+
+                </div>
+                @endif
 <!-- Modal ag_regar usuario -->
 <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -41,11 +60,11 @@
         @csrf
         <div class="mb-3">
           <label for=""  class="form-label">Nombre Vendedor</label>
-          <input id="nombreVendedor" name="nombreVendedor" type="text" class="form-control" required>
+          <input id="nombreVendedor" name="nombreVendedor" type="text" class="form-control" required >
         </div>
         <div class="mb-3">
           <label  class="form-label">Apellido Paterno</label>
-          <input  id="apellidoPaternoVendedor" name="apellidoPaternoVendedor" type="text" class="form-control"required>
+          <input  id="apellidoPaternoVendedor" name="apellidoPaternoVendedor" type="text" class="form-control" required>
         </div>
         <div class="mb-3">
           <label  class="form-label">Apellido Materno</label>
@@ -58,7 +77,7 @@
 
         <div class="form-group">
     <label for="InputcveEstatus">Estatus</label>
-  <select class="form-select" name="cveEstatus" placeholder="Esttus"  name="cveEstatus" aria-label="Default select example">
+  <select class="form-select" name="cveEstatus" placeholder="Esttus"  name="cveEstatus" aria-label="Default select example"required>
   @foreach($estados as $estado)
   <option value="{{ $estado->cveEstatus}} ">{{$estado-> nomEstatus}}</option>
   @endforeach

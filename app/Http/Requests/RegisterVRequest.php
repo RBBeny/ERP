@@ -27,8 +27,22 @@ class RegisterVRequest extends FormRequest
             'nombreVendedor'=> 'required',
             'apellidoPaternoVendedor'=> 'required',
             'apellidoMaternoVendedor'=> 'required',
-            'comisionVendedor'=> 'required',
+            'comisionVendedor'=> 'required|numeric|regex:/^[\d]{0,11}(\.[\d]{1,2})?$/',
             'cveEstatus'=> 'required',
         ];
     }
+    public function messages()
+    {
+        return [
+            'nombreVendedor.required' => 'El Nombre es obligatorio.',
+            'apellidoPaternoVendedor.required' => 'El Apellido Paterno  es obligatorio.',
+            'apellidoMaternoVendedor.required' => 'El Apellido Materno es obligatorio.',
+            'comisionVendedor.required' => 'La Comision es obligatorio.',
+            'comisionVendedor.numeric' => 'La Comision debe ser numerica.',
+            'cveEstatus.required' => 'El Estatus es obligatorio.',
+            
+
+        ];
+    }
+    
 }    

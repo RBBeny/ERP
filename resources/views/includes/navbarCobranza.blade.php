@@ -25,7 +25,7 @@
          </h4>
             </center>
             <a href="/homeCobranza"> <i class="fas fa-home fa-lg"></i></i><span>Home</span></a>
-            <a href="/PagosCobranza"> <i class="fa-solid fa-money-bill"></i></i><span>Ver Pagos</span></a>
+            <a href="/PCobranza"> <i class="fa-solid fa-money-bill"></i></i><span>Ver Pagos</span></a>
             <a href="/TablasClientesC"> <i class="fas fa-users fa-lg"></i></i><span>Ver Clientes</span></a>
 
         </div>

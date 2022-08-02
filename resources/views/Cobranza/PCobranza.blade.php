@@ -1,23 +1,24 @@
 @extends('layouts.plantilla')
 
-@section('titulo','Codradores RH')
+@section('titulo','Pagos Cobranza')
 @section('css')
 {{-- <script src="{{ asset('js/Ventas/clientesVentas.js') }}" type="text/javascript" ></script> --}}
 <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.1/css/bootstrap.min.css" type="text/css" rel="stylesheet">
 <link href="https://cdn.datatables.net/1.11.4/css/dataTables.bootstrap5.min.css" type="text/css" rel="stylesheet">
 
 <link href="{{ asset('css/Ventas/clientesVentas.css') }}" rel="stylesheet">
+
 @endsection
 
 
 @section('content')
 
-@include('includes.navbarRh')
+@include('includes.navbarCobranza')
 
 <div class="contenedor">
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb">
-    <li class="breadcrumb-item"><a href="/homeRh">Home</a></li>
+    <li class="breadcrumb-item"><a href="/homeCobranza">Home</a></li>
     <li class="breadcrumb-item active" aria-current="page">CobradoresRH</li>
   </ol>
 </nav>
@@ -25,7 +26,7 @@
 <!-- Button trigger modal -->
 <div align="right" style="padding-right: 40px;">
 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-  Agregar Cobrador
+  Agregar Pagos
 </button>
 </div>
 <br>
@@ -51,37 +52,32 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="staticBackdropLabel">Agregar Cobrador</h5>
+        <h5 class="modal-title" id="staticBackdropLabel">Agregar Pago</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-      <form action="/CjCobrador" method="POST">
+      <form action="/PagosC" method="POST">
         @csrf
         <div class="mb-3">
-          <label for=""  class="form-label">Nombre Cobrador</label>
-          <input id="nombreCobradorr" name="nombreCobrador" type="text" class="form-control"  >
+          <label for=""  class="form-label">cvePago</label>
+          <input id="cvePago" name="cvePago" type="number" class="form-control"  >
         </div>
         <div class="mb-3">
-          <label  class="form-label">Apellido Paterno</label>
-          <input  id="apellidoPaternoCobrador" name="apellidoPaternoCobrador" type="text" class="form-control" >
+          <label  class="form-label">fechaPago</label>
+          <input  id="fechaPago" name="fechaPago" type="date" class="form-control" >
         </div>
         <div class="mb-3">
-          <label  class="form-label">Apellido Materno</label>
-          <input  id="apellidoMaternoCobrador" name="apellidoMaternoCobrador" type="text" class="form-control">
+          <label  class="form-label">cantidadPago</label>
+          <input  id="cantidadPago" name="cantidadPago" type="text" class="form-control">
         </div>
         <div class="mb-3">
-          <label  class="form-label">Comision Vendedor</label>
-          <input  id="comisionCobrador" name="comisionCobrador" type="text" class="form-control" >
+          <label  class="form-label">cveContrato</label>
+          <input  id="cveContrato" name="cveContrato" type="text" class="form-control" >
         </div>
-
-        <div class="form-group">
-    <label for="InputcveEstatus">Estatus</label>
-  <select class="form-select" name="cveEstatus" placeholder="Esttus"  name="cveEstatus" aria-label="Default select example">
-  @foreach($estados as $estado)
-  <option value="{{ $estado->cveEstatus}} ">{{$estado-> nomEstatus}}</option>
-  @endforeach
-</select>
-</div>
+        <div class="mb-3">
+          <label  class="form-label">cveCobrador</label>
+          <input  id="cveCobrador" name="cveCobrador" type="text" class="form-control" >
+        </div>
         <button type="button"  data-bs-dismiss="modal" aria-label="Close" class="btn btn-danger">Cancelar</button>
         <button type="submit"  class="btn btn-success" >Guardar</button>
 
@@ -94,33 +90,38 @@
 </div>
 
 
-<div class="tablaclientes">
-
-        <table id="clienteVentas" class="table display table-striped table-bordered nowrap" style="width:100%">
-            <thead>
-                <tr>
-                    <th scope="col">Clave</th>
-                    <th scope="col">Nombre</th>
-                    <th scope="col">Comision</th>
-                    <th scope="col">Estatus</th>
-                    <th scope="col">Opciones</th>
-                </tr>
-            </thead>
-            <tbody>
-            @foreach($cobradores as $cobrador)
+<table id="pagos"  class="table display table-striped table-bordered nowrap" style="width:100%">
+                        <thead>
                             <tr>
-                                <td>{{ $cobrador-> cveCobrador}}</td>
-                                <td>{{ $cobrador->nombreCobrador}} {{ $cobrador-> apellidoPaternoCobrador}} {{ $cobrador-> apellidoMaternoCobrador}}</td>
-                                <td>{{ $cobrador-> comisionCobrador}}</td>
-                                <td>{{ $cobrador-> nomEstatus}}</td>
-                                <td>
+                            <th scope="col">Numero de Pago</th>
+                            <th scope="col">Numero del Contrato</th>
+                            <th scope="col">Forma de pago</th>
+                            <th scope="col">Pago</th>
+                            <th scope="col">Restante</th>
+                            <th scope="col">Fecha</th>
+                            <th scope="col">Cobrador</th>
+                            <th scope="col">Elimimar</th>
 
+                            </tr>
+                        </thead>
+                        <tbody>
+                          
+                        @foreach($pagos as $pago)
+                            <tr>
+                                <td>{{ $pago-> cvePago}}</td>
+                                <td>{{ $pago-> cveContrato}}</td>
+                                <td>{{ $pago-> nomFormaPago}}</td>
+                                <td>{{ $pago-> cantidadPago}}</td>
+                                <td>{{ $pago-> restantePaquete}}</td>
+                                <td>{{ $pago-> fechaPago}}</td>
+                                <td>{{ $pago->nombreCobrador}} {{ $pago-> apellidoPaternoCobrador}} {{ $pago-> apellidoMaternoCobrador}}</td>
+                                <td>
+                           
                                 </td>
                               </tr>
                             @endforeach
-            </tbody>
-        </table>
-
+                        </tbody>
+                    </table>
     </div>
 </div>
 @section('js')
@@ -130,8 +131,12 @@
 <script src="https://cdn.datatables.net/1.11.4/js/dataTables.bootstrap5.min.js" type="text/javascript"></script>
 <script>
     $(document).ready(function() {
-        $('#clienteVentas').DataTable();
+        $('#pagos').DataTable({
+            responsive: true
+        });
+
     });
+
 </script>
 <script>
   
