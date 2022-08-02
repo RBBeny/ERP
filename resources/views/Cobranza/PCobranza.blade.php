@@ -59,25 +59,32 @@
       <form action="/PagosC" method="POST">
         @csrf
         <div class="mb-3">
-          <label for=""  class="form-label">cvePago</label>
+          <label for=""  class="form-label">Folio</label>
           <input id="cvePago" name="cvePago" type="number" class="form-control"  required>
         </div>
         <div class="mb-3">
-          <label  class="form-label">fechaPago</label>
+          <label  class="form-label">fecha del Pago</label>
           <input  id="fechaPago" name="fechaPago" type="date" class="form-control" required>
         </div>
         <div class="mb-3">
-          <label  class="form-label">cantidadPago</label>
+          <label  class="form-label">cantidad Pago</label>
           <input  id="cantidadPago" name="cantidadPago" type="text" class="form-control"required>
         </div>
         <div class="mb-3">
-          <label  class="form-label">cveContrato</label>
+          <label  class="form-label">Folio Contrato</label>
           <input  id="cveContrato" name="cveContrato" type="text" class="form-control" required>
         </div>
-        <div class="mb-3">
-          <label  class="form-label">cveCobrador</label>
-          <input  id="cveCobrador" name="cveCobrador" type="text" class="form-control"required >
-        </div>
+
+        <div class="form-group">
+    <label for="cveCobrador">Cobrador</label>
+  <select class="form-select" name="cveCobrador" placeholder="Cobrador"  name="cveCobrador" aria-label="Default select example"required>
+  <option>Cobrador</option>
+  @foreach($cobradores as $cobrador)
+  <option value="{{ $cobrador->cveCobrador}} ">{{$cobrador->nombreCobrador}} {{$cobrador->apellidoPaternoCobrador}} {{$cobrador->apellidoMaternoCobrador}}</option>
+  @endforeach
+  <!--cveCobrador, nombreCobrador, apellidoPaternoCobrador, apellidoMaternoCobrador, comisionCobrador, cveEstatus-->
+</select>
+</div>
         <button type="button"  data-bs-dismiss="modal" aria-label="Close" class="btn btn-danger">Cancelar</button>
         <button type="submit"  class="btn btn-success" >Guardar</button>
 
