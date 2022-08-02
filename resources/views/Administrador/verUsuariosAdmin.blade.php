@@ -107,14 +107,9 @@
                 <label for="cveTipoUsuario" class="form-label formulario__label">Rol</label>
                 <div class="formulario__grupo-input">
                   <select name="cveTipoUsuario" id="cveTipoUsuario" class="form-select formulario__input" aria-label=" select example">
-                    <option selected value="">Selecciona opcion</option>
-                    <option value=3>Administrador</option>
-                    <option value=6>Gerente de ventas</option>
-                    <option value=7>Gerente de cobranza</option>
-                    <option value=4>Ventas</option>
-                    <option value=5>Cobranza</option>
-                    <option value=8>RH</option>
-                    <option value=9>Finanzas</option>
+                    @foreach($rol as $rol)
+                    <option value="{{$rol-> cveTipoUsuario}}">{{$rol-> nomTipoUsuario}}</option>
+                    @endforeach
                   </select>
                 </div>
                 <p class="formulario__input-error">El rol solo puede ser del del 1 al 9</p>

@@ -32,7 +32,14 @@ class AdministradorController extends Controller
         ->join("ctipousuario", "ctipousuario.cveTipoUsuario", "=", "tusuario.cveTipoUsuario")
         ->join("cEstatus", "tusuario.cveEstatus", "=", "cEstatus.cveEstatus")
         ->get();
-        return view('Administrador.verUsuariosAdmin',$usuarios);
+
+
+        $roles ["rol"] = DB::table('ctipousuario')
+        ->select("cveTipoUsuario", "nomTipoUsuario")
+        ->get();
+
+
+        return view('Administrador.verUsuariosAdmin',$usuarios, $roles);
     
     }
 
