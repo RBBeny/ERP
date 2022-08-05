@@ -119,11 +119,10 @@
   Editar
 </button> -->
 </div>
-<
+
 
                                 </td>
                               </tr>
-                              @include('Rh.agregarVendedor')
                             @endforeach
             </tbody>
         </table>

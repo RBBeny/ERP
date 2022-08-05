@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Cobrador;
 use App\Models\Vendedor;
-use App\Models\Estatus;
 use App\Http\Requests\RegisterCRequest;
 use App\Http\Requests\RegisterVRequest;
 
