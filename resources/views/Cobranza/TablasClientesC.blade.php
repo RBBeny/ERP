@@ -32,7 +32,7 @@
                     <th scope="col">Nombre</th>
                     <th scope="col">Telefono</th>
                     <th scope="col">Estatus</th>
-                    <th scope="col">Ver Cliente</th>
+                    <th scope="col">Ver</th>
                 </tr>
             </thead>
             <tbody>

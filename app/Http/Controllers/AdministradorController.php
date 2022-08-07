@@ -10,18 +10,11 @@ use App\Models\User;
 class AdministradorController extends Controller
 {
     //
-    public function home(){
-        return view('GerenteCobranza.homeGCobranza');
-    }
-    //
+    
      public function homeAdmin(){
         return view('Administrador.homeAdmin');
     }
          
-    public function verUsuarioAdmin(){
-        return view('Administrador.verUsuarioAdmin');
-    }
-
     
     public function verUsuarios(){
         //return view('Administrador.verUsuariosAdmin');
@@ -38,11 +31,7 @@ class AdministradorController extends Controller
         
         return view('Administrador.verUsuariosAdmin',$usuarios, $rol);
     }
-    //Edit
-    public function edit ($id){
-        $usuario = User::findOrFail($id);
-       return view('Administrador.agregarUsuarioAdmin',compact('usuario'));
-    }
+ 
 
     //Update
     public function update (Request $request, $id){
@@ -53,7 +42,7 @@ class AdministradorController extends Controller
         $usuario->nomUsuario = $request -> input('nomUsuario');
         $usuario->cveTipoUsuario = $request -> input('rol');
         $usuario->save();
-        return redirect()->route('verUsuarios');
+        return redirect('/verUsuarios')->with('success', 'Usuario editado');
 
     }
 

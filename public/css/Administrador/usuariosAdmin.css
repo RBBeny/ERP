@@ -5,8 +5,12 @@
 
 .tablausuarios td i{
    
-    padding-left: 100px;
+    padding: 5px;
+    align-items: center;
 }
+.opciones{
+    padding-left: 30px;
+  }
 .fa-edit{
     color: rgb(1, 224, 1);
 }

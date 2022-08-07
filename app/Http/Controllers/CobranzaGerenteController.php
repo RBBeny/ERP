@@ -33,7 +33,7 @@ class CobranzaGerenteController extends Controller
         ->join('ccolonia', 'ccolonia.cveColonia', '=', 'tcliente.cveColoniaCliente')
         ->join('cEstatusContrato', 'cEstatusContrato.cveEstatusContrato', '=', 'tcontrato.cveEstatusContrato')
         ->get();
-        return view('GerenteCobranza.TablaClienteGC',$Datos);
+        return view('GerenteCobranza.TablaClientesGC',$Datos);
     }
     public function cliente( $cliente){
         $Datos = DB::table('tcliente')

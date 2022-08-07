@@ -135,6 +135,19 @@ class CobranzaController extends Controller
         $pagos -> delete();
         return redirect('/PCobranza')->with('success', 'Cuenta creada');
     }
+
+    public function consultarCliente(Request $request){
+        if ($request->ajax()) {
+            $clientes = DB::table('tcliente')
+                ->select('tcliente.cveContrato', DB::raw("concat(tcliente.nomCliente,' ',tcliente.apellidoPaternoCliente,' ',tcliente.apellidoMaternoCliente) as Clientes"))
+                ->where('cveContrato', '=', $request->cveContrato)
+                ->get();
+            foreach ($clientes as $cliente) {
+                $clienteArray[$cliente->cveContrato]=$cliente->Clientes;
+            }
+        }
+        return response()->json($clienteArray);
+    }
     
 
 
