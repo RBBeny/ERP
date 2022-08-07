@@ -1,10 +1,10 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Cobrador extends Model
+class Estatus extends Model
 {
     //cveEstatus, nomEstatus
     protected $table = "cEstatus";
