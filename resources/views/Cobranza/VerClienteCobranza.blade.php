@@ -295,11 +295,9 @@
                     <table id="pagos" class="display compact" style="width:100%">
                         <thead>
                             <tr>
-                            <th scope="col">Numero de Pago</th>
-                            <th scope="col">Numero del Contrato</th>
-                            <th scope="col">Forma de pago</th>
+                            <th scope="col">Folio</th>
+                            <th scope="col">Forma pago</th>
                             <th scope="col">Pago</th>
-                            <th scope="col">Restante</th>
                             <th scope="col">Fecha</th>
                             <th scope="col">Cobrador</th>
                                 
@@ -309,10 +307,8 @@
                         @foreach($pagos as $pago)
                             <tr>
                                 <td>{{ $pago-> cvePago}}</td>
-                                <td>{{ $pago-> cveContrato}}</td>
                                 <td>{{ $pago-> nomFormaPago}}</td>
                                 <td>{{ $pago-> cantidadPago}}</td>
-                                <td>{{ $pago-> restantePaquete}}</td>
                                 <td>{{ $pago-> fechaPago}}</td>
                                 <td>{{ $pago->nombreCobrador}} {{ $pago-> apellidoPaternoCobrador}} {{ $pago-> apellidoMaternoCobrador}}</td>
                             </tr>

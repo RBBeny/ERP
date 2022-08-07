@@ -17,8 +17,8 @@
 <div class="contenedor">
   <nav aria-label="breadcrumb" style="padding: 10px;">
     <ol class="breadcrumb">
-      <li class="breadcrumb-item"><a href="/homeCobranza">Home</a></li>
-      <li class="breadcrumb-item active" aria-current="page">Ver Usuarios</li>
+      <li class="breadcrumb-item"><a href="/homeGCobranza">Home</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Usuarios</li>
     </ol>
   </nav>
   <!-- Button trigger modal -->

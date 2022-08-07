@@ -2,7 +2,6 @@
 
 @section('titulo','Usuarios')
 @section('css')
-{{-- <script src="{{ asset('js/Ventas/clientesVentas.js') }}" type="text/javascript" ></script> --}}
 
 <link href="{{ asset('css/Ventas/agregarClientes.css') }}" rel="stylesheet">
 <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.1/css/bootstrap.min.css" type="text/css" rel="stylesheet">
@@ -128,7 +127,7 @@
             <div class="mb-3">
               <input type="number" name="cveEstatus" id="cveEstatus" value="3" class="form-control" hidden>
             </div>
-            <button id="btn" type="submit" class="btn btn-primary btn-block">Submit</button>
+            <button id="btn" type="submit" class="btn btn-primary btn-block">Registrar usuario</button>
           </form>
         </div>
       </div>
@@ -136,15 +135,14 @@
   </div>
   <!--TABLA USUARIOS-->
   <div class="tablausuarios">
-    <table id="clienteVentas" class="table display table-striped table-bordered nowrap" style="width:100%">
+    <table id="clienteVentas" class="table display table-striped table-bordered nowrap" style="width:90%">
       <thead>
         <tr>
           <th scope="col">Nombre</th>
           <th scope="col">Nickname</th>
           <th scope="col">Rol</th>
           <th scope="col">Estatus</th>
-          <th scope="col">Editar</th>
-          <th scope="col">Eliminar</th>
+          <th scope="col">Opciones</th>
         </tr>
       </thead>
       <tbody>
@@ -154,8 +152,7 @@
           <td>{{ $usuario-> nomUsuario}}</td>
           <td>{{ $usuario-> nomTipoUsuario}}</td>
           <td>{{ $usuario-> nomEstatus}}</td>
-          <td><a data-bs-toggle="modal" data-bs-target="#modal-update-{{$usuario-> id}}"><i class="fas fa-edit fa-lg"></i></a></td>
-          <td><a data-bs-toggle="modal" data-bs-target="#modal-delete-{{$usuario-> id}}"><i class="fas fa-trash fa-lg"></i></a></td>
+          <td class="opciones"><a data-bs-toggle="modal" data-bs-target="#modal-update-{{$usuario-> id}}"><i class="fas fa-edit fa-lg"></i></a> <a data-bs-toggle="modal" data-bs-target="#modal-delete-{{$usuario-> id}}"><i class="fas fa-trash fa-lg"></i></a></td>
         </tr>
         @include('Administrador.agregarUsuarioAdmin')
         @include('Administrador.adminDelete')
@@ -176,7 +173,9 @@
 <script src="https://cdn.datatables.net/1.11.4/js/dataTables.bootstrap5.min.js" type="text/javascript"></script>
 <script>
   $(document).ready(function() {
-    $('#clienteVentas').DataTable();
+    $('#clienteVentas').DataTable({
+      language: {"url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"}
+    });
   });
 </script>
 <script src="{{ asset('js/Administrador/AgregarUsuarios.js') }}" type="text/javascript"></script>

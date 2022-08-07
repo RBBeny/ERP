@@ -21,5 +21,6 @@ Route::group(['middleware' => 'isCobranza'], function(){
     Route::get('delete/{cvePago}',[CobranzaController::class,'eliminarPago'])->name('eliminarPago');
     Route::post('/Ppago', [CobranzaController::class, 'registerC']);
     Route::post('/PagosC', [CobranzaController::class, 'registerPC']);
+    Route::get('consultarCliente',[CobranzaController::class, 'consultarCliente']);
 });
 

@@ -119,7 +119,10 @@
   Editar
 </button> -->
 </div>
+<<<<<<< HEAD
 
+=======
+>>>>>>> desarrollo
 
                                 </td>
                               </tr>
